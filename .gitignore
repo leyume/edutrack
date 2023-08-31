@@ -26,3 +26,4 @@ dist-ssr
 
 backend/db/data
 backend/app/credentials/*
+__pycache__

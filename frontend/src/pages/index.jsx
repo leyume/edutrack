@@ -8,6 +8,9 @@ export default function Home() {
         <div className="text-sm">
           <Link to="/signin">Go to Sign in</Link>
         </div>
+        <div className="text-sm">
+          <Link to="/signup">Go to Sign up</Link>
+        </div>
       </div>
     </>
   );

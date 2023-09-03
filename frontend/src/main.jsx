@@ -1,9 +1,8 @@
 import React, { Suspense } from "react";
 import ReactDOM from "react-dom/client";
-// import App from "./App.jsx";
+import App from "./App.jsx";
 import "virtual:uno.css";
 import "./assets/main.scss";
-import Signin from "./Signin.jsx";
 
 import { BrowserRouter as Router, useRoutes } from "react-router-dom";
 

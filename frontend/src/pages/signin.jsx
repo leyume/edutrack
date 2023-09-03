@@ -1,12 +1,13 @@
 import signbg from "/images/sign-bg.png";
+import { Link } from "react-router-dom";
 
 export default function Signin() {
   return (
     <div className="w-full">
       <header className="flex item-center justify-between px-5% py-15px shadow-lg">
-        <a href="" className="text-brand-pink text-4xl font-bold">
+        <Link to="/" className="text-brand-pink text-4xl font-bold">
           Edu<span className="text-brand-blue">Track</span>
-        </a>
+        </Link>
 
         <nav className="flex items-center justify-center">
           <p className="text-center">Don’t have an account?</p>

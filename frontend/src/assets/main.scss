@@ -1,24 +1,24 @@
 body {
   @apply font-brand;
 }
-*{
+
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
-a{
+
+a {
   text-decoration: none;
 }
-.shadow{
+
+.shadow {
   text-shadow: 3px 4px 5px rgba(0, 0, 0, 0.25);
 }
-.btn{
-  border: 1px solid #2375F0 !important;
-}
-.btn:hover{
-    background-color: transparent;
-    color: #2375F0;
-    border: 1px solid #2375F0 ;
-    transition: 0.5s;
-    cursor: pointer;
+
+.btn {
+  @apply px-5 py-3 bg-brand-blue rounded-lg text-white text-lg leading-none font-bold font-medium border-solid border-1 border-brand-blue cursor-pointer outline-none transition-all duration-500;
+  &:hover {
+    @apply bg-transparent text-brand-blue;
+  }
 }

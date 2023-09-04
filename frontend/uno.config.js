@@ -9,6 +9,8 @@ export default defineConfig({
     colors: {
       brand: {
         dark: "#0F0D13",
+        blue: "#2375F0",
+        pink: "#F41E92",
       },
     },
   },
@@ -20,7 +22,14 @@ export default defineConfig({
     presetWebFonts({
       provider: "google",
       fonts: {
-        brand: "Roboto",
+        // brand: "Roboto",
+        brand: [
+          {
+            name: "Roboto",
+            weights: ["100", "300", "400", "500", "700", "800"],
+            italic: true,
+          },
+        ],
       },
     }),
   ],

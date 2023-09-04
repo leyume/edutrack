@@ -40,33 +40,33 @@ function Testimony() {
                   d="M12.416 1.98389L15.5501 10.1272L23.832 10.7775L17.4838 16.4609L19.471 25.0001L12.416 20.3629L5.36102 25.0001L7.34815 16.4609L1 10.7775L9.28193 10.1272L12.416 1.98389Z"
                   fill="#F41E92"
                   stroke="#F41E92"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
                 <path
                   d="M41.9634 1.98389L45.0974 10.1272L53.3794 10.7775L47.0312 16.4609L49.0183 25.0001L41.9634 20.3629L34.9084 25.0001L36.8955 16.4609L30.5474 10.7775L38.8293 10.1272L41.9634 1.98389Z"
                   fill="#F41E92"
                   stroke="#F41E92"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
                 <path
                   d="M71.5107 1.98389L74.6448 10.1272L82.9267 10.7775L76.5786 16.4609L78.5657 25.0001L71.5107 20.3629L64.4557 25.0001L66.4429 16.4609L60.0947 10.7775L68.3767 10.1272L71.5107 1.98389Z"
                   fill="#F41E92"
                   stroke="#F41E92"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
                 <path
                   d="M101.058 1.98389L104.192 10.1272L112.474 10.7775L106.125 16.4609L108.113 25.0001L101.058 20.3629L94.0026 25.0001L95.9897 16.4609L89.6416 10.7775L97.9235 10.1272L101.058 1.98389Z"
                   fill="#F41E92"
                   stroke="#F41E92"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
               </svg>
             </div>
@@ -100,33 +100,33 @@ function Testimony() {
                   d="M12.416 1.98389L15.5501 10.1272L23.832 10.7775L17.4838 16.4609L19.471 25.0001L12.416 20.3629L5.36102 25.0001L7.34815 16.4609L1 10.7775L9.28193 10.1272L12.416 1.98389Z"
                   fill="#F41E92"
                   stroke="#F41E92"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
                 <path
                   d="M41.9634 1.98389L45.0974 10.1272L53.3794 10.7775L47.0312 16.4609L49.0183 25.0001L41.9634 20.3629L34.9084 25.0001L36.8955 16.4609L30.5474 10.7775L38.8293 10.1272L41.9634 1.98389Z"
                   fill="#F41E92"
                   stroke="#F41E92"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
                 <path
                   d="M71.5107 1.98389L74.6448 10.1272L82.9267 10.7775L76.5786 16.4609L78.5657 25.0001L71.5107 20.3629L64.4557 25.0001L66.4429 16.4609L60.0947 10.7775L68.3767 10.1272L71.5107 1.98389Z"
                   fill="#F41E92"
                   stroke="#F41E92"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
                 <path
                   d="M101.058 1.98389L104.192 10.1272L112.474 10.7775L106.125 16.4609L108.113 25.0001L101.058 20.3629L94.0026 25.0001L95.9897 16.4609L89.6416 10.7775L97.9235 10.1272L101.058 1.98389Z"
                   fill="#F41E92"
                   stroke="#F41E92"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
               </svg>
             </div>
@@ -160,33 +160,33 @@ function Testimony() {
                   d="M12.416 1.98389L15.5501 10.1272L23.832 10.7775L17.4838 16.4609L19.471 25.0001L12.416 20.3629L5.36102 25.0001L7.34815 16.4609L1 10.7775L9.28193 10.1272L12.416 1.98389Z"
                   fill="#F41E92"
                   stroke="#F41E92"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
                 <path
                   d="M41.9634 1.98389L45.0974 10.1272L53.3794 10.7775L47.0312 16.4609L49.0183 25.0001L41.9634 20.3629L34.9084 25.0001L36.8955 16.4609L30.5474 10.7775L38.8293 10.1272L41.9634 1.98389Z"
                   fill="#F41E92"
                   stroke="#F41E92"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
                 <path
                   d="M71.5107 1.98389L74.6448 10.1272L82.9267 10.7775L76.5786 16.4609L78.5657 25.0001L71.5107 20.3629L64.4557 25.0001L66.4429 16.4609L60.0947 10.7775L68.3767 10.1272L71.5107 1.98389Z"
                   fill="#F41E92"
                   stroke="#F41E92"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
                 <path
                   d="M101.058 1.98389L104.192 10.1272L112.474 10.7775L106.125 16.4609L108.113 25.0001L101.058 20.3629L94.0026 25.0001L95.9897 16.4609L89.6416 10.7775L97.9235 10.1272L101.058 1.98389Z"
                   fill="#F41E92"
                   stroke="#F41E92"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
               </svg>
             </div>
@@ -210,30 +210,30 @@ function Testimony() {
                     d="M29.2774 30.0687L1.8374 18.1547L29.2774 5.95703L56.9624 18.1547L29.2774 30.0687Z"
                     fill="white"
                     stroke="white"
-                    stroke-miterlimit="10"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeMiterlimit="10"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                   <path
                     d="M45.9373 22.9771V38.2951C34.9123 46.2377 23.8873 46.2377 12.8623 38.2951V22.9771"
                     stroke="white"
-                    stroke-miterlimit="10"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeMiterlimit="10"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                   <path
                     d="M6.24756 20.1401V46.2375"
                     stroke="white"
-                    stroke-miterlimit="10"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeMiterlimit="10"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                   <path
                     d="M10.6574 51.3438C10.6574 48.5071 8.6974 46.2378 6.2474 46.2378C3.7974 46.2378 1.8374 48.5071 1.8374 51.3438V62.1231H10.6574V51.3438Z"
                     stroke="white"
-                    stroke-miterlimit="10"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeMiterlimit="10"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                 </svg>
               </div>
@@ -258,30 +258,30 @@ function Testimony() {
                     d="M23.9252 33.2292H34.8002C36.9752 33.2292 38.9085 31.2958 38.9085 29.1208V5.92083C38.9085 3.74583 36.9752 1.8125 34.8002 1.8125H23.9252C21.5085 1.8125 19.3335 3.74583 19.3335 6.40417V28.8792C19.3335 31.2958 21.2668 33.2292 23.9252 33.2292Z"
                     fill="white"
                     stroke="white"
-                    stroke-miterlimit="10"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeMiterlimit="10"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                   <path
                     d="M38.9085 26.4624H19.3335"
                     stroke="#2375F0"
-                    stroke-miterlimit="10"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeMiterlimit="10"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                   <path
                     d="M12.9775 8.09561C10.7928 7.85394 8.3665 7.61227 5.69608 7.37061C3.51142 7.37061 1.8125 8.81819 1.8125 10.9859V43.0479C1.8125 44.9764 3.26975 46.6656 5.21033 46.6656C19.5339 47.3882 27.7868 51.9678 29 56.0664C30.2132 51.9678 38.4661 47.3882 52.7897 46.6656C54.7303 46.6656 56.1875 44.9764 56.1875 43.0479V10.9859C56.1875 8.81577 54.4886 7.37061 52.3039 7.37061C49.8752 7.61227 47.4464 7.85394 45.5058 8.09561"
                     stroke="white"
-                    stroke-miterlimit="10"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeMiterlimit="10"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                   <path
                     d="M29 43.6206V56.1873"
                     stroke="white"
-                    stroke-miterlimit="10"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeMiterlimit="10"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                 </svg>
               </div>
@@ -311,8 +311,8 @@ function Testimony() {
                     fill="white"
                   />
                   <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
+                    fillRule="evenodd"
+                    clipRule="evenodd"
                     d="M25.1765 73.2612C27.612 69.2575 31.0375 65.9484 35.123 63.6526C39.2085 61.3569 43.8164 60.1518 48.5027 60.1536C58.3826 60.1536 67.0337 65.3966 71.8289 73.2612C77.2771 68.5113 81.1456 62.2115 82.9171 55.2039C84.6887 48.1963 84.279 40.8149 81.7428 34.0464C79.2066 27.2779 74.6647 21.4449 68.7243 17.3271C62.7839 13.2093 55.728 11.0029 48.5 11.0029C41.2719 11.0029 34.2161 13.2093 28.2757 17.3271C22.3353 21.4449 17.7934 27.2779 15.2572 34.0464C12.7209 40.8149 12.3112 48.1963 14.0828 55.2039C15.8544 62.2115 19.7228 68.5113 25.171 73.2612H25.1765ZM48.5027 51.9613C52.1239 51.9613 55.5968 50.5227 58.1574 47.9621C60.718 45.4016 62.1566 41.9286 62.1566 38.3074C62.1566 34.6862 60.718 31.2133 58.1574 28.6527C55.5968 26.0921 52.1239 24.6536 48.5027 24.6536C44.8815 24.6536 41.4086 26.0921 38.848 28.6527C36.2874 31.2133 34.8489 34.6862 34.8489 38.3074C34.8489 41.9286 36.2874 45.4016 38.848 47.9621C41.4086 50.5227 44.8815 51.9613 48.5027 51.9613Z"
                     fill="#2375F0"
                   />
@@ -320,9 +320,9 @@ function Testimony() {
                     d="M48.5025 51.9615C52.1237 51.9615 55.5966 50.523 58.1572 47.9624C60.7178 45.4018 62.1563 41.9289 62.1563 38.3076C62.1563 34.6864 60.7178 31.2135 58.1572 28.6529C55.5966 26.0923 52.1237 24.6538 48.5025 24.6538C44.8812 24.6538 41.4083 26.0923 38.8477 28.6529C36.2872 31.2135 34.8486 34.6864 34.8486 38.3076C34.8486 41.9289 36.2872 45.4018 38.8477 47.9624C41.4083 50.523 44.8812 51.9615 48.5025 51.9615Z"
                     fill="white"
                     stroke="white"
-                    stroke-width="1.71429"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeWidth="1.71429"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                   <path
                     d="M25.1821 73.2614C27.6193 69.2609 31.0446 65.9546 35.1287 63.6604C39.2128 61.3662 43.8185 60.1611 48.5029 60.1611C53.1873 60.1611 57.7929 61.3662 61.8771 63.6604C65.9612 65.9546 69.3865 69.2609 71.8236 73.2614"
@@ -331,16 +331,16 @@ function Testimony() {
                   <path
                     d="M25.1821 73.2614C27.6193 69.2609 31.0446 65.9546 35.1287 63.6604C39.2128 61.3662 43.8185 60.1611 48.5029 60.1611C53.1873 60.1611 57.7929 61.3662 61.8771 63.6604C65.9612 65.9546 69.3865 69.2609 71.8236 73.2614"
                     stroke="white"
-                    stroke-width="1.71429"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeWidth="1.71429"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                   <path
                     d="M48.5029 82C57.9181 82 66.9476 78.2598 73.6052 71.6023C80.2627 64.9447 84.0029 55.9152 84.0029 46.5C84.0029 37.0848 80.2627 28.0552 73.6052 21.3977C66.9476 14.7402 57.9181 11 48.5029 11C39.0877 11 30.0582 14.7402 23.4006 21.3977C16.7431 28.0552 13.0029 37.0848 13.0029 46.5C13.0029 55.9152 16.7431 64.9447 23.4006 71.6023C30.0582 78.2598 39.0877 82 48.5029 82Z"
                     stroke="white"
-                    stroke-width="1.71429"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeWidth="1.71429"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                 </svg>
               </div>

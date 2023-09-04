@@ -1,6 +1,5 @@
 import React, { Suspense } from "react";
 import ReactDOM from "react-dom/client";
-// import App from "./App.jsx";
 import "virtual:uno.css";
 import "./assets/main.scss";
 
@@ -16,7 +15,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Router>
       <App />
-      {/* <Signin /> */}
     </Router>
   </React.StrictMode>
 );

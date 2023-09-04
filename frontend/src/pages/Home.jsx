@@ -1,15 +1,14 @@
 import React from "react";
-import "./App.css";
-import About from "./components/About/About";
-import Mission from "./components/Mission/Mission";
-import Vision from "./components/vision/vision";
-import Testimony from "./components/Testimony/Testimony";
-import Question from "./components/Question/Question";
+import About from "../components/About/About";
+import Mission from "../components/Mission/Mission";
+import Vision from "../components/Vision/Vision";
+import Testimony from "../components/Testimony/Testimony";
+import Question from "../components/Question/Question";
 
-function App() {
+export default function Home() {
   return (
     <div>
-      <div className="app">
+      <div className="app h-screen">
         <header className="header">
           <div className="project-title1">
             Edu<span className="project-title2">Track</span>
@@ -38,7 +37,7 @@ function App() {
             <button className="register-button">Sign up</button>
           </div>
         </header>
-        <main className="main">
+        <section className="main">
           <section className="section1">
             <div className="section1-content">
               <h1>
@@ -49,7 +48,7 @@ function App() {
               <button className="button1">GET STARTED</button>
             </div>
           </section>
-        </main>
+        </section>
       </div>
       <About />
       <Mission />
@@ -59,5 +58,3 @@ function App() {
     </div>
   );
 }
-
-export default App;

@@ -1,28 +1,19 @@
 import React from "react";
-import "./About.css";
 import AboutImage from "../../assets/about.png";
+
 function About() {
   return (
-    <div className="about">
-      <div className="head-cont">
-        <h1 className="about-header">
-          About <span className="about-style">Edu</span>Track
-        </h1>
-      </div>
-      <div className="text-cont">
-        <p className="about-text">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non
-          risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec,
-          ultricies sed, dolor. Lorem ipsum dolor sit amet, consectetur
-          adipiscing elit. Sed non risus. Suspendisse lectusamet, adipiscing
-          nec, ultricies sed, dolor.Lorem ipsum dolor sit dolor.Lorem ipsum
-          dolor sit
-        </p>
-      </div>
-      <div className="aboutImg-cont">
-        <img src={AboutImage} width={"80%"} alt="img" />
-      </div>
-    </div>
+    <section className="bg-icons text-center py-20">
+      <h1 className="text-5xl text-brand-blue">
+        About <span className="text-brand-pink">Edu</span>Track
+      </h1>
+      <p className="w-55% mx-auto mt-8 leading-normal">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed,
+        dolor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectusamet, adipiscing nec, ultricies sed, dolor.Lorem ipsum
+        dolor sit dolor.Lorem ipsum dolor sit
+      </p>
+      <img src={AboutImage} className="w-40%" alt="img" />
+    </section>
   );
 }
 

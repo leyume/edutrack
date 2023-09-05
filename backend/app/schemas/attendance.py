@@ -7,7 +7,8 @@ class Attendance(BaseModel): #serializer
     date: datetime = datetime.now()
     student_id: int = 1
     guardian_id: int = 3
-    status: int = 1
+    arrival: datetime = datetime.now()
+
 
 class AttendancePost(Attendance): #serializer
     institution_id: int = 7 #should be taken from the session user
@@ -24,4 +25,4 @@ class AttendanceUpdate(BaseModel): #serializer
     institution_id: int = 1 #should be taken from the session user
     student_id: int = 1
     guardian_id: int = 3
-    status: int = 1
+    departure: datetime = datetime.now()

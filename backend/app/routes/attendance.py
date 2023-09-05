@@ -1,6 +1,7 @@
 from sqlalchemy.orm import Session
 from fastapi import Depends, HTTPException, status, APIRouter, Response
 from typing import Optional, List
+from sqlalchemy import and_
 
 # from models.index import get_db, Student, Tutor #StudentCourse
 # from schemas.user import UserFull as User, UserUpdate
@@ -44,37 +45,38 @@ def create_attendance(
 
     return new_attendance
 
-# @router.put("")
-# def update_attendance(
-#     attendance: AttendanceUpdate, db: Session = Depends(get_db)
-# ):
-#   try:
-#     attendance_dict = attendance.dict()
+@router.put("")
+def update_attendance(
+    attendance: AttendanceUpdate, db: Session = Depends(get_db)
+):
+  try:
+    attendance_dict = attendance.dict()
     
+    db_attendance = db.query(Attendance).filter(
+      and_(
+        Attendance.student_id == attendance.student_id,
+        Attendance.departure == None)
+        ).first()
+    # db_student = db.query(Attendance).filter(Attendance.student_id == attendance.student_id).first()
 
-#     db_teacher = db.query(User).filter(User.id == subject.teacher_id).first()
-#     db_class = db.query(Classes).filter(Classes.id == subject.class_id).first()
+    # if db_student is None:
+    #   raise ValueError
+    #   # return {"message": "Student does not exist"}
 
-#     if db_teacher is None:
-#       raise ValueError
-#       # return {"message": "Teacher does not exist"}
+    if db_attendance is None:
+      raise ValueError
+      # return {"message": "Student has not arrived"}
 
-#     if db_class is None:
-#       raise ValueError
-#       # return {"message": "Class does not exist"}
+    for key, value in attendance_dict.items():
+        setattr(db_attendance, key, value)
+    db.commit()
+    return {"message": "Attendance successfully updated"}
 
-#     db_attendance = db.query(Subject).filter(Attendance.name==attendance.name).first()
-
-#     for key, value in attendance_dict.items():
-#         setattr(db_attendance, key, value)
-#     db.commit()
-#     return {"message": "Attendance successfully updated"}
-
-#   except ValueError:
-#     raise HTTPException(status_code=404, detail="Teacher/class does not exist")
+  except ValueError:
+    raise HTTPException(status_code=404, detail="Student has not arrived")
     
-#   except Exception as e:
-#     raise HTTPException(status_code=401, detail="Subject does not exist")
+  except Exception as e:
+    raise HTTPException(status_code=500, detail="Institution/Guardian does not exist")
 
 
 # @router.get("", response_model=User, status_code=status.HTTP_200_OK)

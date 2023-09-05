@@ -14,7 +14,7 @@ class User(Base):
     firstname=Column(String(255))
     lastname=Column(String(255))
     phone=Column(String(50))
-    # relationship=Column(String(255))
+    relation=Column(String(255))
     role=Column(Integer)
     status=Column(Integer)
     created_at = Column(TIMESTAMP(timezone=True), nullable=False, server_default=func.now())

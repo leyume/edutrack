@@ -15,7 +15,7 @@ class User(UserPost): #serializer
     id: Optional[int] = None
     institution_id: Optional[int] = None
     role: Optional[str] = None
-    # relationship: Optional[str] = None
+    relation: Optional[str] = None
     status: Optional[str] = None
     # created_at: Optional[datetime] = None
     # updated_at: Optional[datetime] = None

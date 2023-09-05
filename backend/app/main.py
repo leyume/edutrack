@@ -17,21 +17,21 @@ app.add_middleware(
 
 @app.get('/')
 def main():
-    return 'Hello Learnducates...'
+    return 'Hello Trackers...'
 
 
 # @app.get('/')
 # def main(auth = Depends(auth)):
 #     return 'Hello Learnducates...'
 
-# routes_folder = os.path.abspath("routes")
+routes_folder = os.path.abspath("routes")
 
-# # Iterate over the files in the routes folder
-# for filename in os.listdir(routes_folder):
-#     if filename.endswith(".py"):
-#         module_name = filename[:-3]  # Remove the ".py" extension
-#         module_path = f"routes.{module_name}"  # Construct the module path
-#         module = importlib.import_module(module_path)  # Import the module dynamically
-#         router = module.router  # Get the router object from the module
-#         route = '/' + module_name if module_name != 'index' else '' # Make content of index default to root
-#         app.include_router(router, prefix=f"{route}")  # Include the router in the FastAPI app
+# Iterate over the files in the routes folder
+for filename in os.listdir(routes_folder):
+    if filename.endswith(".py"):
+        module_name = filename[:-3]  # Remove the ".py" extension
+        module_path = f"routes.{module_name}"  # Construct the module path
+        module = importlib.import_module(module_path)  # Import the module dynamically
+        router = module.router  # Get the router object from the module
+        route = '/' + module_name if module_name != 'index' else '' # Make content of index default to root
+        app.include_router(router, prefix=f"{route}")  # Include the router in the FastAPI app

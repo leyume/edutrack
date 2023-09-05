@@ -26,7 +26,13 @@ def create_teacher(
 ):
     user.role = 1
     user.status = 1
+    user.institution_id = 7 #should be session user institution id
     new_user = User(**user.dict())
+
+    db_user = db.query(User).filter(User.email==user.email).first()
+
+    if db_user:
+        raise HTTPException(status_code=403, detail="email already in use")
     
     db.add(new_user)
     db.commit()

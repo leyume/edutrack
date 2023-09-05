@@ -15,21 +15,21 @@ router = APIRouter()
 
 
 @router.get("", response_model=List[UserInstitution], status_code=status.HTTP_200_OK)
-def get_students(db: Session = Depends(get_db)):
-    users = db.query(User).filter(User.role == 2).all()
+def get_guardians(db: Session = Depends(get_db)):
+    users = db.query(User).filter(User.role == 3).all()
     return users
 
 
 @router.post("", response_model=UserSchema, status_code=status.HTTP_201_CREATED)
-def create_student(
+def create_guardian(
     user: UserPost, db: Session = Depends(get_db)
 ):
     db_user = db.query(User).filter(User.email==user.email).first()
 
     if db_user:
         raise HTTPException(status_code=403, detail="email already in use")
-
-    user.role = 2
+        
+    user.role = 3
     user.status = 1
     user.institution_id = 7
     new_user = User(**user.dict())
@@ -41,7 +41,7 @@ def create_student(
     return new_user
 
 @router.put("")
-def update_student(
+def update_guardian(
     user: UserUpdate, db: Session = Depends(get_db)
 ):
   try:

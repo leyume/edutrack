@@ -8,13 +8,14 @@ class UserPost(BaseModel): #serializer
     firstname: str = 'Chriss'
     lastname: str='Doe'
     phone: Optional[str] = None
-    role: Optional[str] = None
+    role: Optional[int] = None
     status: Optional[str] = None
+    institution_id: Optional[int] = None
 
 class User(UserPost): #serializer
     id: Optional[int] = None
     institution_id: Optional[int] = None
-    role: Optional[str] = None
+    role: Optional[int] = None
     relation: Optional[str] = None
     status: Optional[str] = None
     # created_at: Optional[datetime] = None

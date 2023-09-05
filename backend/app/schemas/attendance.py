@@ -6,7 +6,7 @@ from datetime import datetime
 class Attendance(BaseModel): #serializer
     date: datetime = datetime.now()
     student_id: int = 1
-    guardian_id: int = 3
+    guardian_arrival: int = 3
     arrival: datetime = datetime.now()
 
 
@@ -24,5 +24,5 @@ class AttendanceUpdate(BaseModel): #serializer
     date: datetime = datetime.now()
     institution_id: int = 1 #should be taken from the session user
     student_id: int = 1
-    guardian_id: int = 3
+    guardian_departure: int = 3
     departure: datetime = datetime.now()

@@ -26,7 +26,7 @@ def create_attendance(
 ):
     attendance_data = attendance.dict()
     db_student = db.query(User).filter(User.id == attendance.student_id).first()
-    db_guardian = db.query(User).filter(User.id == attendance.guardian_id).first()
+    db_guardian = db.query(User).filter(User.id == attendance.guardian_arrival).first()
     db_institution = db.query(Institution).filter(Institution.id == attendance.institution_id).first()
 
     if db_student is None:

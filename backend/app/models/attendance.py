@@ -12,7 +12,8 @@ class Attendance(Base):
     date=Column(TIMESTAMP(timezone=True), nullable=False, server_default=func.now())
     institution_id=Column(Integer)
     student_id=Column(Integer)
-    guardian_id=Column(Integer)
+    guardian_arrival=Column(Integer)
+    guardian_departure=Column(Integer)
     arrival=Column(DateTime, server_default=func.now())
     departure=Column(DateTime, server_default=func.now())
 

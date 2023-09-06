@@ -41,7 +41,7 @@ function Footer() {
       <hr style={{ borderColor: "red" }} className="mt-10 mr-20 ml-20 mb-10" />
       <div className="flex gap-48%">
         <div>
-          <p className="ml-20">
+          <p className="ml-20 text-#E5E2EA">
             Copyright (c) 2023 <span className="text-brand-pink">Edu</span>
             Track. All Rights Reserved
           </p>

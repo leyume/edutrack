@@ -35,11 +35,17 @@ export default function Signin() {
           <h1 className="">Sign In</h1>
           <label className="grid gap-2">
             Email Address
-            <input type="text" className="p-2.5 rounded-md outline-none border border-#00000040" />
+            <input
+              type="text"
+              className="p-2.5 rounded-md outline-none border border-#00000040"
+            />
           </label>
           <label className="grid gap-2">
             Password
-            <input type="password" className="p-2.5 rounded-md outline-none border border-#00000040" />
+            <input
+              type="password"
+              className="p-2.5 rounded-md outline-none border border-#00000040"
+            />
           </label>
           <a href="" className="decoration-underline text-right">
             Forget your password?

@@ -2,7 +2,7 @@ import React from "react";
 
 function Header() {
   return (
-    <header className="headerstyle">
+    <header className="headerstyle bg-red">
       <div className="central flex align-middle text-center">
         <a className="text-pink text-4xl tracking-tight font-bold" href="/">
           Edu<span className="text-blue">Track</span>

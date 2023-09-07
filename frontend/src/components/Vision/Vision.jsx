@@ -14,7 +14,7 @@ function Vision() {
         </p>
       </div>
       <div className="vision-img-container">
-        <div className="flex gap-10 mt-15">
+        <div className="flex gap-2 mt-15">
           <div className="mt-20 ml-10">
             <h1 className="text-5xl text-brand-blue">School Admin</h1>
             <p className="w-55% mx-auto mt-4 leading-normal">

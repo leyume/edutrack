@@ -38,7 +38,10 @@ function Footer() {
           </a>
         </div>
       </div>
-      <hr style={{ borderColor: "red" }} className="mt-10 mr-20 ml-20 mb-10" />
+      <hr
+        style={{ borderColor: "text-brand-pink" }}
+        className="mt-10 mr-20 ml-20 mb-10"
+      />
       <div className="flex gap-48%">
         <div>
           <p className="ml-20 text-#E5E2EA">

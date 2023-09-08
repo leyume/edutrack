@@ -65,12 +65,8 @@ function Question() {
           </a>
         </div>
       </div>
-      <a href="/">
-        <img
-          src="./images/arrow-up.jpeg"
-          alt="img"
-          className="h-9 bg-#e6e4eb ml-90% mt-10"
-        />
+      <a href="/" className="ml-90%">
+        <img src="./images/arrow-up.jpeg" alt="img" className="h-9 mt-10" />
       </a>
     </div>
   );

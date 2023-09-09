@@ -3,7 +3,7 @@ import AboutImage from "../../assets/about.png";
 
 function About() {
   return (
-    <section className="bg-icons text-center py-20">
+    <section id="about" className="bg-icons text-center py-20">
       <h1 className="text-5xl text-brand-blue">
         About <span className="text-brand-pink">Edu</span>Track
       </h1>

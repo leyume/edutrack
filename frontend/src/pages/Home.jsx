@@ -4,6 +4,7 @@ import Mission from "../components/Mission/Mission";
 import Vision from "../components/Vision/Vision";
 import Testimony from "../components/Testimony/Testimony";
 import Question from "../components/Question/Question";
+import Footer from "../components/Footer/Footer";
 
 export default function Home() {
   return (
@@ -28,7 +29,7 @@ export default function Home() {
                 <a href="/review">Review</a>
               </li>
               <li>
-                <a href="/faq">FAQ</a>
+                <a href="/#questions">FAQ</a>
               </li>
             </ul>
           </nav>
@@ -55,6 +56,7 @@ export default function Home() {
       <Vision />
       <Testimony />
       <Question />
+      <Footer />
     </div>
   );
 }

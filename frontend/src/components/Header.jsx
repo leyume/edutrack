@@ -20,7 +20,7 @@ function Header() {
           <a className="" href="/review">
             Review
           </a>
-          <a className="" href="FAQ">
+          <a className="" href="/#questions">
             FAQ
           </a>
           <div style="margin-right">

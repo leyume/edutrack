@@ -11,7 +11,7 @@ export default function Signin() {
 
         <nav className="flex items-center justify-center">
           <p className="text-center">Don’t have an account?</p>
-          <a href="" className="btn ml-4">
+          <a href="/" className="btn ml-4">
             Sign Up
           </a>
         </nav>

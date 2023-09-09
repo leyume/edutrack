@@ -2,7 +2,7 @@ import React from "react";
 
 function Question() {
   return (
-    <div className="w-full h-full flex-shrink-0 pt-30 pb-10">
+    <div id="questions" className="w-full h-full flex-shrink-0 pt-30 pb-10">
       <div className="text-center">
         <h1 className="text-brand-blue text-15 text-center">
           Frequently Asked Questions.

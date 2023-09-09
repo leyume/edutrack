@@ -15,7 +15,7 @@ function Footer() {
               <a href="/">Home</a>
             </li>
             <li>
-              <a href="/about">About</a>
+              <a href="/#about">About</a>
             </li>
             <li>
               <a href="/services">Services</a>
@@ -24,13 +24,13 @@ function Footer() {
               <a href="/review">Review</a>
             </li>
             <li>
-              <a href="/faq">FAQ</a>
+              <a href="/#questions">FAQ</a>
             </li>
           </ul>
         </nav>
 
         <div className="flex gap-4">
-          <a href to="/signin" className="btn btn-alt">
+          <a href="/signin" className="btn btn-alt">
             Log in
           </a>
           <a href="/signup" className="btn">

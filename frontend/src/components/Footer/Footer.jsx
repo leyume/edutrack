@@ -30,7 +30,7 @@ function Footer() {
         </nav>
 
         <div className="flex gap-4">
-          <a href="/signin" className="btn btn-alt">
+          <a href="/signin" className="text-#fff btn btn-alt">
             Log in
           </a>
           <a href="/signup" className="btn">

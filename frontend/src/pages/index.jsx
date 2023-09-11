@@ -11,7 +11,7 @@ export default function Home() {
     <div>
       <div className="app h-90vh bg-cover bg-center">
         <header className="flex items-center justify-between px-5% py-5">
-          <Link to="/" className="text-brand-pink text-4xl font-bold">
+          <Link to="/dashboard" className="text-brand-pink text-4xl font-bold">
             Edu<span className="text-brand-blue">Track</span>
           </Link>
 

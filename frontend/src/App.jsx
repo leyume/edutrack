@@ -1,8 +1,11 @@
+import React from "react";
+import Home from "./pages/Home";
+
 function App() {
   return (
-    <>
-      <div className="text-4xl text-red-600 text-center">Hello World</div>
-    </>
+    <div>
+      <Home />
+    </div>
   );
 }
 

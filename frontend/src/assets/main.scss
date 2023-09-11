@@ -8,6 +8,14 @@ body {
   box-sizing: border-box;
 }
 
+.hero {
+  background-image: url("/public/images/bg.jpeg");
+}
+
+.bg-icons {
+  background: url("../assets/about-bg.png") center / cover;
+}
+
 a {
   text-decoration: none;
 }
@@ -20,5 +28,12 @@ a {
   @apply px-5 py-3 bg-brand-blue rounded-lg text-white text-lg leading-none font-bold font-medium border-solid border-1 border-brand-blue cursor-pointer outline-none transition-all duration-500;
   &:hover {
     @apply bg-transparent text-brand-blue;
+  }
+
+  &.btn-alt {
+    @apply bg-transparent text-brand-blue;
+    &:hover {
+      @apply bg-brand-blue text-white;
+    }
   }
 }

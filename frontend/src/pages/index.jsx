@@ -1,17 +1,31 @@
+import React from "react";
 import { Link } from "react-router-dom";
+import About from "../components/About/About";
+import Mission from "../components/Mission/Mission";
+import Vision from "../components/Vision/Vision";
+import Testimony from "../components/Testimony/Testimony";
+import Question from "../components/Question/Question";
 
 export default function Home() {
   return (
-    <>
-      <div className="text-4xl text-red-600 text-center">
-        Hello World
-        <div className="text-sm">
-          <Link to="/signin">Go to Sign in</Link>
+    <div>
+      <section className="hero pt-20 h-90vh bg-cover bg-center">
+        <div className="text-center text-brand-blue">
+          <h1 className="text-4xl mt-8 mb-10">
+            Keep <span className="text-brand-pink">track</span> of your
+            <span className="text-brand-pink"> kids & students</span>
+            <br /> school activities.
+          </h1>
+          <Link to="/signin" className="btn">
+            GET STARTED
+          </Link>
         </div>
-        <div className="text-sm">
-          <Link to="/signup">Go to Sign up</Link>
-        </div>
-      </div>
-    </>
+      </section>
+      <About />
+      <Mission />
+      <Vision />
+      <Testimony />
+      <Question />
+    </div>
   );
 }

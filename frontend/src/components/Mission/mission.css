@@ -1,0 +1,67 @@
+.mission-img-container {
+  display: grid;
+  flex-flow: row;
+  align-items: start;
+  justify-content: center;
+}
+.mission-header {
+  /* background: red; */
+  width: 80%;
+  margin: auto;
+  text-align: center;
+  padding: 10px;
+}
+.mission-header h1 {
+  color: #2375f0;
+  text-align: center;
+  font-family: Roboto;
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 72px; /* 112.5% */
+  letter-spacing: -1px;
+  text-transform: capitalize;
+  margin: 25px auto;
+}
+.mission-header h1 span {
+  color: #f41e92;
+  text-transform: capitalize;
+  font-family: Roboto;
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 72px;
+  letter-spacing: -1px;
+  text-transform: capitalize;
+}
+.mission-header h4 {
+  color: #f41e92;
+  margin: 45px auto;
+  text-align: center;
+  font-feature-settings: "salt" on, "liga" off;
+  font-family: Inter;
+  font-size: 34px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 40px; /* 117.647% */
+}
+.mission-header p {
+  width: 80%;
+  margin: 4rem auto;
+  /* background: red; */
+}
+.mission-img-container {
+  /* margin: 5px; */
+  display: flex;
+  justify-content: space-around;
+  width: 90%;
+  margin: auto;
+}
+.mission-img-container div {
+  width: 23%;
+  margin: 3px 2px;
+  /* background: red; */
+}
+.mission-img-container div img {
+  width: 100%;
+}

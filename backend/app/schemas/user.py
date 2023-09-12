@@ -66,3 +66,5 @@ class UserClass(UserInstitution):
     classes: List[Classes]
     guardians: List[UserX]
     wards: List[UserX]
+    teachers: List[UserX]
+    students: List[UserX]

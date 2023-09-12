@@ -27,14 +27,31 @@ class User(Base):
         secondary="students_guardians",
         primaryjoin="and_(User.id==students_guardians.c.student_id)",
         secondaryjoin="and_(User.id==students_guardians.c.guardian_id)",
-        backref="students",
+        backref="studentz",
     )
+
     wards = relationship(
         "User",
         secondary="students_guardians",
         primaryjoin="and_(User.id==students_guardians.c.guardian_id)",
         secondaryjoin="and_(User.id==students_guardians.c.student_id)",
         backref="guardianx",
+    )
+
+    teachers = relationship(
+        "User",
+        secondary="students_teachers",
+        primaryjoin="and_(User.id==students_teachers.c.student_id)",
+        secondaryjoin="and_(User.id==students_teachers.c.teacher_id)",
+        backref="studentx",
+    )
+
+    students = relationship(
+        "User",
+        secondary="students_teachers",
+        primaryjoin="and_(User.id==students_teachers.c.teacher_id)",
+        secondaryjoin="and_(User.id==students_teachers.c.student_id)",
+        backref="teacherx",
     )
     
 

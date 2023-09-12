@@ -6,3 +6,4 @@ from .subjects import Subject
 from .attendance import Attendance
 from .student_class import StudentClass
 from .student_guardian import StudentGuardian
+from .student_teacher import StudentTeacher

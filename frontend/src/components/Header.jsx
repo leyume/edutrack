@@ -1,38 +1,66 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { useLocation } from "react-router";
 
 function Header() {
-  return (
-    <header className="headerstyle bg-red">
-      <div className="central flex align-middle text-center">
-        <a className="text-pink text-4xl tracking-tight font-bold" href="/">
-          Edu<span className="text-blue">Track</span>
-        </a>
-        <nav className="flex align-middle flex-grow gap-x-2 justify-center items-center">
-          <a className="" href="/">
-            Home
-          </a>
-          <a className="" href="/about">
-            About
-          </a>
-          <a className="" href="/services">
-            Services
-          </a>
-          <a className="" href="/review">
-            Review
-          </a>
-          <a className="" href="/#questions">
-            FAQ
-          </a>
-          <div style="margin-right">
-            <a className="login" href="/login">
-              Login
-            </a>
-            <a className="btn" href="/register">
-              Register
-            </a>
-          </div>
-        </nav>
+  let location = useLocation();
+
+  return location.pathname == "/" ? (
+    <header className="flex items-center justify-between px-5% py-5 -mb-20">
+      <Link to="/dashboard" className="text-brand-pink text-4xl font-bold">
+        Edu<span className="text-brand-blue">Track</span>
+      </Link>
+      <nav className="[&>ul>li>a]:text-brand-blue [&>ul>li>a:hover]:text-brand-pink">
+        <ul className="list-none flex gap-5">
+          <li>
+            <a href="/">Home</a>
+          </li>
+          <li>
+            <a href="/#about">About</a>
+          </li>
+          <li>
+            <a href="/services">Services</a>
+          </li>
+          <li>
+            <a href="/review">Review</a>
+          </li>
+          <li>
+            <a href="/#questions">FAQ</a>
+          </li>
+        </ul>
+      </nav>
+      <div className="flex gap-4">
+        <Link to="/signin" className="btn btn-alt">
+          Log in
+        </Link>
+        <Link to="/signup" className="btn">
+          Sign up
+        </Link>
       </div>
+    </header>
+  ) : (
+    <header className="flex item-center justify-between px-5% py-15px shadow-lg">
+      <Link to="/" className="text-brand-pink text-4xl font-bold">
+        Edu<span className="text-brand-blue">Track</span>
+      </Link>
+
+      <nav className="flex items-center justify-center">
+        {location.pathname == "/signin" ? (
+          <>
+            <p className="text-center">Don’t have an account?</p>
+            <Link to="/signup" className="btn ml-4">
+              Sign Up
+            </Link>
+          </>
+        ) : (
+          <>
+            <p className="text-center">Already have an account?</p>
+            <Link to="/signin" className="btn ml-4">
+              Sign In
+            </Link>
+          </>
+        )}
+      </nav>
     </header>
   );
 }

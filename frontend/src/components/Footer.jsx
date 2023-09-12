@@ -1,10 +1,9 @@
 import React from "react";
-
 import { Link } from "react-router-dom";
 
 function Footer() {
   return (
-    <footer className="items-center justify-between  py-10 bg-#2C2C2C">
+    <footer className="items-center justify-between py-10 bg-#2C2C2C relative z-100">
       <div className="flex items-center justify-between ml-25 mr-25">
         <a href="/" className="text-brand-pink text-4xl font-bold">
           Edu<span className="text-#E5E2EA">Track</span>
@@ -38,10 +37,7 @@ function Footer() {
           </a>
         </div>
       </div>
-      <hr
-        style={{ borderColor: "text-brand-pink" }}
-        className="mt-10 mr-20 ml-20 mb-10"
-      />
+      <hr style={{ borderColor: "text-brand-pink" }} className="mt-10 mr-20 ml-20 mb-10" />
       <div className="flex gap-48%">
         <div>
           <p className="ml-20 text-#E5E2EA">

@@ -9,12 +9,12 @@ from typing import Optional, List
 # from auth import auth
 
 from models.index import get_db, User
-from schemas.user import User as UserSchema, UserPost, UserUpdate, UserInstitution
+from schemas.user import User as UserSchema, UserPost, UserUpdate, UserInstitution, UserClass
 
 router = APIRouter()
 
 
-@router.get("", response_model=List[UserInstitution], status_code=status.HTTP_200_OK)
+@router.get("", response_model=List[UserClass], status_code=status.HTTP_200_OK)
 def get_students(db: Session = Depends(get_db)):
     users = db.query(User).filter(User.role == 2).all()
     return users

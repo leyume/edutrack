@@ -6,7 +6,7 @@ import "./assets/main.scss";
 import { BrowserRouter as Router, useRoutes } from "react-router-dom";
 
 import routes from "~react-pages";
-import Footer from "./components/Footer/Footer";
+import Layout from "./components/Layout";
 
 const App = () => {
   return <Suspense fallback={<p>Loading...</p>}>{useRoutes(routes)}</Suspense>;
@@ -15,8 +15,9 @@ const App = () => {
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Router>
-      <App />
+      <Layout>
+        <App />
+      </Layout>
     </Router>
-    <Footer />
   </React.StrictMode>
 );

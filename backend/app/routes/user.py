@@ -5,7 +5,7 @@ from typing import Optional, List
 # from models.index import get_db, Student, Tutor #StudentCourse
 # from schemas.user import UserFull as User, UserUpdate
 # from schemas.student import StudentCourse
-# from auth import auth
+from auth import auth
 
 from models.index import get_db, User
 from schemas.user import User as UserSchema, UserPost, UserUpdate, UserClass
@@ -21,16 +21,11 @@ def get_user(db: Session = Depends(get_db)):
 
 @router.post("", response_model=UserSchema, status_code=status.HTTP_201_CREATED)
 def create_user(
-    user: UserPost, db: Session = Depends(get_db)
+    user: UserPost, db: Session = Depends(get_db), auth=Depends(auth)
 ):
-    user.role = 1
-    user.status = 1
-    new_user = User(**user.dict())
-    
-    db.add(new_user)
-    db.commit()
-
-    return new_user
+    user.role = 0
+    user.institution_id = auth.institution_id
+    return creating_user(user, db)
 
 @router.put("")
 def update_user(
@@ -53,6 +48,25 @@ def update_user(
 
   except Exception as e:
     raise HTTPException(status_code=404, detail="User does not exist")
+
+
+
+def creating_user(user, db):
+
+    db_user = db.query(User).filter(User.email==user.email).first()
+
+    if db_user:
+        raise HTTPException(status_code=403, detail="email already in use")
+
+    # user.role = role
+    # user.institution_id = 7
+    user.status = 1
+    new_user = User(**user.dict())
+    
+    db.add(new_user)
+    db.commit()
+
+    return new_user
 
 
 # @router.get("", response_model=User, status_code=status.HTTP_200_OK)

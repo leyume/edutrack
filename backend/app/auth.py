@@ -15,7 +15,7 @@ async def auth(authorization: str = Depends(security), db: Session = Depends(get
         user = await get_user(token, db)
         return user
     except Exception as e:
-        print(e)
+        # print(e)
         raise HTTPException(status_code=401, detail="Invalid Authorisation")
 
 

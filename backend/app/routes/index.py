@@ -48,30 +48,27 @@ async def login(email: str = Form(...), password: str = Form(...), db: Session =
 
 
 def create_user(user: User, db: Session = Depends(get_db)):
-    user_dict = user.dict(exclude={"role", "password"})
+    user_dict = user.dict(exclude={"password"})
     db_user = None
 
-    if user.role == 'student':
-        db_user = db.query(Student).filter(Student.email==user.email).first()
-        new_user = Student(**user_dict)
-
-    if user.role == 'tutor':
-        db_user = db.query(Tutor).filter(Tutor.email==user.email).first()
-        new_user = Tutor(**user_dict)
+    db_user = db.query(User).filter(User.email==user.email).first()
+    new_user = Student(**user_dict)
     
     if db_user is None:
         db.add(new_user)
         db.commit()
-        return {"message": user.role.title() + " successfully created"}
+        return {"message": "User successfully created"}
     
-    raise HTTPException(status_code=403, detail=user.role.title() + " already registered.")
+    raise HTTPException(status_code=403, detail="User already registered.")
 
 
 @router.post("/register")
 def register(user:User, db: Session = Depends(get_db)):
 
-    if user.role != 'student' and user.role != 'tutor':
-        raise HTTPException(status_code=422, detail="Role must be either student or tutor")
+    user.role = 0 # meaning Admin
+
+    # if user.role != 'student' and user.role != 'tutor':
+    #     raise HTTPException(status_code=422, detail="Role must be either student or tutor")
     
     if user.phone == 'string': 
         user.phone = None 
@@ -84,7 +81,8 @@ def register(user:User, db: Session = Depends(get_db)):
         
         create_user(user, db)
         # fb_user
-        return {"message": user.role.title() + " successfully created"}
+        return {"message": "User, " + user.firstname + ", successfully created"}
+        # return {"message": user.role.title() + " successfully created"}
     except Exception as e:
         if 'EMAIL_EXISTS' in str(e):
             return create_user(user, db)

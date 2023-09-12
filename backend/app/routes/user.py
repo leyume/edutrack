@@ -8,12 +8,12 @@ from typing import Optional, List
 # from auth import auth
 
 from models.index import get_db, User
-from schemas.user import User as UserSchema, UserPost, UserUpdate
+from schemas.user import User as UserSchema, UserPost, UserUpdate, UserClass
 
 router = APIRouter()
 
 
-@router.get("", response_model=List[UserSchema], status_code=status.HTTP_200_OK)
+@router.get("", response_model=List[UserClass], status_code=status.HTTP_200_OK)
 def get_user(db: Session = Depends(get_db)):
     users = db.query(User).all()
     return users

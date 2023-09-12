@@ -41,3 +41,28 @@ class Institution(BaseModel):
 
 class UserInstitution(User): 
     institution: Optional[Institution] = None
+
+
+#
+#
+class UserX(BaseModel):
+    id: Optional[int] = None
+    firstname: str 
+    lastname: str
+
+    class Config:
+        orm_mode = True
+
+        
+class Classes(BaseModel):
+    id: Optional[int] = None
+    name: str
+    # options: List[StudentClass]
+
+    class Config:
+        orm_mode = True
+
+class UserClass(UserInstitution): 
+    classes: List[Classes]
+    guardians: List[UserX]
+    wards: List[UserX]

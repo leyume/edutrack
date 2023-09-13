@@ -37,8 +37,11 @@ function Footer() {
           </a>
         </div>
       </div>
-      <hr style={{ borderColor: "text-brand-pink" }} className="mt-10 mr-20 ml-20 mb-10" />
-      <div className="flex gap-48%">
+      <hr
+        style={{ borderColor: "text-brand-pink" }}
+        className="mt-10 mr-20 ml-20 mb-10"
+      />
+      <div className="flex items-center justify-between mr-vh">
         <div>
           <p className="ml-20 text-#E5E2EA">
             Copyright (c) 2023 <span className="text-brand-pink">Edu</span>

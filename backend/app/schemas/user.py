@@ -24,6 +24,21 @@ class User(UserPost): #serializer
     class Config:
         orm_mode=True
 
+class UserStudent(UserPost):
+    email: str = 'chriss@yopmail.com'
+    firstname: str = 'Chriss'
+    lastname: str='Doe'
+    phone: Optional[str] = None
+    # role: Optional[int] = None
+
+class UserPass(UserPost):
+    email: str = 'chriss@yopmail.com'
+    firstname: str = 'Chriss'
+    lastname: str='Doe'
+    phone: Optional[str] = None
+    role: Optional[int] = None
+    password: str
+
 class UserUpdate(BaseModel): #serializer
     email: str = 'chriss@yopmail.com'
     firstname: str = 'Chriss'

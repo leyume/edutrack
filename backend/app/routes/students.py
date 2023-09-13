@@ -10,7 +10,7 @@ from auth import auth
 from routes.user import creating_user
 
 from models.index import get_db, User
-from schemas.user import User as UserSchema, UserPost, UserUpdate, UserInstitution, UserClass
+from schemas.user import User as UserSchema, UserStudent, UserUpdate, UserInstitution, UserClass
 
 router = APIRouter()
 
@@ -23,7 +23,7 @@ def get_students(db: Session = Depends(get_db), auth=Depends(auth)):
 
 @router.post("", response_model=UserSchema, status_code=status.HTTP_201_CREATED)
 def create_student(
-    user: UserPost, db: Session = Depends(get_db), auth=Depends(auth)
+    user: UserStudent, db: Session = Depends(get_db), auth=Depends(auth)
 ):
     user.role = 2
     user.institution_id = auth.institution_id

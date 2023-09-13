@@ -31,7 +31,6 @@ async def get_user(token: str, db: Session = Depends(get_db)):
             .filter(User.email == decoded_token["email"])
             .first()
         )
-        
 
         if user is None:
             # create user here

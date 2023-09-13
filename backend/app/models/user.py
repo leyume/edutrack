@@ -21,6 +21,7 @@ class User(Base):
     updated_at = Column(TIMESTAMP(timezone=True), default=None, onupdate=func.now())
     institution = relationship("Institution", back_populates="users")
     classes = relationship("Classes", secondary="students_classes", back_populates="students")
+    subjects = relationship("Subject", secondary="students_subjects", back_populates="students")
 
     guardians = relationship(
         "User",

@@ -62,9 +62,18 @@ class Classes(BaseModel):
     class Config:
         orm_mode = True
 
+class Subject(BaseModel):
+    id: Optional[int] = None
+    name: str
+    # options: List[StudentClass]
+
+    class Config:
+        orm_mode = True
+
 class UserClass(UserInstitution): 
     classes: List[Classes]
     guardians: List[UserX]
     wards: List[UserX]
     teachers: List[UserX]
     students: List[UserX]
+    subjects: List[Subject]

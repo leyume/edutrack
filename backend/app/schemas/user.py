@@ -30,6 +30,22 @@ class UserUpdate(BaseModel): #serializer
     lastname: str='Doe'
     phone: Optional[str] = None
 
+class UserUpdateInstitution(BaseModel): #serializer
+    email: str = 'chriss@yopmail.com'
+    institution_id: int = 1
+
+
+class UserRegister(BaseModel): #serializer
+    email: str = 'chriss@yopmail.com'
+    password: str = 'passme'
+    firstname: str = 'Chriss'
+    lastname: str='Doe'
+    phone: Optional[int] = None
+    role: Optional[int] = None
+    status: Optional[str] = None
+    institution_name: str = 'Jay Schools'
+    institution_location: str = 'Lagos NG'
+
 
 class Institution(BaseModel):
     id: Optional[int] = None

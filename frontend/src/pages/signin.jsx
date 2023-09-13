@@ -19,7 +19,7 @@ export default function Signin() {
         const user = userCredential.user;
         // console.log(user.accessToken);
         localStorage.setItem("token", user.accessToken);
-        navigate("/dashboard");
+        navigate("/admin/dashboard");
         // ...
       })
       .catch((error) => {

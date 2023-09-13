@@ -13,11 +13,12 @@ const App = () => {
 };
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <Router>
-      <Layout>
-        <App />
-      </Layout>
-    </Router>
-  </React.StrictMode>
+  <Router>
+    <Layout>
+      <App />
+    </Layout>
+  </Router>
 );
+{
+  /* <React.StrictMode></React.StrictMode> */
+}

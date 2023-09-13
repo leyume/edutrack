@@ -1,9 +1,9 @@
 import React from "react";
 import "./mission.css";
-import One from "../../assets/image 1.png";
-import Two from "../../assets/image 2.png";
-import Three from "../../assets/image 3.png";
-import Four from "../../assets/image 4.png";
+import One from "/images/image 1.png";
+import Two from "/images/image 2.png";
+import Three from "/images/image 3.png";
+import Four from "/images/image 4.png";
 
 function Mission() {
   return (
@@ -12,14 +12,10 @@ function Mission() {
         <h1 className="text-brand-blue">
           Why <span className="text-brand-pink">Edu</span>Track?
         </h1>
-        <h4 className="text-brand-blue">
-          Flexibility and options to suit your lifestyle and schedules
-        </h4>
+        <h4 className="text-brand-blue">Flexibility and options to suit your lifestyle and schedules</h4>
         <p className="w-55% mx-auto mt-8 leading-normal">
-          You need it? We got it. We make tracking and keeping record of your
-          students easy, comfortable, organized, simple and stress free. From
-          our happiness guarantee to our selective tracking and recording
-          options. We provide you the flexibility that you most desire.
+          You need it? We got it. We make tracking and keeping record of your students easy, comfortable, organized, simple and stress free. From our happiness
+          guarantee to our selective tracking and recording options. We provide you the flexibility that you most desire.
         </p>
       </div>
       <div className="mission-img-container">

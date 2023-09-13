@@ -12,24 +12,20 @@ function Dashboard() {
                 Hello <br /> Tabitha,
               </h1>
               <a className="justify-items-stretch mt-4vh" href="/">
-                <img src="./images/writing-icon.jpeg" alt="img" />
+                <img src="/images/writing-icon.jpeg" alt="img" />
               </a>
             </div>
             <div className="ml-6vh text-white">
               <h4>St. Charles Royal Academy</h4>
-              <p className="mt-8 text-gray-400">
-                Plot 165 Downtown Toronto Canada.
-              </p>
+              <p className="mt-8 text-gray-400">Plot 165 Downtown Toronto Canada.</p>
               <a className="text-white" href="/">
                 <p className="mt-6">stcharlesroyalacademy@gmail.com</p>
               </a>
-              <p className="mt-25vh pb-4">
-                Let’s keep in track with your Institution Details.
-              </p>
+              <p className="mt-25vh pb-4">Let’s keep in track with your Institution Details.</p>
             </div>
           </div>
         </div>
-        <img className="h-65vh" src="./images/image-12.jpeg" alt="img" />
+        <img className="h-65vh" src="/images/image-12.jpeg" alt="img" />
       </div>
       <div className="flex items-center justify-center gap-20">
         <div className="bg-#FFDCB2 w-35 h-35 ml-5 mt-5 rounded-2">
@@ -46,7 +42,7 @@ function Dashboard() {
         </div>
         <div className="bg-#FFDCB2 w-35 h-35 ml-5 mt-5 rounded-2">
           <h4 className="text-center pt-7">Summary Chart</h4>
-          <img className="ml-5" src="./images/chart-icon.jpeg" alt="img" />
+          <img className="ml-5" src="/images/chart-icon.jpeg" alt="img" />
         </div>
       </div>
       <div className="flex">
@@ -54,16 +50,12 @@ function Dashboard() {
           <div className="flex items-center justify-center pt-5 gap-23%">
             <h2 className="font-bold text-dark-900">Representative</h2>
             <a className="" href="/">
-              <img className="" src="./images/writing-icon1.jpeg" alt="img" />
+              <img className="" src="/images/writing-icon1.jpeg" alt="img" />
             </a>
           </div>
           <div className="">
             <div className="grid items-center justify-center pt-10">
-              <img
-                className="rounded-10"
-                src="./images/image-11.jpeg"
-                alt="img"
-              />
+              <img className="rounded-10" src="/images/image-11.jpeg" alt="img" />
             </div>
             <div className="grid items-center justify-center">
               <h2 className="font-bold pt-3vh">Mrs. Tabitha Willson</h2>
@@ -87,14 +79,10 @@ function Dashboard() {
           <div className="flex items-center justify-between mb-4">
             <div className="flex gap-2">
               <p className="bg-white w-5 h-5 rounded-1 pl-1">1</p>
-              <img src="./images/polygon-1.jpeg" alt="img" />
+              <img src="/images/polygon-1.jpeg" alt="img" />
             </div>
             <div className="flex gap-2">
-              <img
-                className="rounded-2"
-                src="./images/ellipse-11.jpeg"
-                alt="img"
-              />
+              <img className="rounded-2" src="/images/ellipse-11.jpeg" alt="img" />
               <p>Charlie Rawal</p>
             </div>
             <p className="pr-9vh">SS 3</p>
@@ -104,14 +92,10 @@ function Dashboard() {
           <div className="flex items-center justify-between mb-4">
             <div className="flex gap-2">
               <p className="bg-white w-5 h-5 rounded-1 pl-1">2</p>
-              <img className="" src="./images/polygon-2.jpeg" alt="img" />
+              <img className="" src="/images/polygon-2.jpeg" alt="img" />
             </div>
             <div className="flex gap-2">
-              <img
-                className="rounded-2"
-                src="./images/ellipse-12.jpeg"
-                alt="img"
-              />
+              <img className="rounded-2" src="/images/ellipse-12.jpeg" alt="img" />
               <p>Ariana Agarwal</p>
             </div>
             <p className="pr-9vh">JS 2</p>
@@ -121,14 +105,10 @@ function Dashboard() {
           <div className="flex items-center justify-between mb-4">
             <div className="flex gap-2">
               <p className="bg-#fff w-5 h-5 rounded-1 pl-1">3</p>
-              <img className="" src="./images/polygon-2.jpeg" alt="img" />
+              <img className="" src="/images/polygon-2.jpeg" alt="img" />
             </div>
             <div className="flex gap-2">
-              <img
-                className="rounded-2"
-                src="./images/ellipse-12.jpeg"
-                alt="img"
-              />
+              <img className="rounded-2" src="/images/ellipse-12.jpeg" alt="img" />
               <p>Ariana Agarwal</p>
             </div>
             <p className="pr-9vh">JS 3</p>
@@ -138,14 +118,10 @@ function Dashboard() {
           <div className="flex items-center justify-between mb-4">
             <div className="flex gap-2">
               <p className="bg-#fff w-5 h-5 rounded-1 pl-1">4</p>
-              <img className="" src="./images/polygon-2.jpeg" alt="img" />
+              <img className="" src="/images/polygon-2.jpeg" alt="img" />
             </div>
             <div className="flex gap-2">
-              <img
-                className="rounded-2"
-                src="./images/ellipse-12.jpeg"
-                alt="img"
-              />
+              <img className="rounded-2" src="/images/ellipse-12.jpeg" alt="img" />
               <p>Ariana Agarwal</p>
             </div>
             <p className="pr-9vh">SS 1</p>
@@ -155,14 +131,10 @@ function Dashboard() {
           <div className="flex items-center justify-between">
             <div className="flex gap-2">
               <p className="bg-#fff w-5 h-5 rounded-1 pl-1">5</p>
-              <img className="" src="./images/polygon-2.jpeg" alt="img" />
+              <img className="" src="/images/polygon-2.jpeg" alt="img" />
             </div>
             <div className="flex gap-2">
-              <img
-                className="rounded-2"
-                src="./images/ellipse-12.jpeg"
-                alt="img"
-              />
+              <img className="rounded-2" src="/images/ellipse-12.jpeg" alt="img" />
               <p>Ariana Agarwal</p>
             </div>
             <p className="pr-9vh">SS 3</p>

@@ -20,9 +20,41 @@ class User(Base):
     created_at = Column(TIMESTAMP(timezone=True), nullable=False, server_default=func.now())
     updated_at = Column(TIMESTAMP(timezone=True), default=None, onupdate=func.now())
     institution = relationship("Institution", back_populates="users")
-    # enrolments = relationship("Enrolment", back_populates="student")
-    # institution = relationship("Institution", back_populates="users")
-    # courses = relationship('Course', secondary='enrolments', back_populates='students')
+    classes = relationship("Classes", secondary="students_classes", back_populates="students")
+    subjects = relationship("Subject", secondary="students_subjects", back_populates="students")
+
+    guardians = relationship(
+        "User",
+        secondary="students_guardians",
+        primaryjoin="and_(User.id==students_guardians.c.student_id)",
+        secondaryjoin="and_(User.id==students_guardians.c.guardian_id)",
+        backref="studentz",
+    )
+
+    wards = relationship(
+        "User",
+        secondary="students_guardians",
+        primaryjoin="and_(User.id==students_guardians.c.guardian_id)",
+        secondaryjoin="and_(User.id==students_guardians.c.student_id)",
+        backref="guardianx",
+    )
+
+    teachers = relationship(
+        "User",
+        secondary="students_teachers",
+        primaryjoin="and_(User.id==students_teachers.c.student_id)",
+        secondaryjoin="and_(User.id==students_teachers.c.teacher_id)",
+        backref="studentx",
+    )
+
+    students = relationship(
+        "User",
+        secondary="students_teachers",
+        primaryjoin="and_(User.id==students_teachers.c.teacher_id)",
+        secondaryjoin="and_(User.id==students_teachers.c.student_id)",
+        backref="teacherx",
+    )
+    
 
 
 

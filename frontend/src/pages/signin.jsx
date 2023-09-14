@@ -2,8 +2,12 @@ import signbg from "/images/sign-bg.png";
 import { Link, useNavigate } from "react-router-dom";
 import { auth, signInWithEmailAndPassword } from "../config";
 
+import { useEffect } from "react";
+
 export default function Signin() {
   let navigate = useNavigate();
+
+  // import { BaseURL } from "../config";
 
   const loginHandler = (e) => {
     e.preventDefault();
@@ -48,11 +52,19 @@ export default function Signin() {
         <h1 className="">Sign In</h1>
         <label className="grid gap-2">
           Email Address
-          <input type="text" name="email" className="p-2.5 rounded-md outline-none border border-#00000040" />
+          <input
+            type="text"
+            name="email"
+            className="p-2.5 rounded-md outline-none border border-#00000040"
+          />
         </label>
         <label className="grid gap-2">
           Password
-          <input type="password" name="password" className="p-2.5 rounded-md outline-none border border-#00000040" />
+          <input
+            type="password"
+            name="password"
+            className="p-2.5 rounded-md outline-none border border-#00000040"
+          />
         </label>
         <a href="" className="decoration-underline text-right">
           Forget your password?

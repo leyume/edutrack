@@ -33,7 +33,6 @@ function Dashboard() {
         </div>
         <img className="h-45vh w-2/5" src="/images/image-12.jpeg" alt="img" />
       </section>
-
       <section className="flex items-center justify-center gap-25 mt-10 font-bold">
         <div className="grid items-center justify-center bg-#FFDCB2 w-293px h-199px rounded-2">
           <h4 className="text-30px">Total Students</h4>

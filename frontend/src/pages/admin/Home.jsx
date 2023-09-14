@@ -29,7 +29,7 @@ export default function Home() {
                 <a href="/review">Review</a>
               </li>
               <li>
-                <a href="/#questions">FAQ</a>
+                <a href="/questions">FAQ</a>
               </li>
             </ul>
           </nav>

@@ -39,7 +39,22 @@ export default function Sidebar() {
       icon: "i-tabler-layout-dashboard",
     },
     {
-      label: "Manage Teachers",
+      label: "Classes",
+      link: "/teachers/teachers",
+      icon: "i-tabler-user-edit",
+    },
+    {
+      label: "Students ",
+      link: "/teachers/teachers",
+      icon: "i-tabler-user-edit",
+    },
+    {
+      label: "Report",
+      link: "/teachers/teachers",
+      icon: "i-tabler-user-edit",
+    },
+    {
+      label: "Profile",
       link: "/teachers/teachers",
       icon: "i-tabler-user-edit",
     },

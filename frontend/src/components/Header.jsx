@@ -7,7 +7,10 @@ function Header() {
 
   return location.pathname == "/" ? (
     <header className="flex items-center justify-between px-5% py-5 -mb-20">
-      <Link to="/teachers/dashboard" className="text-brand-pink text-4xl font-bold">
+      <Link
+        to="/teachers/dashboard"
+        className="text-brand-pink text-4xl font-bold"
+      >
         Edu<span className="text-brand-blue">Track</span>
       </Link>
       <nav className="[&>ul>li>a]:text-brand-blue [&>ul>li>a:hover]:text-brand-pink">
@@ -16,7 +19,7 @@ function Header() {
             <a href="/">Home</a>
           </li>
           <li>
-            <a href="/#about">About</a>
+            <a href="/about">About</a>
           </li>
           <li>
             <a href="/services">Services</a>
@@ -25,7 +28,7 @@ function Header() {
             <a href="/review">Review</a>
           </li>
           <li>
-            <a href="/#questions">FAQ</a>
+            <a href="/questions">FAQ</a>
           </li>
         </ul>
       </nav>

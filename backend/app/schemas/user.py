@@ -15,7 +15,7 @@ class UserPost(BaseModel): #serializer
 class User(UserPost): #serializer
     id: Optional[int] = None
     institution_id: Optional[int] = None
-    role: Optional[int] = None
+    # role: Optional[int] = None
     relation: Optional[str] = None
     status: Optional[str] = None
     # created_at: Optional[datetime] = None

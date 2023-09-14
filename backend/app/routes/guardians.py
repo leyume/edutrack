@@ -22,23 +22,12 @@ def get_guardians(db: Session = Depends(get_db)):
 
 @router.post("", response_model=UserSchema, status_code=status.HTTP_201_CREATED)
 def create_guardian(
-    user: UserPost, db: Session = Depends(get_db)
+    user: UserPost, db: Session = Depends(get_db), auth=Depends(auth)
 ):
-    db_user = db.query(User).filter(User.email==user.email).first()
-
-    if db_user:
-        raise HTTPException(status_code=403, detail="email already in use")
         
     user.role = 3
-    user.status = 1
-    user.institution_id = 7
-    new_user = User(**user.dict())
-
-    
-    db.add(new_user)
-    db.commit()
-
-    return new_user
+    user.institution_id = auth.institution_id
+    return creating_user(user, db)
 
 @router.put("")
 def update_guardian(

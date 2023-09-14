@@ -34,12 +34,12 @@ def create_user(
 
 @router.put("")
 def update_user(
-    user: UserUpdate, db: Session = Depends(get_db)
+    user: UserUpdate, db: Session = Depends(get_db), auth=Depends(auth)
 ):
   try:
     user_dict = user.dict()
     
-    db_user = db.query(User).filter(User.email==user.email).first()
+    db_user = db.query(User).filter(User.id==auth.id).first()
 
     # if db_user is None:
     #     raise HTTPException(status_code=404, detail="User does not exist")

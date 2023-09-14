@@ -12,6 +12,7 @@ class Subject(Base):
     name=Column(String(255))
     class_id=Column(Integer)
     teacher_id=Column(Integer)
+    students = relationship("User", secondary="students_subjects", back_populates="subjects")
     
 
 

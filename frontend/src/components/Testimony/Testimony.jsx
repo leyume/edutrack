@@ -11,7 +11,7 @@ function Testimony() {
         <div className="rounded-10 w-30%  bg-#fff mt-5% ml-10 h-90%">
           <div className="text-1xl mb-30%">
             <div className="flex gap-8% ml-10 mt-5">
-              <img src="/images/image 8.jpeg" alt="img" />
+              <img src="/images/image-8.jpeg" alt="img" />
               <h4 className="mt-6 text-100% text-2xl">Fredrick Rosemary</h4>
             </div>
             <div className="flex">
@@ -33,7 +33,7 @@ function Testimony() {
         <div className="rounded-10 w-30% bg-#fff mt-5% ml-10 h-90%">
           <div className="text-1xl mb-30%">
             <div className="flex gap-8% ml-10 mt-5">
-              <img src="/images/image 9.jpeg" alt="img" />
+              <img src="/images/image-9.jpeg" alt="img" />
               <h4 className="mt-6 text-100% text-2xl">Willson Micheal</h4>
             </div>
             <div className="flex">
@@ -57,7 +57,7 @@ function Testimony() {
         <div className="rounded-10 w-30% bg-#fff mt-5% ml-10 h-90%">
           <div className="text-1xl mb-30% mt-5">
             <div className="flex gap-8% ml-10">
-              <img src="/images/image 10.jpeg" alt="img" />
+              <img src="/images/image-10.jpeg" alt="img" />
               <h4 className="mt-6 text-100% text-2xl">Jackson Jennifer</h4>
             </div>
             <div className="flex">

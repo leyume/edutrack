@@ -5,32 +5,32 @@ from typing import Optional, List
 # from models.index import get_db, Student, Tutor #StudentCourse
 # from schemas.user import UserFull as User, UserUpdate
 # from schemas.student import StudentCourse
-# from auth import auth
+from auth import auth
+from config import pyrebase, fb_auth
 
 from models.index import get_db, User
-from schemas.user import User as UserSchema, UserPost, UserUpdate
+from schemas.user import User as UserSchema, UserPost, UserUpdate, UserClass
 
 router = APIRouter()
 
 
-@router.get("", response_model=List[UserSchema], status_code=status.HTTP_200_OK)
-def get_user(db: Session = Depends(get_db)):
-    users = db.query(User).all()
-    return users
+# @router.get("", response_model=List[UserClass], status_code=status.HTTP_200_OK)
+# def get_user(db: Session = Depends(get_db)):
+#     users = db.query(User).all()
+#     return users
+
+@router.get("", response_model=UserClass, status_code=status.HTTP_200_OK)
+def get_user(db: Session = Depends(get_db), auth=Depends(auth)):
+    return auth
 
 
 @router.post("", response_model=UserSchema, status_code=status.HTTP_201_CREATED)
 def create_user(
-    user: UserPost, db: Session = Depends(get_db)
+    user: UserPost, db: Session = Depends(get_db), auth=Depends(auth)
 ):
-    user.role = 1
-    user.status = 1
-    new_user = User(**user.dict())
-    
-    db.add(new_user)
-    db.commit()
-
-    return new_user
+    user.role = 0
+    user.institution_id = auth.institution_id
+    return creating_user(user, db)
 
 @router.put("")
 def update_user(
@@ -55,7 +55,29 @@ def update_user(
     raise HTTPException(status_code=404, detail="User does not exist")
 
 
-# @router.get("", response_model=User, status_code=status.HTTP_200_OK)
-# def get_user(db: Session = Depends(get_db), auth=Depends(auth)):
-#     return auth
+
+def creating_user(user, db):
+
+    db_user = db.query(User).filter(User.email==user.email).first()
+
+    if db_user:
+        raise HTTPException(status_code=403, detail="email already in use")
+
+    # set non student to firebase
+    if user.role != 2:
+        display_name = user.firstname + " " + user.lastname
+        fb_user = fb_auth.create_user(email=user.email, password=user.password, display_name=display_name)
+        fb_auth.set_custom_user_claims(fb_user._data['localId'], {'role': user.role})
+        
+
+    # user.role = role
+    # user.institution_id = 7
+    user.status = 1
+    new_user = User(**user.dict(exclude={"password"}))
+    
+    db.add(new_user)
+    db.commit()
+
+    return new_user
+
     

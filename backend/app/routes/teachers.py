@@ -3,13 +3,11 @@ from sqlalchemy.orm import Session
 from fastapi import Depends, HTTPException, status, APIRouter, Response
 from typing import Optional, List
 
-# from models.index import get_db, Student, Tutor #StudentCourse
-# from schemas.user import UserFull as User, UserUpdate
-# from schemas.student import StudentCourse
-# from auth import auth
+from auth import auth
+from routes.user import creating_user
 
 from models.index import get_db, User
-from schemas.user import User as UserSchema, UserPost, UserUpdate, UserInstitution
+from schemas.user import User as UserSchema, UserPost, UserUpdate, UserInstitution, UserPass
 
 router = APIRouter()
 
@@ -22,22 +20,26 @@ def get_teacher(db: Session = Depends(get_db)):
 
 @router.post("", response_model=UserSchema, status_code=status.HTTP_201_CREATED)
 def create_teacher(
-    user: UserPost, db: Session = Depends(get_db)
+    user: UserPass, db: Session = Depends(get_db), auth=Depends(auth)
 ):
     user.role = 1
-    user.status = 1
-    user.institution_id = 7 #should be session user institution id
-    new_user = User(**user.dict())
+    user.institution_id = auth.institution_id
+    return creating_user(user, db)
 
-    db_user = db.query(User).filter(User.email==user.email).first()
+    # user.role = 1
+    # user.status = 1
+    # user.institution_id = 7 #should be session user institution id
+    # new_user = User(**user.dict())
 
-    if db_user:
-        raise HTTPException(status_code=403, detail="email already in use")
+    # db_user = db.query(User).filter(User.email==user.email).first()
+
+    # if db_user:
+    #     raise HTTPException(status_code=403, detail="email already in use")
     
-    db.add(new_user)
-    db.commit()
+    # db.add(new_user)
+    # db.commit()
 
-    return new_user
+    # return new_user
 
 @router.put("")
 def update_teacher(

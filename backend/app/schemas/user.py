@@ -24,11 +24,42 @@ class User(UserPost): #serializer
     class Config:
         orm_mode=True
 
+class UserStudent(UserPost):
+    email: str = 'chriss@yopmail.com'
+    firstname: str = 'Chriss'
+    lastname: str='Doe'
+    phone: Optional[str] = None
+    # role: Optional[int] = None
+
+class UserPass(UserPost):
+    email: str = 'chriss@yopmail.com'
+    firstname: str = 'Chriss'
+    lastname: str='Doe'
+    phone: Optional[str] = None
+    role: Optional[int] = None
+    password: str
+
 class UserUpdate(BaseModel): #serializer
     email: str = 'chriss@yopmail.com'
     firstname: str = 'Chriss'
     lastname: str='Doe'
     phone: Optional[str] = None
+
+class UserUpdateInstitution(BaseModel): #serializer
+    email: str = 'chriss@yopmail.com'
+    institution_id: int = 1
+
+
+class UserRegister(BaseModel): #serializer
+    email: str = 'chriss@yopmail.com'
+    password: str = 'passme'
+    firstname: str = 'Chriss'
+    lastname: str='Doe'
+    phone: Optional[int] = None
+    role: Optional[int] = None
+    status: Optional[str] = None
+    institution_name: str = 'Jay Schools'
+    institution_location: str = 'Lagos NG'
 
 
 class Institution(BaseModel):
@@ -41,3 +72,39 @@ class Institution(BaseModel):
 
 class UserInstitution(User): 
     institution: Optional[Institution] = None
+
+
+#
+#
+class UserX(BaseModel):
+    id: Optional[int] = None
+    firstname: str 
+    lastname: str
+
+    class Config:
+        orm_mode = True
+
+        
+class Classes(BaseModel):
+    id: Optional[int] = None
+    name: str
+    # options: List[StudentClass]
+
+    class Config:
+        orm_mode = True
+
+class Subject(BaseModel):
+    id: Optional[int] = None
+    name: str
+    # options: List[StudentClass]
+
+    class Config:
+        orm_mode = True
+
+class UserClass(UserInstitution): 
+    classes: List[Classes]
+    guardians: List[UserX]
+    wards: List[UserX]
+    teachers: List[UserX]
+    students: List[UserX]
+    subjects: List[Subject]

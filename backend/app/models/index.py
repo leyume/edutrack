@@ -4,10 +4,7 @@ from .institution import Institution
 from .classes import Classes
 from .subjects import Subject
 from .attendance import Attendance
-# from .student import Student, StudentCourse
-# from .tutor import Tutor
-# from .course import Course
-# from .enrolment import Enrolment
-# from .question import Question
-# from .question_option import QuestionOption
-# from .exam import Exam
+from .student_class import StudentClass
+from .student_guardian import StudentGuardian
+from .student_teacher import StudentTeacher
+from .student_subject import StudentSubject

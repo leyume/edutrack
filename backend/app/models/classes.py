@@ -11,6 +11,8 @@ class Classes(Base):
     id=Column(Integer,primary_key=True)
     name=Column(String(255))
     teacher_id=Column(Integer)
+    # user = relationship("User", back_populates="classes")
+    students = relationship("User", secondary="students_classes", back_populates="classes")
     
 
 

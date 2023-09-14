@@ -8,16 +8,30 @@ import { BrowserRouter as Router, useRoutes } from "react-router-dom";
 import routes from "~react-pages";
 import Layout from "./components/Layout";
 
+import { useQuery, useMutation, useQueryClient, QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      staleTime: 1000 * 10 * 60,
+    },
+  },
+});
+
 const App = () => {
   return <Suspense fallback={<p>Loading...</p>}>{useRoutes(routes)}</Suspense>;
 };
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
+  <QueryClientProvider client={queryClient}>
     <Router>
       <Layout>
         <App />
       </Layout>
     </Router>
-  </React.StrictMode>
+  </QueryClientProvider>
 );
+{
+  /* <React.StrictMode></React.StrictMode> */
+}

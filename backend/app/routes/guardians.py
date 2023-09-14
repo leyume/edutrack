@@ -6,10 +6,11 @@ from typing import Optional, List
 # from models.index import get_db, Student, Tutor #StudentCourse
 # from schemas.user import UserFull as User, UserUpdate
 # from schemas.student import StudentCourse
-# from auth import auth
+from auth import auth
+from routes.user import creating_user
 
 from models.index import get_db, User
-from schemas.user import User as UserSchema, UserPost, UserUpdate, UserInstitution
+from schemas.user import User as UserSchema, UserPost, UserUpdate, UserInstitution, UserPass
 
 router = APIRouter()
 
@@ -22,7 +23,7 @@ def get_guardians(db: Session = Depends(get_db)):
 
 @router.post("", response_model=UserSchema, status_code=status.HTTP_201_CREATED)
 def create_guardian(
-    user: UserPost, db: Session = Depends(get_db), auth=Depends(auth)
+    user: UserPass, db: Session = Depends(get_db), auth=Depends(auth)
 ):
         
     user.role = 3

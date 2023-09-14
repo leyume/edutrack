@@ -43,7 +43,7 @@ def create_teacher(
 
 @router.put("")
 def update_teacher(
-    user: UserUpdate, db: Session = Depends(get_db)
+    user: UserUpdate, db: Session = Depends(get_db), auth=Depends(auth)
 ):
   try:
     user_dict = user.dict()

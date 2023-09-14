@@ -1,7 +1,7 @@
 import React from "react";
 import AboutImage from "/images/about.png";
 
-function About() {
+export default function About() {
   return (
     <section id="about" className="bg-icons text-center py-20">
       <h1 className="text-5xl text-brand-blue">
@@ -16,5 +16,3 @@ function About() {
     </section>
   );
 }
-
-export default About;

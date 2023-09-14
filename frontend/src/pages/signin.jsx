@@ -2,8 +2,12 @@ import signbg from "/images/sign-bg.png";
 import { Link, useNavigate } from "react-router-dom";
 import { auth, signInWithEmailAndPassword } from "../config";
 
+import { useEffect } from "react";
+
 export default function Signin() {
   let navigate = useNavigate();
+
+  // import { BaseURL } from "../config";
 
   const loginHandler = (e) => {
     e.preventDefault();

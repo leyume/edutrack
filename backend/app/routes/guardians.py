@@ -32,9 +32,10 @@ def create_guardian(
 
 @router.put("")
 def update_guardian(
-    user: UserUpdate, db: Session = Depends(get_db)
+    user: UserUpdate, db: Session = Depends(get_db), auth=Depends(auth)
 ):
   try:
+    user.email = auth.email
     user_dict = user.dict()
     
     db_user = db.query(User).filter(User.email==user.email).first()

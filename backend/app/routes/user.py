@@ -39,7 +39,7 @@ def update_user(
   try:
     user_dict = user.dict()
     
-    db_user = db.query(User).filter(User.id==auth.id).first()
+    db_user = db.query(User).filter(User.id==user.id).first()
 
     # if db_user is None:
     #     raise HTTPException(status_code=404, detail="User does not exist")

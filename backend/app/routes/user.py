@@ -9,7 +9,7 @@ from auth import auth
 from config import pyrebase, fb_auth
 
 from models.index import get_db, User
-from schemas.user import User as UserSchema, UserPost, UserUpdate, UserClass
+from schemas.user import User as UserSchema, UserPost, UserUpdate, UserClass, UserInstitution
 
 router = APIRouter()
 
@@ -81,3 +81,17 @@ def creating_user(user, db):
     return new_user
 
     
+@router.get("/teachers", response_model=List[UserInstitution], status_code=status.HTTP_200_OK)
+def get_teachers(db: Session = Depends(get_db), auth=Depends(auth)):
+    users = db.query(User).filter(User.role == 1).all()
+    return users
+
+@router.get("/guardians", response_model=List[UserInstitution], status_code=status.HTTP_200_OK)
+def get_guardians(db: Session = Depends(get_db), auth=Depends(auth)):
+    users = db.query(User).filter(User.role == 3).all()
+    return users
+
+@router.get("/students", response_model=List[UserClass], status_code=status.HTTP_200_OK)
+def get_students(db: Session = Depends(get_db), auth=Depends(auth)):
+    users = db.query(User).filter(User.role == 2).all()
+    return users

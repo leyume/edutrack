@@ -10,15 +10,14 @@ from auth import auth
 from routes.user import creating_user
 
 from models.index import get_db, User
-from schemas.user import User as UserSchema, UserPost, UserUpdate, UserInstitution, UserPass
+from schemas.user import User as UserSchema, UserPost, UserUpdate, UserInstitution, UserPass, UserClass
 
 router = APIRouter()
 
 
-@router.get("", response_model=List[UserInstitution], status_code=status.HTTP_200_OK)
-def get_guardians(db: Session = Depends(get_db)):
-    users = db.query(User).filter(User.role == 3).all()
-    return users
+@router.get("", response_model=UserClass, status_code=status.HTTP_200_OK)
+def get_guardians(db: Session = Depends(get_db), auth=Depends(auth)):
+    return auth
 
 
 @router.post("", response_model=UserSchema, status_code=status.HTTP_201_CREATED)

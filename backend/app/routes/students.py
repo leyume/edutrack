@@ -17,8 +17,7 @@ router = APIRouter()
 
 @router.get("", response_model=List[UserClass], status_code=status.HTTP_200_OK)
 def get_students(db: Session = Depends(get_db), auth=Depends(auth)):
-    users = db.query(User).filter(User.role == 2).all()
-    return users
+    return auth.students
 
 
 @router.post("", response_model=UserSchema, status_code=status.HTTP_201_CREATED)

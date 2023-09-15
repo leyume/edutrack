@@ -21,7 +21,7 @@ router = APIRouter()
 
 @router.get("", response_model=List[UserInstitution], status_code=status.HTTP_200_OK)
 def get_guardians(db: Session = Depends(get_db), auth=Depends(auth)):
-    if role == 0:
+    if auth.role == 0:
         users = db.query(User).filter(User.role == 3 and User.institution_id==auth.institution_id).all()
         return users
     else:

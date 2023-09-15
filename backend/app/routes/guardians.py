@@ -15,9 +15,18 @@ from schemas.user import User as UserSchema, UserPost, UserUpdate, UserInstituti
 router = APIRouter()
 
 
-@router.get("", response_model=UserClass, status_code=status.HTTP_200_OK)
+# @router.get("", response_model=UserClass, status_code=status.HTTP_200_OK)
+# def get_guardians(db: Session = Depends(get_db), auth=Depends(auth)):
+#     return auth
+
+@router.get("", response_model=List[UserInstitution], status_code=status.HTTP_200_OK)
 def get_guardians(db: Session = Depends(get_db), auth=Depends(auth)):
-    return auth
+    if role == 0:
+        users = db.query(User).filter(User.role == 3 and User.institution_id==auth.institution_id).all()
+        return users
+    else:
+        raise HTTPException(status_code=403, detail="You are not authorized")
+
 
 
 @router.post("", response_model=UserSchema, status_code=status.HTTP_201_CREATED)

@@ -12,10 +12,17 @@ from schemas.user import User as UserSchema, UserPost, UserUpdate, UserInstituti
 router = APIRouter()
 
 
-@router.get("", response_model=UserClass, status_code=status.HTTP_200_OK)
-def get_teacher(db: Session = Depends(get_db), auth=Depends(auth)):
-    return auth
+# @router.get("", response_model=UserClass, status_code=status.HTTP_200_OK)
+# def get_teacher(db: Session = Depends(get_db), auth=Depends(auth)):
+#     return auth
 
+@router.get("", response_model=List[UserInstitution], status_code=status.HTTP_200_OK)
+def get_teachers(db: Session = Depends(get_db), auth=Depends(auth)):
+    if auth.role == 0:
+        users = db.query(User).filter(User.role == 1 and User.institution_id==auth.institution_id).all()
+        return users
+    else:
+        raise HTTPException(status_code=403, detail="You are not authorized")
 
 @router.post("", response_model=UserSchema, status_code=status.HTTP_201_CREATED)
 def create_teacher(

@@ -56,6 +56,7 @@ export default function Sidebar() {
     {
       label: "Profile",
       link: "/teachers/teachersProfile",
+      // link: "/teachers/profile",
       icon: "i-tabler-user-circle",
     },
   ];
@@ -69,16 +70,19 @@ export default function Sidebar() {
     {
       label: "Ward",
       link: "/guardian/wards",
+      // link: "/guardian/students",
       icon: "i-tabler-school",
     },
     {
       label: "Guardian",
       link: "/guardian/guardians",
+      // link: "/guardian/teachers",
       icon: "i-tabler-user-shield",
     },
     {
       label: "Profile",
       link: "/guardian/guardianProfile",
+      // link: "/guardian/profile",
       icon: "i-tabler-user-circle",
     },
   ];
@@ -88,7 +92,7 @@ export default function Sidebar() {
   useEffect(() => {
     const updateMenu = () => {
       let newMenu = [];
-  
+
       if (location.pathname === "/students/createStudent") {
         newMenu = [
           {
@@ -267,13 +271,12 @@ export default function Sidebar() {
       } else {
         newMenu = menuDefault;
       }
-  
+
       setMenu(newMenu);
     };
-  
+
     updateMenu();
   }, [location]);
-  
 
   return (
     <aside className="bg-#E5E2EA w-60 p-6 fixed h-screen top-0">

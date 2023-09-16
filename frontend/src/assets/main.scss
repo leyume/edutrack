@@ -6,6 +6,7 @@ body {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  // border: 2px solid red;
 }
 
 .hero {
@@ -37,4 +38,8 @@ a {
       @apply bg-brand-blue text-white;
     }
   }
+}
+
+.my-input {
+  @apply w-full text-3.5 p-2.5 rounded-2 border border-solid mt-2 border-gray-300 focus:outline-none focus:border-blue-500;
 }

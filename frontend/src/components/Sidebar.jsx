@@ -55,7 +55,7 @@ export default function Sidebar() {
     },
     {
       label: "Profile",
-      link: "/teachers/profile",
+      link: "/teachers/teachersProfile",
       icon: "i-tabler-user-circle",
     },
   ];
@@ -68,17 +68,17 @@ export default function Sidebar() {
     },
     {
       label: "Ward",
-      link: "/guardian/students",
+      link: "/guardian/wards",
       icon: "i-tabler-school",
     },
     {
       label: "Guardian",
-      link: "/guardian/teachers",
+      link: "/guardian/guardians",
       icon: "i-tabler-user-shield",
     },
     {
       label: "Profile",
-      link: "/guardian/profile",
+      link: "/guardian/guardianProfile",
       icon: "i-tabler-user-circle",
     },
   ];

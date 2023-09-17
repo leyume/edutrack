@@ -9,8 +9,8 @@ from typing import Optional, List
 from auth import auth
 from routes.user import creating_user
 
-from models.index import get_db, User
-from schemas.user import User as UserSchema, UserPost, UserUpdate, UserInstitution, UserPass, UserClass
+from models.index import get_db, User, StudentGuardian
+from schemas.user import User as UserSchema, UserPost, UserUpdate, UserInstitution, UserPass, UserClass, UserGuardian
 
 router = APIRouter()
 
@@ -28,15 +28,26 @@ def get_guardians(db: Session = Depends(get_db), auth=Depends(auth)):
         raise HTTPException(status_code=403, detail="You are not authorized")
 
 
-
 @router.post("", response_model=UserSchema, status_code=status.HTTP_201_CREATED)
 def create_guardian(
-    user: UserPass, db: Session = Depends(get_db), auth=Depends(auth)
+    user: UserGuardian, db: Session = Depends(get_db), auth=Depends(auth)
 ):
-        
+    user.password = 'edutrack'
     user.role = 3
     user.institution_id = auth.institution_id
-    return creating_user(user, db)
+    new_guardian = creating_user(user, db)
+
+    new_relations = StudentGuardian(
+        student_id=user.student_id,
+        institution_id=user.institution_id,
+        guardian_id=new_guardian.id
+    )
+
+    db.add(new_relations)
+    db.commit()
+
+    return new_guardian
+
 
 @router.put("")
 def update_guardian(

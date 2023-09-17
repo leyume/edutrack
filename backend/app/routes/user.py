@@ -129,6 +129,8 @@ def creating_user(user, db):
         return {"message": "you are not authorized to create super admin"}
         
     
+    new_user = User(**user.dict(exclude={"password", "student_id"}))
+
     db.add(new_user)
     db.commit()
 

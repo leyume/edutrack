@@ -44,6 +44,18 @@ class UserTeacher(UserPost):
     password: Optional[str] = "password"
     class_id: int = 3
     subject_name: str = 'Agriculture'
+    
+class UserGuardian(BaseModel):
+    email: str = 'guardian@yopmail.com'
+    firstname: str = 'Guard'
+    lastname: str='Doe'
+    relation: str='Mother'
+    phone: Optional[str] = None
+    role: Optional[int] = None
+    status: Optional[str] = None
+    password: str
+    institution_id: Optional[int] = None
+    student_id: Optional[int] = None
 
 class UserPass(UserPost):
     email: str = 'chriss@yopmail.com'

@@ -29,7 +29,7 @@ class UserStudent(UserPost):
     firstname: str = 'Chriss'
     lastname: str ='Doe'
     phone: Optional[str] = None
-    class_name: int = 3
+    class_id: int = 3
     guardian_fname: str = 'Sandra'
     guardian_lname: str = 'Doe'
     guardian_relation: str = 'mother'
@@ -44,7 +44,7 @@ class UserTeacher(UserPost):
     password: Optional[str] = "password"
     class_id: int = 3
     subject_name: str = 'Agriculture'
-    
+
 class UserGuardian(BaseModel):
     email: str = 'guardian@yopmail.com'
     firstname: str = 'Guard'

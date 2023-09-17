@@ -37,6 +37,7 @@ def create_guardian(
     user.institution_id = auth.institution_id
     new_guardian = creating_user(user, db)
 
+    # add relations to student
     new_relations = StudentGuardian(
         student_id=user.student_id,
         institution_id=user.institution_id,

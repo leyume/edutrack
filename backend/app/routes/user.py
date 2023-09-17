@@ -57,6 +57,30 @@ def update_user(
 
 
 def creating_user(user, db):
+    db_user = db.query(User).filter(User.email==user.email).first()
+
+    if db_user:
+        raise HTTPException(status_code=403, detail="email already in use")
+
+    # set non student to firebase
+    if user.role != 2:
+        display_name = user.firstname + " " + user.lastname
+        fb_user = fb_auth.create_user(email=user.email, password=user.password, display_name=display_name)
+        fb_auth.set_custom_user_claims(fb_user._data['localId'], {'role': user.role})
+        
+
+    # user.role = role
+    # user.institution_id = 7
+    user.status = 1
+    new_user = User(**user.dict(exclude={"password", "class_id", "subject_name", "student_id", "guardian_fname", "guardian_lname","guardian_relation", "guardian_email"}))
+    
+    db.add(new_user)
+    db.commit()
+
+    return new_user
+
+
+def creating_userBK(user, db):
 
     db_user = db.query(User).filter(User.email==user.email).first()
 

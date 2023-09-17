@@ -2,6 +2,7 @@
 from sqlalchemy.orm import Session
 from fastapi import Depends, HTTPException, status, APIRouter, Response
 from typing import Optional, List
+import random
 
 # from models.index import get_db, Student, Tutor #StudentCourse
 # from schemas.user import UserFull as User, UserUpdate
@@ -33,6 +34,9 @@ def get_students(db: Session = Depends(get_db), auth=Depends(auth)):
 def create_student(
     user: UserStudent, db: Session = Depends(get_db), auth=Depends(auth)
 ):
+    random_int = str(random.randint(1000,9999))
+    user.email = user.firstname + user.lastname + random_int +"@et.edu"
+
     user.role = 2
     user.institution_id = auth.institution_id
     user.phone = "070"

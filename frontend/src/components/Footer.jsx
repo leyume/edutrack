@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 function Footer() {
   return (
-    <footer className="items-center justify-between py-10 bg-#2C2C2C relative z-100">
-      <div className="flex items-center justify-between ml-25 mr-25">
+    <footer className="items-center justify-between py-8 px-5% bg-#2C2C2C relative z-100">
+      <div className="flex items-center justify-between">
         <a href="/" className="text-brand-pink text-4xl font-bold">
           Edu<span className="text-#E5E2EA">Track</span>
         </a>
@@ -37,10 +37,10 @@ function Footer() {
           </a>
         </div>
       </div>
-      <hr style={{ borderColor: "text-brand-pink" }} className="mt-10 mr-20 ml-20 mb-10" />
-      <div className="flex items-center justify-between mr-vh">
+      <hr style={{ borderColor: "text-brand-pink" }} className="my-8" />
+      <div className="flex items-center justify-between">
         <div>
-          <p className="ml-20 text-#E5E2EA">
+          <p className="text-#E5E2EA">
             Copyright (c) 2023 <span className="text-brand-pink">Edu</span>
             Track. All Rights Reserved
           </p>

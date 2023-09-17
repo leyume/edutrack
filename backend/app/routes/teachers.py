@@ -6,7 +6,7 @@ from typing import Optional, List
 from auth import auth
 from routes.user import creating_user
 
-from models.index import get_db, User
+from models.index import get_db, User, Subject
 from schemas.user import User as UserSchema, UserPost, UserUpdate, UserInstitution, UserPass, UserClass, UserTeacher
 
 router = APIRouter()
@@ -31,8 +31,20 @@ def create_teacher(
     if auth.role == 0:
         user.role = 1
         user.institution_id = auth.institution_id
-        user.password = "password"
-        return creating_user(user, db)
+        user.password = "edutrack"
+        user.phone = "0907999"
+        new_teacher = creating_user(user, db)
+
+        subject = {
+            "name": user.subject_name,
+            "class_id": user.class_id,
+            "teacher_id": new_teacher.id
+        }
+        new_subject = Subject(**subject)
+        db.add(new_subject)
+        db.commit()
+
+        return new_teacher
 
     # user.role = 1
     # user.status = 1

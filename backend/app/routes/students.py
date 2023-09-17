@@ -35,6 +35,7 @@ def create_student(
 ):
     user.role = 2
     user.institution_id = auth.institution_id
+    user.phone = "070"
     new_student =  creating_user(user, db)
 
     # Guardian relations

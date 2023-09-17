@@ -13,7 +13,7 @@ export default function Layout({ children }) {
 
   useEffect(() => {
     console.log("EFFFECCCTTTTTTT");
-    if (page_exceptions.indexOf(location.pathname) < 0) loggedin();
+    // if (page_exceptions.indexOf(location.pathname) < 0) loggedin();
   }, [location]);
 
   const loggedin = () => {

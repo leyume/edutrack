@@ -18,7 +18,7 @@ export default function Sidebar() {
     {
       label: "Manage Students",
       link: "/admin/students",
-      icon: "i-tabler-layout-dashboard",
+      icon: "i-tabler-school",
     },
     {
       label: "Attendance",
@@ -76,7 +76,7 @@ export default function Sidebar() {
       </Link>
       <nav className="[&>ul>li:hover]:bg-#2375F0 [&>ul>li>:hover]:text-white [&>ul>li>a]:text-dark-900 [&>ul>li>a]:flex [&>ul>li>a]:gap-2 [&>ul>li]:rounded-2 [&>ul>li>a]:p-15px mt-30px text-black">
         <ul className="list-none">
-          {menu.map((m,index) => (
+          {menu.map((m, index) => (
             <li key={index}>
               <Link to={m.link}>
                 <span className={m.icon} />

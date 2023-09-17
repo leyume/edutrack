@@ -4,46 +4,41 @@ import { Link } from "react-router-dom";
 export default function Teachers() {
   return (
     <>
-      <div>
-        <div className="mr-10vh ml-8vh">
-          <div className="bg-#2375F0 rounded-2 w-1024px  h-133px">
-            <div className="grid text-white pt-27px pl-48px gap-5vh">
-              <h1>Manage Teachers</h1>
-              <p>Let’s keep in track with your Institution Details.</p>
-            </div>
+      <div className="px-6">
+        <section>
+          <div className="bg-brand-blue rounded-2 text-white py-6 px-6">
+            <h1>Manage Teachers</h1>
+            <p className="pt-7vh">
+              Let’s keep in track with your Institution Details.
+            </p>
           </div>
-        </div>
-        <section className="flex bg-#F8EFE2 py-10 w-1024px h-562px mr-10vh ml-8vh mt-7vh mb-10vh rounded-2">
-          <div className="bg-white rounded-2 w-280px h-465px ml-45px shadow grid items-center justify-items-center">
-            <img src="./images/image-13.jpeg" alt="img" />
+        </section>
+        <section className="grid grid-cols-3 gap-6 bg-brand-liteorange mt-6 py-6 px-6 rounded-2 text-center [&>div]:bg-white [&>div]:rounded-2 [&>div]:shadow [&>div]:grid [&>div]:gap-12 [&>div]:py-8 [&>div]:px-6 [&>div]:items-center [&>div]:justify-items-center">
+          <div>
+            <img src="/images/image-13.jpeg" alt="img" />
             <p className="font-bold text-24px shadow-white">Create Teachers</p>
-            <button className="bg-#2375F0 border-none rounded-2 w-101px h-53px">
-              <Link to className="text-white" href="/">
-                Create
-              </Link>
-            </button>
+            <Link to="/teachers/add" className="btn">
+              Create
+            </Link>
           </div>
-          <div className="bg-white rounded-2 w-280px h-465px ml-40px shadow grid items-center justify-items-center">
-            <img src="./images/image-14.jpeg" alt="img" />
+          <div>
+            <img src="/images/image-14.jpeg" alt="img" />
             <p className="font-bold text-24px shadow-white">
               Update Teachers Info
             </p>
-            <button className="bg-#2375F0 border-none rounded-2 w-101px h-53px">
-              <Link to className="text-white" href="/">
-                Update
-              </Link>
-            </button>
+
+            <Link to="/teachers/update" className="btn">
+              Update
+            </Link>
           </div>
-          <div className="bg-white rounded-2 w-280px h-465px ml-40px shadow grid items-center justify-items-center">
-            <img src="./images/image-15.jpeg" alt="img" />
+          <div>
+            <img src="/images/image-15.jpeg" alt="img" />
             <p className="font-bold text-24px shadow-white">
               View Teachers Details
             </p>
-            <button className="bg-#2375F0 border-none rounded-2 w-101px h-53px">
-              <Link to className="text-white" href="/">
-                View
-              </Link>
-            </button>
+            <Link to="/teachers/[id]" className="btn">
+              View
+            </Link>
           </div>
         </section>
       </div>

@@ -3,12 +3,12 @@ import React from "react";
 function Testimony() {
   return (
     <div className="bg-#E5E2EA text-center py-20 h-250">
-      <h3 className="text-brand-blue text-5xl mb-10">Testimonials</h3>
-      <p className="text-brand-pink text-4xl tracking-tight text-center">
+      <h3 className="text-brand-blue text-5xl mb-8">Testimonials</h3>
+      <p className="text-brand-pink text-4xl tracking-tight text-center pb-10">
         What our users say about us.
       </p>
-      <div className="flex h-37%">
-        <div className="rounded-10 w-30%  bg-#fff mt-5% ml-10 h-90%">
+      <div className="flex items-center justify-between h-45%">
+        <div className="rounded-10 w-30%  bg-#fff h-75%">
           <div className="text-1xl mb-30%">
             <div className="flex gap-8% ml-10 mt-5">
               <img src="/images/image-8.jpeg" alt="img" />
@@ -30,7 +30,7 @@ function Testimony() {
             </div>
           </div>
         </div>
-        <div className="rounded-10 w-30% bg-#fff mt-5% ml-10 h-90%">
+        <div className="rounded-10 w-30% bg-#fff h-75%">
           <div className="text-1xl mb-30%">
             <div className="flex gap-8% ml-10 mt-5">
               <img src="/images/image-9.jpeg" alt="img" />
@@ -54,7 +54,7 @@ function Testimony() {
             </div>
           </div>
         </div>
-        <div className="rounded-10 w-30% bg-#fff mt-5% ml-10 h-90%">
+        <div className="rounded-10 w-30% bg-#fff h-75%">
           <div className="text-1xl mb-30% mt-5">
             <div className="flex gap-8% ml-10">
               <img src="/images/image-10.jpeg" alt="img" />
@@ -79,9 +79,9 @@ function Testimony() {
           </div>
         </div>
       </div>
-      <div className=" text-brand-pink text-4xl tracking-tight text-center mt-30">
-        <p className="mb-15">We are trusted by</p>
-        <div className="flex">
+      <div className=" text-brand-pink text-4xl tracking-tight text-center mt-15">
+        <p className="mb-12">We are trusted by</p>
+        <div className="flex items-center justify-center">
           <div className="bg-#fff w-95 h-40 rounded-10 shadow-md ml-15 pt-0.1">
             <div className="bg-#2375F0 w-18 h-18 rounded-15 ml-6 mt-10 flex gap-4 pl-3">
               <div>

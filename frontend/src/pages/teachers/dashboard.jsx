@@ -47,8 +47,8 @@ function Dashboard() {
           <h1 className="text-center text-100px">1</h1>
         </div>
       </section>
-      <section className="flex">
-        <div className="bg-#F41E922B w-30% h-290px ml-5 mt-5 mb-5 rounded-2">
+      <section className="flex gap-5">
+        <div className="bg-#F41E922B w-30% h-290px mt-5 mb-5 rounded-2">
           <div className="flex items-center justify-around pt-5 ">
             <h2 className="font-bold text-dark-900">Teacher</h2>
             <a className="" href="/">
@@ -68,64 +68,66 @@ function Dashboard() {
             </div>
             <div className="mt-4">
               <a className="text-black" href="/">
-                <p className="">annphilip@gmail.com</p>
+                <p>annphilip@gmail.com</p>
               </a>
             </div>
           </div>
         </div>
-        <div className="bg-#F8EFE2 w-75% h-290px rounded-2 mt-5 ml-5 mr-5 mb-5 pl-5 pt-5">
+        <div className="bg-#F8EFE2 w-75% h-290px rounded-2 mt-5 mb-5 pl-5 pt-5">
           <div>
             <h2 className="font-bold">Student Highlights</h2>
           </div>
-          <div className="text-#84868A flex items-center justify-between pt-3 pb-2 pr-10">
-            <p>S/N</p>
-            <p>NAME</p>
-            <p>CLASS</p>
-          </div>
-          <div className="flex items-center justify-between mb-4">
-            <div>
-              <p className="bg-white w-5 h-5 rounded-1 pl-1">1</p>
+          <div className="grid items-baseline">
+            <div className="text-#84868A flex items-center justify-between pt-3 pb-2 pr-10">
+              <p>S/N</p>
+              <p>NAME</p>
+              <p>CLASS</p>
             </div>
-            <div>
-              <p>Charlie Rawal</p>
+            <div className="flex items-center justify-between mb-4 pr-12">
+              <div>
+                <p className="bg-white w-5 h-5 rounded-1 pl-1">1</p>
+              </div>
+              <div>
+                <p>Philip Mary</p>
+              </div>
+              <p>SS 3</p>
             </div>
-            <p>SS 3</p>
-          </div>
-          <div className="flex items-center justify-between mb-4">
-            <div>
-              <p className="bg-white w-5 h-5 rounded-1 pl-1">2</p>
+            <div className="flex items-center justify-between mb-4 pr-12">
+              <div>
+                <p className="bg-white w-5 h-5 rounded-1 pl-1">2</p>
+              </div>
+              <div>
+                <p>Jude Micheal</p>
+              </div>
+              <p>SS 3</p>
             </div>
-            <div>
-              <p>Ariana Agarwal</p>
+            <div className="flex items-center justify-between mb-4 pr-12">
+              <div>
+                <p className="bg-#fff w-5 h-5 rounded-1 pl-1">3</p>
+              </div>
+              <div>
+                <p>Emmanuel Mmadu</p>
+              </div>
+              <p>SS 3</p>
             </div>
-            <p>JS 2</p>
-          </div>
-          <div className="flex items-center justify-between mb-4">
-            <div>
-              <p className="bg-#fff w-5 h-5 rounded-1 pl-1">3</p>
+            <div className="flex items-center justify-between mb-4 pr-12">
+              <div>
+                <p className="bg-#fff w-5 h-5 rounded-1 pl-1">4</p>
+              </div>
+              <div>
+                <p>Mercy Christopher</p>
+              </div>
+              <p>SS 3</p>
             </div>
-            <div>
-              <p>Ariana Agarwal</p>
+            <div className="flex items-center justify-between pr-12">
+              <div>
+                <p className="bg-#fff w-5 h-5 rounded-1 pl-1">5</p>
+              </div>
+              <div>
+                <p>Miracle Igwemmadu</p>
+              </div>
+              <p>SS 3</p>
             </div>
-            <p>JS 3</p>
-          </div>
-          <div className="flex items-center justify-between mb-4">
-            <div>
-              <p className="bg-#fff w-5 h-5 rounded-1 pl-1">4</p>
-            </div>
-            <div>
-              <p>Ariana Agarwal</p>
-            </div>
-            <p>SS 1</p>
-          </div>
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="bg-#fff w-5 h-5 rounded-1 pl-1">5</p>
-            </div>
-            <div>
-              <p>Ariana Agarwal</p>
-            </div>
-            <p>SS 3</p>
           </div>
         </div>
       </section>

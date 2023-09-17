@@ -13,22 +13,22 @@ export default function Sidebar() {
     {
       label: "Manage Teachers",
       link: "/admin/teachers",
-      icon: "i-tabler-user-edit",
+      icon: "i-arcticons-canvasstudent",
     },
     {
       label: "Manage Students",
       link: "/admin/students",
-      icon: "i-tabler-layout-dashboard",
+      icon: "i-ph-student-fill",
     },
     {
       label: "Attendance",
       link: "/admin/attendance",
-      icon: "i-tabler-layout-dashboard",
+      icon: "i-carbon-report",
     },
     {
       label: "Profile",
       link: "/admin/profile",
-      icon: "i-tabler-layout-dashboard",
+      icon: "i-ph-user-circle-fill",
     },
   ];
 
@@ -39,9 +39,24 @@ export default function Sidebar() {
       icon: "i-tabler-layout-dashboard",
     },
     {
-      label: "Manage Teachers",
-      link: "/teachers/teachers",
-      icon: "i-tabler-user-edit",
+      label: "Classes",
+      link: "/teachers/classes",
+      icon: "i-arcticons-canvasstudent",
+    },
+    {
+      label: "Students",
+      link: "/teachers/students",
+      icon: "i-ph-student-fill",
+    },
+    {
+      label: "Report",
+      link: "/teachers/reports",
+      icon: "i-material-symbols-bar-chart-4-bars",
+    },
+    {
+      label: "Profile",
+      link: "/teachers/profiles",
+      icon: "i-ph-user-circle-fill",
     },
   ];
 

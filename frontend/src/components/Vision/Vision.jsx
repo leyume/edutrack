@@ -14,15 +14,15 @@ function Vision() {
         </p>
       </div>
       <div className="vision-img-container">
-        <div className="flex gap-2 mt-15">
-          <div className="mt-20 ml-10">
+        <div className="flex items-start justify-center mt-15">
+          <div className="mt-20">
             <h1 className="text-5xl text-brand-blue">School Admin</h1>
             <p className="w-55% mx-auto mt-4 leading-normal">
               Lorem ipsum dore helye sepum ipsum Lorem ipsum dore
             </p>
           </div>
           <img src="/images/tracking.png" alt="img" />
-          <div className="mt-20 mr-12">
+          <div className="mt-20">
             <h1 className="text-5xl text-brand-blue">Teachers</h1>
             <p className="w-55% mx-auto mt-6 leading-normal">
               Lorem ipsum dore helye sepum ipsum Lorem ipsum dore

@@ -25,7 +25,7 @@ class User(UserPost): #serializer
         orm_mode=True
 
 class UserStudent(UserPost):
-    email: str = 'chriss@yopmail.com'
+    email: Optional[str] = 'chriss@yopmail.com'
     firstname: str = 'Chriss'
     lastname: str ='Doe'
     phone: Optional[str] = None

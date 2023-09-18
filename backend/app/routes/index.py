@@ -103,6 +103,9 @@ def create_institution(user: UserRegister, user_id: int, db: Session = Depends(g
 @router.post("/register")
 def register(user:UserRegister, db: Session = Depends(get_db)):
 
+    # print("Hellloooooooooooo")
+    # return
+
     # set admin roles, Admin = 0
     user.role = 0 
 

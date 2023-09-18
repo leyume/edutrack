@@ -2,10 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import PageLabel from "~/components/PageLabel";
 
-export default function Students() {
+export default function Teachers() {
   return (
     <div className="px-6">
-      <PageLabel title="Manage Students" details="Let’s keep in track with your Institution Details." />
+      <PageLabel title="Manage Teachers" details="Let’s keep in track with your Institution Details." />
 
       <section
         className="
@@ -17,22 +17,22 @@ export default function Students() {
           "
       >
         <div>
-          <div className="i-tabler-school" />
-          <p>Create Students</p>
-          <Link to="/admin/students/add" className="btn">
+          <div className="i-tabler-user-edit" />
+          <p>Create Teachers</p>
+          <Link to="/admin/teachers/add" className="btn">
             Create
           </Link>
         </div>
         <div>
           <div className="i-tabler-edit" />
-          <p>Update Students Info</p>
+          <p>Update Teachers Info</p>
           <Link to className="btn" href="/">
             Update
           </Link>
         </div>
         <div>
           <div className="i-tabler-list-details" />
-          <p>View Student Details</p>
+          <p>View Teacher Details</p>
           <Link to className="btn" href="/">
             View
           </Link>

@@ -10,15 +10,7 @@ export default function HeaderInternal() {
 
   let queryClient = useQueryClient();
 
-<<<<<<< HEAD
-  const { data, isSuccess, isError } = useQuery({
-    queryKey: ["user"],
-    queryFn: async () => await fetchAPI("user"),
-  });
-  // const { data, isSuccess } = { data: {}, isSuccess: false };
-=======
   const { data, isSuccess, isError } = useQuery(userQ);
->>>>>>> d60ebcc10a4add9e2989371b4946bb504694b7ff
 
   const logout = async () => {
     await signOut(auth);
@@ -31,7 +23,10 @@ export default function HeaderInternal() {
     <header className="flex items-center justify-end gap-3 mt-20px mr-8 mb-6">
       {isSuccess && data?.institution?.name && <h3>{data.institution.name}</h3>}
       <img src="/images/image-11.jpeg" alt="img" className="w-10" />
-      <a onClick={logout} className="i-tabler-caret-down-filled text-2xl inline-block" />
+      <a
+        onClick={logout}
+        className="i-tabler-caret-down-filled text-2xl inline-block"
+      />
     </header>
   );
 }

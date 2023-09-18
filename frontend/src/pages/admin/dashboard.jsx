@@ -1,91 +1,74 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import fetchAPI from "~/utils/fetchAPI";
+import { userQ } from "~/utils/queries";
 
 import { useQuery } from "@tanstack/react-query";
 
 function Dashboard() {
   // Queries
-  const { data, isSuccess, isError } = useQuery({
-    queryKey: ["user"],
-    queryFn: async () => await fetchAPI("user"),
-  });
+  const { data, isSuccess, isError } = useQuery(userQ);
 
   return (
     isSuccess &&
     data?.institution?.name && (
       <div className="px-6">
-        <section className="flex items-center justify-center">
-          <div className="grid bg-#2375F0 w-3/5 h-40vh rounded-l-xl">
+        <section className="grid grid-cols-5 justify-center rounded-l-xl text-white bg-brand-blue">
+          <div className="flex flex-col justify-between col-span-3 p-8">
             <div>
-              <div className="flex  text-white">
-                <h1 className="ml-6vh mt-16px font-900">
-                  Hello {data.firstname},
+              <div className="flex justify-between mb-3">
+                <h1 className="text-5xl font-800">
+                  Hello <br />
+                  {data.firstname},
                 </h1>
-                <a className="justify-items-stretch mt-4vh" href="/">
-                  <img src="/images/writing-icon.jpeg" alt="img" />
-                </a>
+                <a className="block i-tabler-edit text-2xl opacity-50" />
               </div>
-              <div className="ml-6vh text-white">
-                <h4>{data.institution.name}</h4>
-                <p className="mt-8 text-gray-400">
-                  {data.institution.location}.
-                </p>
-                <a className="text-white" href="/">
-                  <p className="mt-6">{data.email}</p>
-                </a>
-                <p className="mt-25vh pb-4">
-                  Let’s keep in track with your Institution Details.
-                </p>
-              </div>
+              <div className="text-xl">{data.institution.name}</div>
+              <p className="opacity-50">{data.institution.location}.</p>
+              {/* <p className="mt-6">{data.email}</p> */}
             </div>
+            <p className="">
+              Let’s keep in track with your Institution Details.
+            </p>
           </div>
-          <img className="h-40vh w-2/5" src="/images/image-12.jpeg" alt="img" />
+          <img
+            className="h-35vh col-span-2 w-full"
+            src="/images/image-12.jpeg"
+            alt="img"
+          />
         </section>
 
-        <div className="flex items-center justify-center gap-20">
-          <div className="bg-#FFDCB2 w-35 h-35 ml-5 mt-5 rounded-2">
-            <h4 className="text-center pt-7">Teachers</h4>
-            <h1 className="text-center">50</h1>
+        <section className="grid grid-cols-3 items-center text-center justify-center gap-6 my-6 [&>div]:py-6 [&>div]:bg-brand-orange [&>div]:rounded-2 [&>div>h1]:text-7xl">
+          <div>
+            <h4>Teachers</h4>
+            <h1>50</h1>
           </div>
-          <div className="bg-#FFDCB2 w-35 h-35 ml-5 mt-5 rounded-2">
-            <h4 className="text-center pt-7">Students</h4>
-            <h1 className="text-center">250</h1>
+          <div>
+            <h4>Students</h4>
+            <h1>250</h1>
           </div>
-          <div className="bg-#FFDCB2 w-35 h-35 ml-5 mt-5 rounded-2">
-            <h4 className="text-center pt-7">Guardians</h4>
-            <h1 className="text-center">40</h1>
+          <div>
+            <h4>Guardians</h4>
+            <h1>40</h1>
           </div>
-          <div className="bg-#FFDCB2 w-35 h-35 ml-5 mt-5 rounded-2">
-            <h4 className="text-center pt-7">Summary Chart</h4>
-            <img className="ml-5" src="/images/chart-icon.jpeg" alt="img" />
-          </div>
-        </div>
-        <div className="flex">
-          <div className="bg-#F41E922B w-30% h-290px ml-5 mt-5 mb-5 rounded-2">
-            <div className="flex items-center justify-center pt-5 gap-23%">
-              <h2 className="font-bold text-dark-900">Representative</h2>
-              <a className="" href="/">
-                <img className="" src="/images/writing-icon1.jpeg" alt="img" />
-              </a>
+        </section>
+
+        <section className="grid grid-cols-3 gap-6 [&>div]:rounded-2 mb-12">
+          <div className="bg-brand-litepink p-6">
+            <div className="flex justify-between items-center">
+              <h2>Representative</h2>
+              <a className="block i-tabler-edit text-2xl" />
             </div>
-            <div className="">
-              <div className="grid items-center justify-center pt-10">
-                <img
-                  className="rounded-10"
-                  src="/images/image-11.jpeg"
-                  alt="img"
-                />
-              </div>
-              <div className="grid items-center justify-center">
-                <h2 className="font-bold pt-3vh">Mrs. Tabitha Willson</h2>
-                <a className="text-dark-900" href="/">
-                  <p className="mt-3vh ml-3vh">tabitawillson@gmail.com</p>
-                </a>
-              </div>
+            <div className="text-center mt-4 leading-8">
+              <img
+                className="rounded-full w-20"
+                src="/images/image-11.jpeg"
+                alt="img"
+              />
+              <h2>Tabitha Willson</h2>
+              <p>tabitawillson@gmail.com</p>
             </div>
           </div>
-          <div className="bg-#F8EFE2 w-75% h-290px rounded-2 mt-5 ml-5 mr-5 mb-5 pl-5 pt-5">
+          <div className="bg-brand-liteorange col-span-2">
             <div>
               <h2 className="font-bold">Students Performance Leader Board</h2>
             </div>
@@ -182,7 +165,7 @@ function Dashboard() {
               <p className="mr-9vh text-#3BAFA8">48.8</p>
             </div>
           </div>
-        </div>
+        </section>
       </div>
     )
   );

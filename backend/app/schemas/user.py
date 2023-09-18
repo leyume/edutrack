@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 from typing import Optional,List
-from datetime import datetime
+from datetime import datetime, date
 # from .student import Student
 
 class UserPost(BaseModel): #serializer
@@ -15,7 +15,7 @@ class UserPost(BaseModel): #serializer
 class User(UserPost): #serializer
     id: Optional[int] = None
     institution_id: Optional[int] = None
-    role: Optional[int] = None
+    # role: Optional[int] = None
     relation: Optional[str] = None
     status: Optional[str] = None
     # created_at: Optional[datetime] = None
@@ -25,11 +25,40 @@ class User(UserPost): #serializer
         orm_mode=True
 
 class UserStudent(UserPost):
+    email: Optional[str] = 'chriss@yopmail.com'
+    firstname: str = 'Chriss'
+    lastname: str ='Doe'
+    phone: Optional[str] = None
+    class_id: int = 3
+    guardian_fname: str = 'Sandra'
+    guardian_lname: str = 'Doe'
+    guardian_relation: str = 'mother'
+    guardian_email: str = 'sandra@yopmail.com'
+    principal: Optional[int] = None
+    # role: Optional[int] = None
+
+class UserTeacher(UserPost):
     email: str = 'chriss@yopmail.com'
     firstname: str = 'Chriss'
-    lastname: str='Doe'
+    lastname: str ='Doe'
     phone: Optional[str] = None
-    # role: Optional[int] = None
+    password: Optional[str] = "password"
+    class_id: int = 3
+    subject_name: str = 'Agriculture'
+
+class UserGuardian(BaseModel):
+    email: str = 'guardian@yopmail.com'
+    firstname: str = 'Guard'
+    lastname: str='Doe'
+    relation: str='Mother'
+    phone: Optional[str] = None
+    role: Optional[int] = None
+    status: Optional[str] = None
+    password: str
+    institution_id: Optional[int] = None
+    student_id: Optional[int] = None
+    principal: Optional[int] = None
+    exp_date: Optional[date] = None
 
 class UserPass(UserPost):
     email: str = 'chriss@yopmail.com'
@@ -38,6 +67,7 @@ class UserPass(UserPost):
     phone: Optional[str] = None
     role: Optional[int] = None
     password: str
+
 
 class UserUpdate(BaseModel): #serializer
     email: str = 'chriss@yopmail.com'

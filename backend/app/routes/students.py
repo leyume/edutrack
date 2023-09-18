@@ -2,32 +2,69 @@
 from sqlalchemy.orm import Session
 from fastapi import Depends, HTTPException, status, APIRouter, Response
 from typing import Optional, List
+import random
 
 # from models.index import get_db, Student, Tutor #StudentCourse
 # from schemas.user import UserFull as User, UserUpdate
 # from schemas.student import StudentCourse
 from auth import auth
 from routes.user import creating_user
+from routes.guardians import create_guardian
 
-from models.index import get_db, User
-from schemas.user import User as UserSchema, UserStudent, UserUpdate, UserInstitution, UserClass
+from models.index import get_db, User, StudentClass
+from schemas.user import User as UserSchema, UserStudent, UserUpdate, UserInstitution, UserClass, UserGuardian
 
 router = APIRouter()
 
 
+# @router.get("", response_model=List[UserClass], status_code=status.HTTP_200_OK)
+# def get_students(db: Session = Depends(get_db), auth=Depends(auth)):
+#     return auth.students
+
 @router.get("", response_model=List[UserClass], status_code=status.HTTP_200_OK)
 def get_students(db: Session = Depends(get_db), auth=Depends(auth)):
-    users = db.query(User).filter(User.role == 2).all()
-    return users
+    if auth.role == 0:
+        users = db.query(User).filter(User.role == 2 and User.institution_id==auth.institution_id).all()
+        return users
+    else:
+        raise HTTPException(status_code=403, detail="You are not authorized")
 
 
 @router.post("", response_model=UserSchema, status_code=status.HTTP_201_CREATED)
 def create_student(
     user: UserStudent, db: Session = Depends(get_db), auth=Depends(auth)
 ):
+    random_int = str(random.randint(1000,9999))
+    user.email = user.firstname + user.lastname + random_int +"@et.edu"
+
     user.role = 2
     user.institution_id = auth.institution_id
-    return creating_user(user, db)
+    user.phone = "070"
+    new_student =  creating_user(user, db)
+
+    # Guardian relations
+    if user.guardian_email:
+        guardian = UserGuardian(
+            firstname=user.guardian_fname,
+            lastname=user.guardian_lname,
+            email=user.guardian_email,
+            relation=user.guardian_relation,
+            student_id=new_student.id,
+            phone="080",
+            password="edutrack",
+        )
+        create_guardian(guardian, db, auth)
+
+    # Classes relations
+    if user.class_id:
+        class_relations = StudentClass(
+            student_id=new_student.id,
+            class_id=user.class_id,
+        )
+        db.add(class_relations)
+        db.commit()
+
+    return new_student
 
 
 @router.put("")

@@ -1,32 +1,30 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import PageLabel from "~/components/PageLabel";
 
-function Profile() {
+export default function Profile() {
   return (
-    <>
-      <div className="mr-5vh ml-8vh">
-        <div className="bg-#2375F0 rounded-2 w-100%  h-133px">
-          <div className="grid text-white pt-2vh pl-48px gap-45%">
-            <h1 className="font-bold">Profile</h1>
-            <p>Let’s keep in track with your Institution Details.</p>
-          </div>
-        </div>
-      </div>
-      <section className="flex gap-5vh">
-        <div className="grid items-center justify-items-center bg-#F41E922B w-45% h-509px mb-10vh mt-8vh ml-8vh rounded-2">
-          <div className="flex items-center gap-40vh">
+    <div className="px-6">
+      <PageLabel
+        title="Profile"
+        details="Let’s keep in track with your Institution Details."
+      />
+
+      <section className="grid grid-cols-2 gap-6 mt-6 mb-12">
+        <div className="grid items-center justify-items-center bg-brand-litepink mb-50px rounded-2">
+          <div className="flex items-center justify-between gap-40vh mt-10vh">
             <h3>Representative</h3>
             <Link to="/">
               <img src="/images/writing-icon1.jpeg" alt="img" />
             </Link>
           </div>
-          <div className="grid items-center justify-items-center ___ gap-3vh">
+          <div className="grid items-center justify-items-center ___ gap-3vh mb-10vh">
             <img className="rounded-8" src="/images/image-11.jpeg" alt="img" />
             <h1 className="font-bold">Mrs. Tabitha Willson</h1>
             <p>tabitawillson@gmail.com</p>
           </div>
         </div>
-        <div className="grid bg-#2375F0 w-45% h-509px mt-8vh rounded-2">
+        <div className="grid bg-brand-blue mb-200px rounded-2">
           <div className="flex items-start justify-between pt-85px pl-5vh pr-5vh">
             <h1 className="font-bold text-15 text-white pr-10vh">
               Hello Tabitha,
@@ -49,8 +47,6 @@ function Profile() {
           </p>
         </div>
       </section>
-    </>
+    </div>
   );
 }
-
-export default Profile;

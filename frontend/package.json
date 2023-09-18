@@ -21,6 +21,7 @@
     "react-router-dom": "^6.4.1"
   },
   "devDependencies": {
+    "@iconify-json/svg-spinners": "^1.1.2",
     "@iconify-json/tabler": "^1.1.91",
     "@iconify/json": "^2.2.116",
     "@types/react": "^18.2.15",

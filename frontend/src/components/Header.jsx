@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router";
 
-function Header() {
+export default function Header() {
   let location = useLocation();
 
   return location.pathname == "/" ? (
@@ -67,5 +67,3 @@ function Header() {
     </header>
   );
 }
-
-export default Header;

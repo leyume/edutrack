@@ -93,7 +93,7 @@ export default function Sidebar() {
     const updateMenu = () => {
       let newMenu = [];
 
-      if (location.pathname === "/students/createStudent") {
+      if (location.pathname === "/admin/students/add") {
         newMenu = [
           {
             label: "Back",
@@ -102,11 +102,11 @@ export default function Sidebar() {
           },
           {
             label: "Create Student",
-            link: "/students/createStudent",
+            link: "/admin/students/add",
             icon: "i-tabler-school",
           },
         ];
-      } else if (location.pathname === "/students/createTeacher") {
+      } else if (location.pathname === "/admin/teachers/add") {
         newMenu = [
           {
             label: "Back",
@@ -115,7 +115,7 @@ export default function Sidebar() {
           },
           {
             label: "Create Teacher",
-            link: "/students/createTeacher",
+            link: "/admin/teachers/add",
             icon: "i-tabler-user-edit",
           },
         ];
@@ -283,10 +283,16 @@ export default function Sidebar() {
       <Link to="/" className="text-brand-pink text-4xl font-bold">
         Edu<span className="text-brand-blue">Track</span>
       </Link>
-      <nav className="[&>ul>li:hover]:bg-#2375F0 [&>ul>li>:hover]:text-white [&>ul>li>a]:text-dark-900 [&>ul>li>a]:flex [&>ul>li>a]:gap-2 [&>ul>li]:rounded-2 [&>ul>li>a]:p-15px mt-30px text-black">
+      <nav
+        className="mt-8 text-black
+        [&>ul>li]:rounded-2 [&>ul>li]:mt-1 [&>ul>li:hover]:bg-brand-blue [&>ul>li>:hover]:text-white  
+        [&>ul>li>a]:flex [&>ul>li>a]:gap-2 [&>ul>li>a]:text-dark-900 [&>ul>li>a]:p-3.5
+        [&>ul>li.active]:bg-brand-blue [&>ul>li.active>a]:text-white
+        [&>ul>li]:transition-all [&>ul>li]:duration-500 [&>ul>li>a]:transition-all [&>ul>li>a]:duration-500"
+      >
         <ul className="list-none">
           {menu.map((m, index) => (
-            <li key={index}>
+            <li key={index} className={m.link === location.pathname ? "active" : ""}>
               <Link to={m.link}>
                 <span className={m.icon} />
                 {m.label}

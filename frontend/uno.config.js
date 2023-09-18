@@ -13,7 +13,7 @@ export default defineConfig({
         pink: "#F41E92",
         litepink: "#F41E922B",
         liteorange: "#F8EFE2",
-        orange: "#FFDCB2;"
+        orange: "#FFDCB2",
       },
     },
   },

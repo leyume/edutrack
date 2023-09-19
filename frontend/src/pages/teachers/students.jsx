@@ -1,11 +1,11 @@
 import React from "react";
 
-function Profile() {
+function TeachersProfile() {
   return (
     <>
       <main className="px-5% ">
             <section className="bg-brand-blue rounded-2 grid text-white p-5 gap-4">
-              <h1>Teachers Profile</h1>
+              <h1>Students</h1>
               <p>Let’s keep in track with your Institution Details.</p>
             </section>
 
@@ -33,7 +33,7 @@ function Profile() {
                     disabled
                     /><br /><br />
 
-                    <label htmlFor="" >Subject</label><br />
+                    <label htmlFor="" >School</label><br />
                     <input type="text" 
                     className="my-input"
                     value="Biology"
@@ -79,4 +79,4 @@ function Profile() {
   );
 }
 
-export default Profile;
+export default TeachersProfile;

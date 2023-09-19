@@ -28,7 +28,7 @@ function Dashboard() {
             </div>
             <p className="">Let’s keep in track with your Institution Details.</p>
           </div>
-          <img className="h-70 col-span-2 w-full" src="/images/image-12.jpeg" alt="img" />
+          <img className="h-35vh col-span-2 w-full" src="/images/image-12.jpeg" alt="img" />
         </section>
 
         <section className="grid grid-cols-3 items-center text-center justify-center gap-6 my-6 [&>div]:py-6 [&>div]:bg-brand-orange [&>div]:rounded-2 [&>div>h1]:text-7xl">
@@ -46,8 +46,8 @@ function Dashboard() {
           </div>
         </section>
 
-        <section className="w-full flex justify-between gap-6 mb-5">
-          <div className="bg-brand-litepink p-7 grid grid-cols-1 w-2/4 gap-4 rounded-2">
+        <section className="grid grid-cols-3 gap-6 [&>div]:rounded-2 mb-12">
+          <div className="bg-brand-litepink p-6">
             <div className="flex justify-between items-center">
               <h2>Representative</h2>
               <a className="block i-tabler-edit text-2xl" />

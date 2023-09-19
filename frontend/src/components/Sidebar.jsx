@@ -35,28 +35,27 @@ export default function Sidebar() {
   let menuTeacher = [
     {
       label: "Dashboard",
-      link: "/teachers/dashboard",
+      link: "/teacher/dashboard",
       icon: "i-tabler-layout-dashboard",
     },
     {
       label: "Classes",
-      link: "/teachers/teachers",
+      link: "/teacher/teachers/classes",
       icon: "i-tabler-users-group",
     },
     {
       label: "Students",
-      link: "/teachers/students",
+      link: "/teacher/teachers/students",
       icon: "i-tabler-school",
     },
     {
       label: "Report",
-      link: "/teachers/report",
+      link: "/teacher/teachers/reports",
       icon: "i-tabler-report",
     },
     {
       label: "Profile",
-      link: "/teachers/teachersProfile",
-      // link: "/teachers/profile",
+      link: "/teacher/teachers/profile",
       icon: "i-tabler-user-circle",
     },
   ];
@@ -70,19 +69,16 @@ export default function Sidebar() {
     {
       label: "Ward",
       link: "/guardian/wards",
-      // link: "/guardian/students",
       icon: "i-tabler-school",
     },
     {
       label: "Guardian",
       link: "/guardian/guardians",
-      // link: "/guardian/teachers",
       icon: "i-tabler-user-shield",
     },
     {
       label: "Profile",
-      link: "/guardian/guardianProfile",
-      // link: "/guardian/profile",
+      link: "/guardian/guardians/profile",
       icon: "i-tabler-user-circle",
     },
   ];
@@ -249,10 +245,10 @@ export default function Sidebar() {
             icon: "i-tabler-school",
           },
         ];
-      } else if (location.pathname.startsWith("/teachers/")) {
+      } else if (location.pathname.startsWith("/teacher/")) {
         newMenu = menuTeacher;
       } else if (location.pathname.startsWith("/guardian/")) {
-        if (location.pathname === "/guardian/createGuardian") {
+        if (location.pathname === "/guardian/guardians/create") {
           newMenu = [
             {
               label: "Back",
@@ -261,7 +257,7 @@ export default function Sidebar() {
             },
             {
               label: "Create Guardian",
-              link: "/guardian/createGuardian",
+              link: "/guardian/guardians/create",
               icon: "i-tabler-user-plus",
             },
           ];

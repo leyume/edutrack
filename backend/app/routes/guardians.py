@@ -70,8 +70,8 @@ def create_guardian(
         student_id=user.student_id,
         institution_id=user.institution_id,
         guardian_id=new_guardian.id,
-        principal = user.principal if user.principal else 0,
-        exp_date = user.exp_date if user.exp_date else None
+        principal = user.principal if user.principal else 1,
+        expiry_date = user.expiry_date if user.expiry_date else None
     )
 
     db.add(new_relations)

@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 from typing import Optional,List
-from datetime import datetime, date
+from datetime import datetime
 # from .student import Student
 
 class UserPost(BaseModel): #serializer
@@ -58,7 +58,7 @@ class UserGuardian(BaseModel):
     institution_id: Optional[int] = None
     student_id: Optional[int] = None
     principal: Optional[int] = None
-    exp_date: Optional[date] = None
+    expiry_date: Optional[datetime] = None
 
 class UserPass(UserPost):
     email: str = 'chriss@yopmail.com'

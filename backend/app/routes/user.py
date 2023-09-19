@@ -72,7 +72,7 @@ def creating_user(user, db):
     # user.role = role
     # user.institution_id = 7
     user.status = 1
-    new_user = User(**user.dict(exclude={"password", "class_id", "subject_name", "student_id", "guardian_fname", "guardian_lname","guardian_relation", "guardian_email", "principal", "exp_date"}))
+    new_user = User(**user.dict(exclude={"password", "class_id", "subject_name", "student_id", "guardian_fname", "guardian_lname","guardian_relation", "guardian_email", "principal", "expiry_date"}))
     
     db.add(new_user)
     db.commit()

@@ -2,6 +2,7 @@
 from sqlalchemy.orm import Session
 from fastapi import Depends, HTTPException, status, APIRouter, Response
 from typing import Optional, List
+from sqlalchemy import and_
 
 # from models.index import get_db, Student, Tutor #StudentCourse
 # from schemas.user import UserFull as User, UserUpdate
@@ -10,7 +11,7 @@ from auth import auth
 from routes.user import creating_user
 
 from models.index import get_db, User, StudentGuardian
-from schemas.user import User as UserSchema, UserPost, UserUpdate, UserInstitution, UserPass, UserClass, UserGuardian
+from schemas.user import User as UserSchema, UserPost, UserUpdate, UserInstitution, UserPass, UserClass, UserGuardian, UserUpdateGuardian
 
 router = APIRouter()
 
@@ -22,7 +23,7 @@ router = APIRouter()
 @router.get("", response_model=List[UserInstitution], status_code=status.HTTP_200_OK)
 def get_guardians(db: Session = Depends(get_db), auth=Depends(auth)):
     if auth.role == 0:
-        users = db.query(User).filter(User.role == 3 and User.institution_id==auth.institution_id).all()
+        users = db.query(User).filter(and_(User.role == 3, User.institution_id==auth.institution_id)).all()
         return users
     else:
         raise HTTPException(status_code=403, detail="You are not authorized")
@@ -54,26 +55,35 @@ def create_guardian(
 
 @router.put("")
 def update_guardian(
-    user: UserUpdate, db: Session = Depends(get_db), auth=Depends(auth)
+    user: UserUpdateGuardian, db: Session = Depends(get_db), auth=Depends(auth)
 ):
-  try:
-    user.email = auth.email
-    user_dict = user.dict()
-    
-    db_user = db.query(User).filter(User.email==user.email).first()
+    if (auth.role == 0 or auth.role == 3):
+        try:
+            user.principal = user.principal if user.principal else 1
+            user.expiry_date = user.expiry_date if user.expiry_date else None
+            user_dict = user.dict()
+            
+            db_user = db.query(User).filter(User.email==user.email).first()
+            # if db_user is None:
+            #     raise HTTPException(status_code=404, detail="User does not exist")
+            #     #this error is not working. will come back to it -fixed!
 
-    # if db_user is None:
-    #     raise HTTPException(status_code=404, detail="User does not exist")
-    #     #this error is not working. will come back to it -fixed!
+            # Update the user attributes individually
+            for key, value in user_dict.items():
+                if (key != "principal" and key != "expiry_date" and key != "student_id"):
+                    setattr(db_user, key, value)
+            
+            db_relation = db.query(StudentGuardian).filter(and_(StudentGuardian.guardian_id==db_user.id, StudentGuardian.student_id==user.student_id)).first()
+            setattr(db_relation, "principal", user.principal)
+            setattr(db_relation, "expiry_date", user.expiry_date)
 
-     # Update the user attributes individually
-    for key, value in user_dict.items():
-        setattr(db_user, key, value)
-    db.commit()
-    return {"message": "Profile successfully updated"}
+            db.commit()
+            return {"message": "Profile successfully updated"}
 
-  except Exception as e:
-    raise HTTPException(status_code=404, detail="User does not exist")
+        except Exception as e:
+            raise HTTPException(status_code=404, detail="User does not exist")
+    else:
+        return {"message": "You are not authorized"}
 
 
 # @router.get("", response_model=User, status_code=status.HTTP_200_OK)

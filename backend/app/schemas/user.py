@@ -74,6 +74,33 @@ class UserUpdate(BaseModel): #serializer
     firstname: str = 'Chriss'
     lastname: str='Doe'
     phone: Optional[str] = None
+    relation: Optional[str] = None
+    principal: Optional[int] = None
+    expiry_date: Optional[datetime] = None
+    student_id: Optional[int] = None
+    class_id: Optional[int] = None
+
+class UserUpdateGuardian(BaseModel): #serializer
+    email: str = 'chriss@yopmail.com'
+    firstname: str = 'Chriss'
+    lastname: str='Doe'
+    phone: Optional[str] = None
+    relation: Optional[str] = None
+    principal: Optional[int] = None
+    expiry_date: Optional[datetime] = None
+    student_id: Optional[int] = None
+
+class UserUpdateStudent(BaseModel): #serializer
+    firstname: str = 'Chriss'
+    lastname: str='Doe'
+    student_id: int = None
+    class_id: int = None
+    status: Optional[str] = None
+    guardian_fname: str = 'Sandra'
+    guardian_lname: str = 'Doe'
+    guardian_relation: str = 'mother'
+    guardian_email: str = 'sandra@yopmail.com'
+    principal: Optional[int] = 1
 
 class UserUpdateInstitution(BaseModel): #serializer
     email: str = 'chriss@yopmail.com'

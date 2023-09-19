@@ -10,9 +10,11 @@ import random
 from auth import auth
 from routes.user import creating_user
 from routes.guardians import create_guardian
+from routes.guardians import update_guardian
+
 
 from models.index import get_db, User, StudentClass
-from schemas.user import User as UserSchema, UserStudent, UserUpdate, UserInstitution, UserClass, UserGuardian
+from schemas.user import User as UserSchema, UserStudent, UserUpdate, UserInstitution, UserClass, UserGuardian, UserUpdateStudent
 
 router = APIRouter()
 
@@ -69,27 +71,46 @@ def create_student(
 
 @router.put("")
 def update_student(
-    user: UserUpdate, db: Session = Depends(get_db)
+    user: UserUpdateStudent, db: Session = Depends(get_db)
 ):
-  try:
-    user_dict = user.dict()
-    
-    db_user = db.query(User).filter(User.email==user.email).first()
+    if auth.role == 3:
+        try:
 
-    # if db_user is None:
-    #     raise HTTPException(status_code=404, detail="User does not exist")
-    #     #this error is not working. will come back to it -fixed!
+            user_dict = user.dict()
+            
+            db_user = db.query(User).filter(User.id==user.student_id).first()
+            setattr(db_user, "firstname", user.firstname)
+            setattr(db_user, "lastname", user.lastname)
 
-     # Update the user attributes individually
-    for key, value in user_dict.items():
-        setattr(db_user, key, value)
-    db.commit()
-    return {"message": "Profile successfully updated"}
+            db_class = db.query(StudentClass).filter(StudentClass.student_id == user.student_id).first()
+            setattr(db_class, "class_id", user.class_id)
 
-  except Exception as e:
-    raise HTTPException(status_code=404, detail="User does not exist")
+            db_guardian = {
+                "firstname": user.guardian_fname,
+                "lastname": user.guardian_lname,
+                "email": user.guardian_email,
+                "relation": user.guardian_relation,
+                "student_id": user.student_id
+            }
+
+            update_guardian(db_guardian, db, auth)
 
 
+            # if db_user is None:
+            #     raise HTTPException(status_code=404, detail="User does not exist")
+            #     #this error is not working. will come back to it -fixed!
+
+            # Update the user attributes individually
+            for key, value in user_dict.items():
+                setattr(db_user, key, value)
+            db.commit()
+            return {"message": "Profile successfully updated"}
+
+        except Exception as e:
+            raise HTTPException(status_code=404, detail="User does not exist")
+
+    else:
+        return {"message": "You are not authorized"}
 # @router.get("", response_model=User, status_code=status.HTTP_200_OK)
 # def get_user(db: Session = Depends(get_db), auth=Depends(auth)):
 #     return auth

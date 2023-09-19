@@ -22,6 +22,7 @@ class User(Base):
     institution = relationship("Institution", back_populates="users")
     classes = relationship("Classes", secondary="students_classes", back_populates="students")
     subjects = relationship("Subject", secondary="students_subjects", back_populates="students")
+    attendance = relationship("Attendance", primaryjoin='User.id == Attendance.student_id', back_populates="users")
 
     guardians = relationship(
         "User",
@@ -55,8 +56,6 @@ class User(Base):
         backref="teacherx",
     )
     
-
-
 
     def __repr__(self):
         return f"<User firstname={self.firstname} email={self.email}>"

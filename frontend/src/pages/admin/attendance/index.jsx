@@ -1,12 +1,36 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import PageLabel from "~/components/PageLabel";
+import { QrScanner } from "react-qrcode-scanner";
 
 function Attendance() {
+  const [scan, setScan] = useState(false);
+  const navigate = useNavigate();
+
+  const handleScan = (value) => {
+    console.log({ value });
+    setScan(false);
+    navigate("/admin/attendance/" + value);
+  };
+
+  const handleError = (error) => console.log({ error });
+
   return (
     <>
       <div className="px-6">
-        <PageLabel title="Manage Attendance" details="Let’s keep in track with your Institution Details." />
+        <div className="flex gap-6">
+          <PageLabel title="Manage Attendance" details="Let’s keep in track with your Institution Details." className="flex-grow" />
+          <a onClick={() => setScan(true)} className="grid grid-cols-2 w-48 b b-solid b-gray-300 rounded-lg p-2 items-center">
+            <b className="text-brand-pink">Click Here to Scan Attendance</b>
+            <img src="/images/qr.png" alt="qrcode" className="w-full" />
+          </a>
+        </div>
+
+        {scan && (
+          <section onClick={() => setScan(false)} className="fixed top-0 left-0 h-screen w-screen bg-black bg-opacity-80 z-1000">
+            <QrScanner onScan={handleScan} onError={handleError} />
+          </section>
+        )}
 
         <section
           className="

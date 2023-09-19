@@ -18,7 +18,22 @@ export default function Signin() {
         // Signed in
         const user = userCredential.user;
         await localStorage.setItem("token", user.accessToken);
-        navigate("/admin/dashboard");
+        // console.log({ user });
+
+        await auth.currentUser
+          .getIdTokenResult()
+          .then((idTokenResult) => {
+            // Confirm the user is an Admin.
+            let role = "";
+            if (idTokenResult.claims.role === 0 || user.email == "etjohn@yopmail.com") role = "admin";
+            else if (idTokenResult.claims.role === 1) role = "teacher";
+            else if (idTokenResult.claims.role === 3) role = "guardian";
+
+            if (role) navigate("/" + role + "/dashboard");
+          })
+          .catch((error) => {
+            console.log(error);
+          });
       })
       .catch((error) => {
         const errorCode = error.code;

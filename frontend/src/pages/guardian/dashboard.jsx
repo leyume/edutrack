@@ -17,26 +17,26 @@ const Dashboard = () => {
             </div>
         </section>
 
-        <section className="grid grid-cols-3 items-center text-center justify-center gap-6 [&>div]:h-35 [&>div]:py-6 [&>div]:bg-brand-orange [&>div]:rounded-2 [&>div>h1]:text-7xl">
-                <div>
-                    <h4>Total Wards</h4>
-                    <h1>4</h1>
-                </div>
-                <div>
-                    <h4>Total Guardian</h4>
-                    <h1>4</h1>
-                </div>
-                <div className="grid grid-cols-1 place-items-center">
-                    <h3 className="text-6 text-center">Need A New Guardian?</h3>
-                    <Link to="/guardian/guardians/create" className="btn">Create</Link>
-                </div>
-            </section>
+        <section className="grid grid-cols-3 gap-6">
+            <div className="bg-brand-orange p-3 h-50 grid grid-cols-1 place-items-center gap-4 rounded-2">
+                <h3 className="text-5 text-center">Total Wards</h3>
+                <h1 className="text-30">4</h1>
+            </div>
+            <div className="bg-brand-orange p-3 h-50 grid grid-cols-1 place-items-center gap-4 rounded-2">
+                <h3 className="text-5 text-center">Total Guardian</h3>
+                <h1 className="text-30">4</h1>
+            </div>
+            <div className="bg-brand-orange p-3 h-50 grid grid-cols-1 place-items-center gap-4 rounded-2">
+                <h3 className="text-8 text-center">Need A New Guardian?</h3>
+                <Link to="/guardian/createGuardian" className="btn">Create</Link>
+            </div>    
+        </section>
 
         <section className="w-full flex justify-between gap-6 mb-5">
                 <div className="bg-brand-litepink p-7 grid grid-cols-1 w-2/4 gap-4 rounded-2">
                     <div className="flex items-center justify-between">
                         <h1>Guardian</h1>
-                        <Link to="/guardian/guardians/profile" className="i-tabler-edit"></Link>
+                        <Link to="" className="i-tabler-edit"></Link>
                     </div>
 
                     <div className="grid grid-cols-1 place-items-center">

@@ -58,93 +58,92 @@ function Dashboard() {
               <p>tabitawillson@gmail.com</p>
             </div>
           </div>
-          
-            <div className="w-4/4 bg-brand-liteorange p-7 rounded-2">
-              <h3>Students Performance Leader Board</h3>
-    
-              <table className="w-full text-center my-3">
-                  <thead className="text-4 text-#84868A">
-                      <tr>
-                      <th>S/N</th>
-                      <th>NAME</th>
-                      <th>CLASS</th>
-                      <th>SUBJECTS</th>
-                      <th>AVERAGE</th>
-                      </tr>
-                  </thead>
-                  <tbody className="text-4">
-                      <tr>
-                          <td>1</td>
-                          <td>Charlie Rawal</td>
-                          <td>SS 3</td>
-                          <td>24</td>
-                          <td>99.8</td>
-                      </tr>
-                      <tr>
-                          <td>2</td>
-                          <td>Ariana Agarwal</td>
-                          <td>JS 2</td>
-                          <td>20</td>
-                          <td>87.5</td>
-                      </tr>
-                      <tr>
-                          <td>2</td>
-                          <td>Ariana Agarwal</td>
-                          <td>JS 2</td>
-                          <td>20</td>
-                          <td>87.5</td>
-                      </tr>
-                      <tr>
-                          <td>2</td>
-                          <td>Ariana Agarwal</td>
-                          <td>JS 2</td>
-                          <td>20</td>
-                          <td>87.5</td>
-                      </tr>
-                      <tr>
-                          <td>2</td>
-                          <td>Ariana Agarwal</td>
-                          <td>JS 2</td>
-                          <td>20</td>
-                          <td>87.5</td>
-                      </tr>
-                      <tr>
-                          <td>2</td>
-                          <td>Ariana Agarwal</td>
-                          <td>JS 2</td>
-                          <td>20</td>
-                          <td>87.5</td>
-                      </tr>
-                      <tr>
-                          <td>2</td>
-                          <td>Ariana Agarwal</td>
-                          <td>JS 2</td>
-                          <td>20</td>
-                          <td>87.5</td>
-                      </tr>
-                      <tr>
-                          <td>2</td>
-                          <td>Ariana Agarwal</td>
-                          <td>JS 2</td>
-                          <td>20</td>
-                          <td>87.5</td>
-                      </tr>
-                      <tr>
-                          <td>2</td>
-                          <td>Ariana Agarwal</td>
-                          <td>JS 2</td>
-                          <td>20</td>
-                          <td>87.5</td>
-                      </tr>
-                      <tr>
-                          <td>2</td>
-                          <td>Ariana Agarwal</td>
-                          <td>JS 2</td>
-                          <td>20</td>
-                          <td>87.5</td>
-                      </tr>
-                  </tbody>
-              </table>
+          <div className="col-span-2 bg-brand-liteorange p-7 rounded-2">
+            <h3>Students Performance Leader Board</h3>
+
+            <table className="w-full text-center my-3">
+              <thead className="text-4 text-#84868A">
+                <tr>
+                  <th>S/N</th>
+                  <th>NAME</th>
+                  <th>CLASS</th>
+                  <th>SUBJECTS</th>
+                  <th>AVERAGE</th>
+                </tr>
+              </thead>
+              <tbody className="text-4">
+                <tr>
+                  <td>1</td>
+                  <td>Charlie Rawal</td>
+                  <td>SS 3</td>
+                  <td>24</td>
+                  <td>99.8</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Ariana Agarwal</td>
+                  <td>JS 2</td>
+                  <td>20</td>
+                  <td>87.5</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Ariana Agarwal</td>
+                  <td>JS 2</td>
+                  <td>20</td>
+                  <td>87.5</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Ariana Agarwal</td>
+                  <td>JS 2</td>
+                  <td>20</td>
+                  <td>87.5</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Ariana Agarwal</td>
+                  <td>JS 2</td>
+                  <td>20</td>
+                  <td>87.5</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Ariana Agarwal</td>
+                  <td>JS 2</td>
+                  <td>20</td>
+                  <td>87.5</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Ariana Agarwal</td>
+                  <td>JS 2</td>
+                  <td>20</td>
+                  <td>87.5</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Ariana Agarwal</td>
+                  <td>JS 2</td>
+                  <td>20</td>
+                  <td>87.5</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Ariana Agarwal</td>
+                  <td>JS 2</td>
+                  <td>20</td>
+                  <td>87.5</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Ariana Agarwal</td>
+                  <td>JS 2</td>
+                  <td>20</td>
+                  <td>87.5</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </section>
       </div>

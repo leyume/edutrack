@@ -28,7 +28,7 @@ function Dashboard() {
             </div>
             <p className="">Let’s keep in track with your Institution Details.</p>
           </div>
-          <img className="h-35vh col-span-2 w-full" src="/images/image-12.jpeg" alt="img" />
+          <img className="h-70 col-span-2 w-full" src="/images/image-12.jpeg" alt="img" />
         </section>
 
         <section className="grid grid-cols-3 items-center text-center justify-center gap-6 my-6 [&>div]:py-6 [&>div]:bg-brand-orange [&>div]:rounded-2 [&>div>h1]:text-7xl">
@@ -46,8 +46,8 @@ function Dashboard() {
           </div>
         </section>
 
-        <section className="grid grid-cols-3 gap-6 [&>div]:rounded-2 mb-12">
-          <div className="bg-brand-litepink p-6">
+        <section className="w-full flex justify-between gap-6 mb-5">
+          <div className="bg-brand-litepink p-7 grid grid-cols-1 w-2/4 gap-4 rounded-2">
             <div className="flex justify-between items-center">
               <h2>Representative</h2>
               <a className="block i-tabler-edit text-2xl" />
@@ -58,82 +58,93 @@ function Dashboard() {
               <p>tabitawillson@gmail.com</p>
             </div>
           </div>
-          <div className="bg-brand-liteorange col-span-2">
-            <div>
-              <h2 className="font-bold">Students Performance Leader Board</h2>
-            </div>
-            <div className="text-#84868A flex items-center justify-between pt-3 pb-2 pr-10">
-              <p>RANK</p>
-              <p>NAME</p>
-              <p>CLASS</p>
-              <p>SUBJECT</p>
-              <p>AVERAGE</p>
-            </div>
-            <div className="flex items-center justify-between mb-4">
-              <div className="flex gap-2">
-                <p className="bg-white w-5 h-5 rounded-1 pl-1">1</p>
-                <img src="/images/polygon-1.jpeg" alt="img" />
-              </div>
-              <div className="flex gap-2">
-                <img className="rounded-2" src="/images/ellipse-11.jpeg" alt="img" />
-                <p>Charlie Rawal</p>
-              </div>
-              <p className="pr-9vh">SS 3</p>
-              <p className="mr-13vh">24</p>
-              <p className="mr-9vh text-#3BAFA8">99.8</p>
-            </div>
-            <div className="flex items-center justify-between mb-4">
-              <div className="flex gap-2">
-                <p className="bg-white w-5 h-5 rounded-1 pl-1">2</p>
-                <img className="" src="/images/polygon-2.jpeg" alt="img" />
-              </div>
-              <div className="flex gap-2">
-                <img className="rounded-2" src="/images/ellipse-12.jpeg" alt="img" />
-                <p>Ariana Agarwal</p>
-              </div>
-              <p className="pr-9vh">JS 2</p>
-              <p className="pr-13vh">20</p>
-              <p className="mr-9vh text-#3BAFA8">87.5</p>
-            </div>
-            <div className="flex items-center justify-between mb-4">
-              <div className="flex gap-2">
-                <p className="bg-#fff w-5 h-5 rounded-1 pl-1">3</p>
-                <img className="" src="/images/polygon-2.jpeg" alt="img" />
-              </div>
-              <div className="flex gap-2">
-                <img className="rounded-2" src="/images/ellipse-12.jpeg" alt="img" />
-                <p>Ariana Agarwal</p>
-              </div>
-              <p className="pr-9vh">JS 3</p>
-              <p className="mr-13vh">20</p>
-              <p className="mr-9vh text-#3BAFA8">78.2</p>
-            </div>
-            <div className="flex items-center justify-between mb-4">
-              <div className="flex gap-2">
-                <p className="bg-#fff w-5 h-5 rounded-1 pl-1">4</p>
-                <img className="" src="/images/polygon-2.jpeg" alt="img" />
-              </div>
-              <div className="flex gap-2">
-                <img className="rounded-2" src="/images/ellipse-12.jpeg" alt="img" />
-                <p>Ariana Agarwal</p>
-              </div>
-              <p className="pr-9vh">SS 1</p>
-              <p className="mr-13vh">22</p>
-              <p className="mr-9vh text-#3BAFA8">50.5</p>
-            </div>
-            <div className="flex items-center justify-between">
-              <div className="flex gap-2">
-                <p className="bg-#fff w-5 h-5 rounded-1 pl-1">5</p>
-                <img className="" src="/images/polygon-2.jpeg" alt="img" />
-              </div>
-              <div className="flex gap-2">
-                <img className="rounded-2" src="/images/ellipse-12.jpeg" alt="img" />
-                <p>Ariana Agarwal</p>
-              </div>
-              <p className="pr-9vh">SS 3</p>
-              <p className="mr-13vh">24</p>
-              <p className="mr-9vh text-#3BAFA8">48.8</p>
-            </div>
+          
+            <div className="w-4/4 bg-brand-liteorange p-7 rounded-2">
+              <h3>Students Performance Leader Board</h3>
+    
+              <table className="w-full text-center my-3">
+                  <thead className="text-4 text-#84868A">
+                      <tr>
+                      <th>S/N</th>
+                      <th>NAME</th>
+                      <th>CLASS</th>
+                      <th>SUBJECTS</th>
+                      <th>AVERAGE</th>
+                      </tr>
+                  </thead>
+                  <tbody className="text-4">
+                      <tr>
+                          <td>1</td>
+                          <td>Charlie Rawal</td>
+                          <td>SS 3</td>
+                          <td>24</td>
+                          <td>99.8</td>
+                      </tr>
+                      <tr>
+                          <td>2</td>
+                          <td>Ariana Agarwal</td>
+                          <td>JS 2</td>
+                          <td>20</td>
+                          <td>87.5</td>
+                      </tr>
+                      <tr>
+                          <td>2</td>
+                          <td>Ariana Agarwal</td>
+                          <td>JS 2</td>
+                          <td>20</td>
+                          <td>87.5</td>
+                      </tr>
+                      <tr>
+                          <td>2</td>
+                          <td>Ariana Agarwal</td>
+                          <td>JS 2</td>
+                          <td>20</td>
+                          <td>87.5</td>
+                      </tr>
+                      <tr>
+                          <td>2</td>
+                          <td>Ariana Agarwal</td>
+                          <td>JS 2</td>
+                          <td>20</td>
+                          <td>87.5</td>
+                      </tr>
+                      <tr>
+                          <td>2</td>
+                          <td>Ariana Agarwal</td>
+                          <td>JS 2</td>
+                          <td>20</td>
+                          <td>87.5</td>
+                      </tr>
+                      <tr>
+                          <td>2</td>
+                          <td>Ariana Agarwal</td>
+                          <td>JS 2</td>
+                          <td>20</td>
+                          <td>87.5</td>
+                      </tr>
+                      <tr>
+                          <td>2</td>
+                          <td>Ariana Agarwal</td>
+                          <td>JS 2</td>
+                          <td>20</td>
+                          <td>87.5</td>
+                      </tr>
+                      <tr>
+                          <td>2</td>
+                          <td>Ariana Agarwal</td>
+                          <td>JS 2</td>
+                          <td>20</td>
+                          <td>87.5</td>
+                      </tr>
+                      <tr>
+                          <td>2</td>
+                          <td>Ariana Agarwal</td>
+                          <td>JS 2</td>
+                          <td>20</td>
+                          <td>87.5</td>
+                      </tr>
+                  </tbody>
+              </table>
           </div>
         </section>
       </div>

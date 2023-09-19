@@ -12,7 +12,7 @@ const Guardians = () => {
 
                 <div className="bg-brand-orange rounded-tr-2 rounded-br-2 p-5 grid grid-cols-2 gap-4 place-items-center text-center">
                 <h1>Want To Add New <br /> Guardian?</h1>
-                <Link to="/guardian/createGuardian" className="btn">Create</Link>
+                <Link to="/guardian/guardians/create" className="btn">Create</Link>
                 </div>
             </section>
 
@@ -37,7 +37,7 @@ const Guardians = () => {
                     </div>
 
                     <div className="grid grid-cols-2 place-items-center gap-8">
-                        <Link to="/guardian/guardianProfile" className="btn">Profile</Link>
+                        <Link to="/guardian/guardians/profile" className="btn">Profile</Link>
                         <button className="btn">Delete</button>
                     </div>
                 </div>

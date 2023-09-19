@@ -13,7 +13,7 @@ class StudentGuardian(Base):
     guardian_id = Column(Integer, ForeignKey('users.id'))
     institution_id = Column(Integer, ForeignKey('institutions.id'))
     principal = Column(Integer)
-    exp_date = Column(DateTime)
+    expiry_date = Column(DateTime)
 
     # user = relationship("User", backref="user_roles")
     # role = relationship("Role", backref="role_users")

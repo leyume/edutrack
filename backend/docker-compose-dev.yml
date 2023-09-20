@@ -1,7 +1,7 @@
 version: "3"
 
 services:
-  ti_fastapi:
+  et_fastapi:
     build: .
     restart: always
     volumes:
@@ -10,11 +10,11 @@ services:
     ports:
       - 8221:80
     depends_on:
-      - ti_data
+      - et_data
     links:
-      - ti_data
+      - et_data
 
-  ti_data:
+  et_data:
     image: leyume/mariadb
     # image: jbergstroem/mariadb-alpine:latest
     volumes:
@@ -29,12 +29,12 @@ services:
       MYSQL_ROOT_PASSWORD: "${MARIADB_PASSWORD}"
       # SKIP_INNODB: "no"
 
-  ti_adminer:
+  et_adminer:
     image: leyume/adminer:mysql
     restart: always
     ports:
       - 8220:80
     depends_on:
-      - ti_data
+      - et_data
     links:
-      - ti_data
+      - et_data

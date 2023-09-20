@@ -165,3 +165,31 @@ class UserClass(UserInstitution):
     teachers: List[UserX]
     students: List[UserX]
     subjects: List[Subject]
+
+# Ward and Attendance
+
+class Attendance(BaseModel):
+    id: Optional[int] = None
+    date: datetime 
+    student_id: int
+    guardian_arrival_id: int 
+    arrival: datetime 
+    guardian_departure_id: int 
+    departure: datetime 
+    guardian_arrival: UserX
+    guardian_departure: UserX
+
+    class Config:
+        orm_mode = True
+
+class UserA(BaseModel):
+    id: Optional[int] = None
+    firstname: str 
+    lastname: str
+    attendance: List[Attendance]
+
+    class Config:
+        orm_mode = True
+
+class UserGuardianWard(UserInstitution): 
+    wards: List[UserA]

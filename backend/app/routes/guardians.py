@@ -1,5 +1,6 @@
 
 from sqlalchemy.orm import Session
+from sqlalchemy import and_
 from fastapi import Depends, HTTPException, status, APIRouter, Response
 from typing import Optional, List
 from sqlalchemy import and_
@@ -11,7 +12,7 @@ from auth import auth
 from routes.user import creating_user
 
 from models.index import get_db, User, StudentGuardian
-from schemas.user import User as UserSchema, UserPost, UserUpdate, UserInstitution, UserPass, UserClass, UserGuardian, UserUpdateGuardian
+from schemas.user import User as UserSchema, UserPost, UserUpdate, UserInstitution, UserPass, UserClass, UserGuardian, UserUpdateGuardian, UserGuardianWard
 
 router = APIRouter()
 
@@ -27,6 +28,33 @@ def get_guardians(db: Session = Depends(get_db), auth=Depends(auth)):
         return users
     else:
         raise HTTPException(status_code=403, detail="You are not authorized")
+
+
+
+@router.get("/qrcode/{code}", response_model=UserGuardianWard, status_code=status.HTTP_200_OK)
+# @router.get("/{qrcode}", status_code=status.HTTP_200_OK)
+def get_guardian(code, db: Session = Depends(get_db)): #, auth=Depends(auth)
+    coded = code.split('_')
+
+    auth = {"institution_id":7}
+
+    if coded[1]:
+        guard_id = coded[1]
+        # user = db.query(User).filter(User.role == 3 and User.institution_id==auth.institution_id).first()
+        # user = db.query(User).filter(User.role == 3 and User.institution_id==7).first()
+        user = db.query(User).filter(and_(User.id == guard_id, User.role == 3, User.institution_id==7)).first()
+        return user
+
+    return {
+        "Jane": "Nginika",
+        "code": coded[1],
+        "auth": auth['institution_id']
+    }
+    # if auth.role == 0:
+    #     users = db.query(User).filter(User.role == 3 and User.institution_id==auth.institution_id).all()
+    #     return users
+    # else:
+    #     raise HTTPException(status_code=403, detail="You are not authorized")
 
 
 @router.post("", response_model=UserSchema, status_code=status.HTTP_201_CREATED)

@@ -20,6 +20,7 @@ export default function HeaderInternal() {
   };
 
   return (
+<<<<<<< HEAD
     <header className="flex items-center justify-end gap-3 mt-5 ml-60 mb-6 px-10">
       {isSuccess && data?.institution?.name && (
         <div>
@@ -29,6 +30,14 @@ export default function HeaderInternal() {
       )}
       <img src="/images/image-11.jpeg" alt="img" className="w-10" />
       <a onClick={logout} className="i-tabler-caret-down-filled text-2xl inline-block" />
+=======
+    <header className="flex items-center justify-end gap-20px mt-20px mr-8 mb-6">
+      {isSuccess && data?.institution?.name && <h3>{data.institution.name}</h3>}
+      <img src="/images/image-11.jpeg" alt="img"className="w-10" />
+      <a onClick={logout}>
+        <img src="/images/vector-1.jpeg" alt="img" className="w-8"/>
+      </a>
+>>>>>>> 98cfe28 (resfresh footer, sidebar and headerinternal)
     </header>
   );
 }

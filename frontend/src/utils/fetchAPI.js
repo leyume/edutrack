@@ -9,7 +9,7 @@ export default async function api(endpoint, method = "GET", data, upload = false
       // Post/GET to API
       let action = { headers: {}, method };
       if (endpoint != "register") action.headers.Authorization = "Bearer " + token;
-      if (method == "POST") action.body = upload ? data : JSON.stringify(data);
+      if (method != "GET") action.body = upload ? data : JSON.stringify(data);
       if (!upload) action.headers["Content-Type"] = "application/json";
 
       let rdata = await fetch(BaseURL + endpoint, action);

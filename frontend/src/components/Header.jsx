@@ -1,28 +1,50 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router";
+import { useState, useEffect } from "react";
 
 export default function Header() {
   let location = useLocation();
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return location.pathname == "/" ? (
-    <header className="flex items-center justify-between px-5% py-5 -mb-20">
+    <header
+      className={`flex items-center justify-between px-5% py-5 ${
+        scrolled ? "scrolled" : ""
+      }`}
+    >
       <Link to="/admin/dashboard" className="text-brand-pink text-4xl font-bold">
         Edu<span className="text-brand-blue">Track</span>
       </Link>
       <nav className="[&>ul>li>a]:text-brand-blue [&>ul>li>a:hover]:text-brand-pink">
         <ul className="list-none flex gap-5">
           <li>
-            <a href="/">Home</a>
+            <a href="/#hero">Home</a>
           </li>
           <li>
             <a href="/#about">About</a>
           </li>
           <li>
-            <a href="/services">Services</a>
+            <a href="/#services">Services</a>
           </li>
           <li>
-            <a href="/review">Review</a>
+            <a href="/#review">Review</a>
           </li>
           <li>
             <a href="/#questions">FAQ</a>

@@ -1,131 +1,114 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 function Testimony() {
-  return (
-    <div className="bg-#E5E2EA text-center py-20 h-250">
-      <h3 className="text-brand-blue text-5xl mb-10">Testimonials</h3>
-      <p className="text-brand-pink text-4xl tracking-tight text-center">
+  const testimonials = [
+    {
+      name: "Fredrick Rosemary",
+      text: "I highly recommend EduTrack to all schools. It's intuitive, and the support team is fantastic. Our parents are thrilled with the system.",
+      img: "/images/image-8.jpeg",
+    },
+    {
+      name: "Willson Micheal",
+      text: "As a parent, EduTrack gives me peace of mind knowing that I can easily access my child's records and attendance. It's a game-changer.",
+      img: "/images/image-9.jpeg",
+    },
+    {
+      name: "Jackson Jennifer",
+      text: "I've been using EduTrack for a year now, and I'm amazed at how much it streamlines our school operations. The QR code pickup feature is a lifesaver!",
+      img: "/images/image-10.jpeg",
+    },
+    
+    {
+      name: "Jackson Jennifer",
+      text: "EduTrack has improved our school's communication with parents and guardians. The feedback we've received from them has been overwhelmingly positive.",
+      img: "/images/image-10.jpeg",
+    },
+    {
+      name: "Jackson Jennifer",
+      text: "EduTrack is the best school management system I've ever used. It's made our administrative tasks so much easier and more efficient.",
+      img: "/images/image-10.jpeg",
+    },
+    {
+      name: "Jackson Jennifer",
+      text: "EduTrack has revolutionized the way we manage our school. It's incredibly user-friendly, and our teachers love the attendance management feature.",
+      img: "/images/image-10.jpeg",
+    },
+    
+  ];
+
+   return (
+    <section id="review" className="bg-brand-gray pt-25 pb-15 relative px-15 grid grid-cols-1">
+      <h3 className="text-brand-blue text-center text-5xl mb-4">Testimonials</h3>
+      <p className="text-brand-pink text-center text-2xl tracking-tight text-center">
         What our users say about us.
       </p>
-      <div className="flex h-37%">
-        <div className="rounded-10 w-30%  bg-#fff mt-5% ml-10 h-90%">
-          <div className="text-1xl mb-30%">
-            <div className="flex gap-8% ml-10 mt-5">
-              <img src="/images/image-8.jpeg" alt="img" />
-              <h4 className="mt-6 text-100% text-2xl">Fredrick Rosemary</h4>
+
+      <section className="overflow-hidden w-full my-5 py-5">
+        <div className="flex items-center gap-4 w-180% ">
+          {testimonials.map((testimonial, index) => (
+            <div
+              key={index}
+              className="rounded-5 bg-white p-5 h-60 w-1/3 shadow-md"
+            >
+              <div className="flex items-center mb-3">
+                <img src={testimonial.img} alt="img" className="w-13" />
+                <h4 className="text-2xl ml-5">{testimonial.name}</h4>
+              </div>
+
+              <div className="flex mb-3">
+                <img src="/images/icon.jpeg" alt="img" className="w-6 h-8 ml-2" />
+                <p className="text-left ml-3">{testimonial.text}</p>
+              </div>
+
+              <div className="flex items-center ml-10 text-5 text-brand-pink">
+                <span className="i-tabler-star-filled" />
+                <span className="i-tabler-star-filled" />
+                <span className="i-tabler-star-filled" />
+                <span className="i-tabler-star-filled" />
+                <span className="i-tabler-star-half-filled" />
+              </div>
             </div>
-            <div className="flex">
-              <img src="/images/icon.jpeg" alt="img" className="w-6 h-8 ml-2" />
-              <p className="mt-5 leading-normal text-100%">
-                Excepteur sint occaecat non proident, sunt in culpa qui officia
-                deserunt mollit anim id est laborum. Duis aute irure dolor
-              </p>
-            </div>
-            <div>
-              <img
-                src="/images/star-icon.jpeg"
-                alt="img"
-                className="mt-10 mr-45"
-              />
-            </div>
-          </div>
+          ))}
         </div>
-        <div className="rounded-10 w-30% bg-#fff mt-5% ml-10 h-90%">
-          <div className="text-1xl mb-30%">
-            <div className="flex gap-8% ml-10 mt-5">
-              <img src="/images/image-9.jpeg" alt="img" />
-              <h4 className="mt-6 text-100% text-2xl">Willson Micheal</h4>
+      </section>
+      <section className="flex items-center mx-auto text-10 text-brand-pink grid gap-8 mb-40">
+        <span
+          className="i-tabler-arrow-big-left-filled cursor-pointer"
+        />
+        <span
+          className="i-tabler-arrow-big-right-filled cursor-pointer"
+        />
+      </section>
+
+      <div className="px-50 py-10 grid grid-cols-1 place-items-center gap-4 text-center absolute bottom--30 left-20">
+        <h3 className="text-3xl mb-5 text-brand-pink">We are trusted by</h3>
+        <div className="grid grid-cols-3 gap-6 text-black text-center">
+          <div className="bg-white shadow-md rounded-5 p-10 grid gap-4 grid-cols-1 place-items-center">
+            <div className="text-3xl flex items-center gap-4">
+              <span className="i-tabler-school text-brand-blue text-5xl" />{" "}
+              <h1>500+</h1>
             </div>
-            <div className="flex">
-              <img src="/images/icon.jpeg" alt="img" className="w-6 h-8 ml-2" />
-              <p className="mt-5 leading-normal text-100%">
-                Excepteur sint occaecat non proident, sunt in culpa qui officia
-                deserunt mollit anim id est laborum. Duis aute irure dolor in
-                reprehenderit in voluptate velit esse cillium dolore eu fugiat
-                nulla pariatur
-              </p>
-            </div>
-            <div>
-              <img
-                src="/images/star-icon.jpeg"
-                alt="img"
-                className="mt-5 mr-45"
-              />
-            </div>
+            <p className="text-6">Schools</p>
           </div>
-        </div>
-        <div className="rounded-10 w-30% bg-#fff mt-5% ml-10 h-90%">
-          <div className="text-1xl mb-30% mt-5">
-            <div className="flex gap-8% ml-10">
-              <img src="/images/image-10.jpeg" alt="img" />
-              <h4 className="mt-6 text-100% text-2xl">Jackson Jennifer</h4>
+
+          <div className="bg-white shadow-md rounded-5 p-10 grid gap-4 grid-cols-1 place-items-center">
+            <div className="text-3xl flex items-center gap-4">
+              <span className="i-tabler-book text-brand-blue text-5xl" />{" "}
+              <h1>1500+</h1>
             </div>
-            <div className="flex">
-              <img src="/images/icon.jpeg" alt="img" className="w-6 h-8 ml-2" />
-              <p className="mt-5 leading-normal text-100%">
-                Excepteur sint occaecat non proident, sunt in culpa qui officia
-                deserunt mollit anim id est laborum. Duis aute irure dolor in
-                reprehenderit in voluptate velit esse cillium dolore eu fugiat
-                nulla pariatur
-              </p>
+            <p className="text-6">Teachers</p>
+          </div>
+
+          <div className="bg-white shadow-md rounded-5 p-10 grid gap-4 grid-cols-1 place-items-center">
+            <div className="text-3xl flex items-center gap-4">
+              <span className="i-tabler-user-circle text-brand-blue text-5xl" />{" "}
+              <h1>99,000</h1>
             </div>
-            <div>
-              <img
-                src="/images/star-icon.jpeg"
-                alt="img"
-                className="mt-5 mr-45"
-              />
-            </div>
+            <p className="text-6">Guardians</p>
           </div>
         </div>
       </div>
-      <div className=" text-brand-pink text-4xl tracking-tight text-center mt-30">
-        <p className="mb-15">We are trusted by</p>
-        <div className="flex">
-          <div className="bg-#fff w-95 h-40 rounded-10 shadow-md ml-15 pt-0.1">
-            <div className="bg-#2375F0 w-18 h-18 rounded-15 ml-6 mt-10 flex gap-4 pl-3">
-              <div>
-                <img src="/images/hat.jpeg" alt="img" className="mt-2 pr-2" />
-              </div>
-              <div className="text-#16161B mt-4">
-                <h1 className="mb-2">500+</h1>
-                <p>Schools</p>
-              </div>
-            </div>
-          </div>
-          <div className="bg-#fff w-95 h-40 rounded-10 shadow-md ml-15 pt-0.1">
-            <div className="bg-#2375F0; w-20 h-20 rounded-15 ml-1 mt-10 flex pl-4">
-              <div>
-                <img
-                  src="/images/book-icon.jpeg"
-                  alt="img"
-                  className="mt-2 pr-2"
-                />
-              </div>
-              <div className="text-#16161B mt-4">
-                <h1 className="mb-2">15,000+</h1>
-                <p>Teacher</p>
-              </div>
-            </div>
-          </div>
-          <div className="bg-#fff w-95 h-40 rounded-10 shadow-md ml-15 pt-0.1">
-            <div className="bg-#2375F0; w-20 h-20 rounded-15 mt-10 flex pl-4">
-              <div>
-                <img
-                  src="/images/group-icon.jpeg"
-                  alt="img"
-                  className="mt-2 pr-2 w-20"
-                />
-              </div>
-              <div className="text-#16161B mt-4">
-                <h1 className="mb-2">99,000+</h1>
-                <p>Parent</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    </section>
   );
 }
 

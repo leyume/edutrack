@@ -9,7 +9,7 @@ import Question from "../components/Question/Question";
 export default function Home() {
   return (
     <div>
-      <section className="hero pt-20 h-98vh bg-cover bg-center">
+      <section id="hero" className="hero pt-20 h-98vh bg-cover bg-center">
         <div className="text-center text-brand-blue">
           <h1 className="text-4xl mt-8 mb-10">
             Keep <span className="text-brand-pink">track</span> of your

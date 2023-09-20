@@ -1,14 +1,16 @@
-import { useEffect } from "react";
+import { useState } from "react";
 import signbg from "/images/sign-bg.png";
 import { Link, useNavigate } from "react-router-dom";
 import { auth, signInWithEmailAndPassword } from "../config";
 // import { useQuery, useQueryClient } from "@tanstack/react-query";
 
 export default function Signin() {
+  let [loading, setLoading] = useState(false);
   let navigate = useNavigate();
 
   const loginHandler = (e) => {
     e.preventDefault();
+    setLoading(true);
     const form = new FormData(e.target);
     const formData = Object.fromEntries(form.entries());
     let { email, password } = formData;
@@ -16,29 +18,32 @@ export default function Signin() {
     signInWithEmailAndPassword(auth, email, password)
       .then(async (userCredential) => {
         // Signed in
-        const user = userCredential.user;
-        await localStorage.setItem("token", user.accessToken);
-        // console.log({ user });
+        if (userCredential) {
+          const user = userCredential.user;
+          await localStorage.setItem("token", user.accessToken);
+          // console.log({ user });
 
-        await auth.currentUser
-          .getIdTokenResult()
-          .then((idTokenResult) => {
-            // Confirm the user is an Admin.
-            let role = "";
-            if (idTokenResult.claims.role === 0 || user.email == "etjohn@yopmail.com") role = "admin";
-            else if (idTokenResult.claims.role === 1) role = "teacher";
-            else if (idTokenResult.claims.role === 3) role = "guardian";
+          await auth.currentUser
+            .getIdTokenResult()
+            .then((idTokenResult) => {
+              // Confirm the user is an Admin.
+              let role = "";
+              if (idTokenResult.claims.role === 0 || user.email == "etjohn@yopmail.com") role = "admin";
+              else if (idTokenResult.claims.role === 1) role = "teacher";
+              else if (idTokenResult.claims.role === 3) role = "guardian";
 
-            if (role) navigate("/" + role + "/dashboard");
-          })
-          .catch((error) => {
-            console.log(error);
-          });
+              if (role) navigate("/" + role + "/dashboard");
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        } else setLoading(false);
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.error({ errorCode, errorMessage });
+        setLoading(false);
       });
   };
 
@@ -78,7 +83,7 @@ export default function Signin() {
         </Link>
 
         <div>
-          <button className="btn">Sign In</button>
+          <button className="btn">{!loading ? <>Sign Up</> : <div className="i-svg-spinners-ring-resize"></div>}</button>
         </div>
       </form>
     </main>

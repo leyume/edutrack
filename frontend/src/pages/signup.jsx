@@ -6,7 +6,6 @@ import { useState } from "react";
 
 export default function Signup() {
   let [loading, setLoading] = useState(false);
-
   let navigate = useNavigate();
 
   const registerHandler = async (e) => {

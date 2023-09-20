@@ -115,7 +115,7 @@ export default function Sidebar() {
             else if (link === "/admin/students/search") newMenu[1] = { label: "Students Search", link, icon };
           } else if (pathz[2] == "profile") {
             icon = "i-tabler-user-circle";
-            if (link === "/admin/profile/add") newMenu[1] = { label: "Representative", link, icon };
+            if (link === "/admin/profile/rep") newMenu[1] = { label: "Representative", link, icon };
             else if (link === "/admin/profile/institution") newMenu[1] = { label: "Institution", link, icon };
           } else if (pathz[2] == "attendance") {
             icon = "i-tabler-arrow-back-up";

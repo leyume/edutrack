@@ -95,12 +95,20 @@ class UserUpdateStudent(BaseModel): #serializer
     lastname: str='Doe'
     student_id: int = None
     class_id: int = None
-    status: Optional[str] = None
+    # status: Optional[str] = None
     guardian_fname: str = 'Sandra'
     guardian_lname: str = 'Doe'
     guardian_relation: str = 'mother'
     guardian_email: str = 'sandra@yopmail.com'
     principal: Optional[int] = 1
+
+class UserUpdateTeacher(BaseModel): #serializer
+    id: Optional[int] = None
+    firstname: str = 'Brandon'
+    lastname: str='Stark'
+    subject_name: str = 'Biology'
+    class_id: int = None
+    status: Optional[str] = None
 
 class UserUpdateInstitution(BaseModel): #serializer
     email: str = 'chriss@yopmail.com'

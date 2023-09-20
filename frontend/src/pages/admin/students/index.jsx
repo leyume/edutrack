@@ -26,14 +26,14 @@ export default function Students() {
         <div>
           <div className="i-tabler-edit" />
           <p>Update Students Info</p>
-          <Link to className="btn" href="/">
+          <Link to="/admin/students/update" className="btn">
             Update
           </Link>
         </div>
         <div>
           <div className="i-tabler-list-details" />
           <p>View Student Details</p>
-          <Link to className="btn" href="/">
+          <Link to="/admin/students/details" className="btn">
             View
           </Link>
         </div>

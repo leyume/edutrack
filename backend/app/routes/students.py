@@ -1,5 +1,6 @@
 
 from sqlalchemy.orm import Session
+from sqlalchemy import and_
 from fastapi import Depends, HTTPException, status, APIRouter, Response
 from typing import Optional, List
 import random
@@ -26,7 +27,7 @@ router = APIRouter()
 @router.get("", response_model=List[UserClass], status_code=status.HTTP_200_OK)
 def get_students(db: Session = Depends(get_db), auth=Depends(auth)):
     if auth.role == 0:
-        users = db.query(User).filter(User.role == 2 and User.institution_id==auth.institution_id).all()
+        users = db.query(User).filter(and_(User.role == 2, User.institution_id==auth.institution_id)).all()
         return users
     else:
         raise HTTPException(status_code=403, detail="You are not authorized")

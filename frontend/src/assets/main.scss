@@ -17,9 +17,22 @@ body {
   background: url("/images/about-bg.png") center / cover;
 }
 
+// Typography
 a {
   @apply cursor-pointer;
   text-decoration: none;
+}
+
+h3 {
+  @apply text-3xl;
+}
+
+h4 {
+  @apply text-xl;
+}
+
+h5 {
+  @apply text-lg leading-none;
 }
 
 .shadow {

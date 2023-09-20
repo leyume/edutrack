@@ -7,7 +7,7 @@ export default function Header() {
 
   return location.pathname == "/" ? (
     <header className="flex items-center justify-between px-5% py-5 -mb-20">
-      <Link to="/teachers/dashboard" className="text-brand-pink text-4xl font-bold">
+      <Link to="/admin/dashboard" className="text-brand-pink text-4xl font-bold">
         Edu<span className="text-brand-blue">Track</span>
       </Link>
       <nav className="[&>ul>li>a]:text-brand-blue [&>ul>li>a:hover]:text-brand-pink">

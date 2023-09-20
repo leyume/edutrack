@@ -23,7 +23,7 @@ export default function GuardianDashboard() {
             </div>
             <p className="">Let’s keep in track with your Institution Details.</p>
           </div>
-          <img className="h-25vh col-span-2 w-full" src="/images/image-12.jpeg" alt="img" />
+          <img className="h-25vh col-span-2 w-full" src="/images/institute.jpeg" alt="img" />
         </section>
 
         <section>

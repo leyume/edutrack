@@ -17,12 +17,12 @@ export default function AttendanceGuardian() {
 
   const getGuardian = async (qrcode) => {
     let res = await fetchAPI("guardians/qrcode/" + qrcode);
-    console.log({ res });
+    // console.log({ res });
     setData(res);
   };
 
   const handleScan = (value) => {
-    console.log({ value });
+    // console.log({ value });
     setScan(false);
     getGuardian(value);
   };
@@ -34,9 +34,9 @@ export default function AttendanceGuardian() {
       <div className="px-6">
         <div className="flex gap-6">
           <PageLabel title="Manage Attendance" details="Let’s keep in track with your Institution Details." className="flex-grow" />
-          <a onClick={() => setScan(true)} className="grid grid-cols-2 w-48 b b-solid b-gray-300 rounded-lg p-2 items-center">
+          <a onClick={() => setScan(true)} className="grid grid-cols-2 w-48 b b-solid b-gray-300 rounded-lg pl-2.5 items-center">
             <b className="text-brand-pink">Click Here to Scan Attendance</b>
-            <img src="/images/qr.png" alt="qrcode" className="w-full" />
+            <img src="/images/qr.png" alt="qrcode" className="w-full p-2" />
           </a>
         </div>
 

@@ -36,23 +36,21 @@ def create_user(
 def update_user(
     user: UserUpdate, db: Session = Depends(get_db), auth=Depends(auth)
 ):
-  try:
-    user_dict = user.dict()
-    
-    db_user = db.query(User).filter(User.id==user.id).first()
+    try:
+        user_dict = user.dict(exclude={'email', 'role'})
 
-    # if db_user is None:
-    #     raise HTTPException(status_code=404, detail="User does not exist")
-    #     #this error is not working. will come back to it -fixed!
+        db_user = db.query(User).filter(User.id==auth.id).first()
 
-     # Update the user attributes individually
-    for key, value in user_dict.items():
-        setattr(db_user, key, value)
-    db.commit()
-    return {"message": "Profile successfully updated"}
+        # Update the user attributes individually
+        for key, value in user_dict.items():
+            if value: 
+                setattr(db_user, key, value)
+        db.commit()
 
-  except Exception as e:
-    raise HTTPException(status_code=404, detail="User does not exist")
+        return {"message": "Profile successfully updated"}
+
+    except Exception as e:
+        raise HTTPException(status_code=404, detail="User does not exist")
 
 
 

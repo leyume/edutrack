@@ -63,9 +63,9 @@ export default function Dashboard() {
             </div>
           </div>
           <div className="col-span-2 bg-brand-liteorange p-7 rounded-2">
-            <h3>Students Performance Leader Board</h3>
+            <h3>Attendance History</h3>
 
-            <table className="w-full my-3">
+            <table className="hidden w-full my-3">
               <thead className="text-gray-500">
                 <tr className="text-left">
                   <th>S/N</th>

@@ -6,9 +6,10 @@ from typing import Optional, List
 
 from auth import auth
 from routes.user import creating_user
-
+from routes.subjects import update_subject
+from schemas.subject import SubjectUpdate
 from models.index import get_db, User, Subject
-from schemas.user import User as UserSchema, UserPost, UserUpdate, UserInstitution, UserPass, UserClass, UserTeacher
+from schemas.user import User as UserSchema, UserPost, UserUpdate, UserInstitution, UserPass, UserClass, UserTeacher, UserUpdateTeacher
 
 router = APIRouter()
 
@@ -64,28 +65,36 @@ def create_teacher(
 
 @router.put("")
 def update_teacher(
-    user: UserUpdate, db: Session = Depends(get_db), auth=Depends(auth)
+    user: UserUpdateTeacher, db: Session = Depends(get_db), auth=Depends(auth)
 ):
-  try:
-    user.email = auth.email
-    user_dict = user.dict()
-    
-    db_user = db.query(User).filter(User.email==user.email).first()
+  if auth.role == 0:
+    try:
+        # user.email = auth.email
+        user_dict = user.dict()
+        
+        db_user = db.query(User).filter(User.id==user.id).first()
 
-    # if db_user is None:
-    #     raise HTTPException(status_code=404, detail="User does not exist")
-    #     #this error is not working. will come back to it -fixed!
+        # if db_user is None:
+        #     raise HTTPException(status_code=404, detail="User does not exist")
+        #     #this error is not working. will come back to it -fixed!
 
-     # Update the user attributes individually
-    for key, value in user_dict.items():
-        setattr(db_user, key, value)
-    db.commit()
-    return {"message": "Profile successfully updated"}
+        # Update the user attributes individually
+        for key, value in user_dict.items():
+            setattr(db_user, key, value)
+        subject = SubjectUpdate(
+            name = user.subject_name,
+            class_id = user.class_id,
+            teacher_id = user.id
+        )
+        update_subject(subject, db)
+        db.commit()
+        return {"message": "Profile successfully updated"}
 
-  except Exception as e:
-    raise HTTPException(status_code=404, detail="User does not exist")
+    except Exception as e:
+        raise HTTPException(status_code=404, detail="User does not exist")
 
-
+  else:
+        return {"message": "You are not authorized"}
 # @router.get("", response_model=User, status_code=status.HTTP_200_OK)
 # def get_user(db: Session = Depends(get_db), auth=Depends(auth)):
 #     return auth

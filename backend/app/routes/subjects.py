@@ -51,8 +51,9 @@ def update_subject(
     db_teacher = db.query(User).filter(User.id == subject.teacher_id).first()
     db_class = db.query(Classes).filter(Classes.id == subject.class_id).first()
 
-    if db_teacher is None:
+    if (db_teacher is None or db_teacher.role != 1):
       raise ValueError
+        
       # return {"message": "Teacher does not exist"}
 
     if db_class is None:
@@ -64,7 +65,7 @@ def update_subject(
     for key, value in subject_dict.items():
         setattr(db_subject, key, value)
     db.commit()
-    return {"message": "Subject Profile successfully updated"}
+    return {"message": "Subject successfully updated"}
 
   except ValueError:
     raise HTTPException(status_code=404, detail="Teacher/class does not exist")

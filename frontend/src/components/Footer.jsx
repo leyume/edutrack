@@ -28,14 +28,14 @@ function Footer() {
           </ul>
         </nav>
 
-        <div className="flex gap-4">
+        {/* <div className="flex gap-4">
           <a href="/signin" className="text-#fff btn btn-alt">
             Log in
           </a>
           <a href="/signup" className="btn">
             Sign up
           </a>
-        </div>
+        </div> */}
       </div>
       <hr style={{ borderColor: "text-brand-pink" }} className="my-8" />
       <div className="flex items-center justify-between">

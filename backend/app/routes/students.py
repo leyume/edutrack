@@ -72,7 +72,6 @@ def create_student(
 
 @router.put("")
 def update_student(
-<<<<<<< HEAD
     user: UserUpdateStudent, db: Session = Depends(get_db), auth=Depends(auth)
 ):
   if auth.role == 0:
@@ -102,31 +101,6 @@ def update_student(
             update_guardian(db_guardian, db, auth)
         else:
             create_guardian(db_guardian, db, auth)
-=======
-    user: UserUpdateStudent, db: Session = Depends(get_db)
-):
-    if auth.role == 3:
-        try:
-
-            user_dict = user.dict()
-            
-            db_user = db.query(User).filter(User.id==user.student_id).first()
-            setattr(db_user, "firstname", user.firstname)
-            setattr(db_user, "lastname", user.lastname)
-
-            db_class = db.query(StudentClass).filter(StudentClass.student_id == user.student_id).first()
-            setattr(db_class, "class_id", user.class_id)
-
-            db_guardian = {
-                "firstname": user.guardian_fname,
-                "lastname": user.guardian_lname,
-                "email": user.guardian_email,
-                "relation": user.guardian_relation,
-                "student_id": user.student_id
-            }
-
-            update_guardian(db_guardian, db, auth)
->>>>>>> fa69428 (Attendance update)
 
 
             # if db_user is None:
@@ -134,7 +108,6 @@ def update_student(
             #     #this error is not working. will come back to it -fixed!
 
             # Update the user attributes individually
-<<<<<<< HEAD
         return {"message": "Profile successfully updated"}
     
     except Exception as e:
@@ -142,18 +115,6 @@ def update_student(
         
   else:
     return {"message": "You are not authorized"}
-=======
-            for key, value in user_dict.items():
-                setattr(db_user, key, value)
-            db.commit()
-            return {"message": "Profile successfully updated"}
-
-        except Exception as e:
-            raise HTTPException(status_code=404, detail="User does not exist")
-
-    else:
-        return {"message": "You are not authorized"}
->>>>>>> fa69428 (Attendance update)
 # @router.get("", response_model=User, status_code=status.HTTP_200_OK)
 # def get_user(db: Session = Depends(get_db), auth=Depends(auth)):
 #     return auth

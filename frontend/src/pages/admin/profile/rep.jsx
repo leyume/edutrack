@@ -20,7 +20,7 @@ function RepProfile() {
     // setLoading(false);
   };
 
-  const { mutate, data, isLoading } = mutateX();
+  const { mutate, data, isLoading } = mutateX("user", "user", "PUT");
 
   return (
     success &&

@@ -1,11 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { userQ } from "~/utils/queries";
-import { useQuery } from "@tanstack/react-query";
 import { QRCodeSVG } from "qrcode.react";
+import { userData } from "~/components/Query";
 
 export default function GuardianDashboard() {
-  const { data, isSuccess, isError } = useQuery(userQ);
+  const { data, isSuccess, isError } = userData();
 
   let code = crypto.randomUUID();
 
@@ -13,7 +12,7 @@ export default function GuardianDashboard() {
     isSuccess &&
     data?.institution?.name && (
       <div className="px-6 grid gap-6">
-        <section className="grid grid-cols-5 justify-center rounded-l-xl text-white bg-brand-blue overflow-hidden">
+        <section className="grid grid-cols-5 justify-center rounded-xl text-white bg-brand-blue overflow-hidden">
           <div className="flex flex-col justify-between col-span-3 p-8">
             <div>
               <h1 className="text-10 mb-2">Hello {data.firstname},</h1>
@@ -23,7 +22,7 @@ export default function GuardianDashboard() {
             </div>
             <p className="">Let’s keep in track with your Institution Details.</p>
           </div>
-          <img className="h-25vh col-span-2 w-full" src="/images/institute.jpeg" alt="img" />
+          <img className="h-full min-h-30vh col-span-2 w-full object-cover" src="/images/institute.jpeg" alt="img" />
         </section>
 
         <section>

@@ -182,10 +182,10 @@ class Attendance(BaseModel):
     student_id: int
     guardian_arrival_id: int 
     arrival: datetime 
-    guardian_departure_id: int 
-    departure: datetime 
+    guardian_departure_id: Optional[int] = None 
+    departure: Optional[datetime] = None 
     guardian_arrival: UserX
-    guardian_departure: UserX
+    guardian_departure: Optional[UserX]
 
     class Config:
         orm_mode = True

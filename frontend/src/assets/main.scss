@@ -24,7 +24,7 @@ a {
 }
 
 h3 {
-  @apply text-3xl;
+  @apply text-3xl leading-none;
 }
 
 h4 {
@@ -35,10 +35,18 @@ h5 {
   @apply text-lg leading-none;
 }
 
-.shadow {
-  text-shadow: 3px 4px 5px rgba(0, 0, 0, 0.25);
+// Message
+.msg {
+  @apply mb-2 rounded border py-4 px-6 text-center text-sm tracking-wider;
+  &.success {
+    @apply border-green-300 bg-green-200 text-green-600;
+  }
+  &.error {
+    @apply border-red-300 bg-red-200 text-red-600;
+  }
 }
 
+// Button
 .btn {
   @apply px-5 py-3 bg-brand-blue rounded-lg text-white text-lg leading-none font-bold font-medium border-solid border-1 border-brand-blue cursor-pointer outline-none transition-all duration-500;
   &:hover {
@@ -51,8 +59,35 @@ h5 {
       @apply bg-brand-blue text-white;
     }
   }
+  &.btn-pink {
+    @apply text-brand-pink border-brand-pink;
+    &:hover {
+      @apply bg-brand-pink text-white;
+    }
+  }
+
+  &.btn-mini {
+    @apply px-2.5 py-1.5 text-xs rounded-md;
+  }
+
+  &.inactive {
+    @apply bg-brand-blue text-white;
+    &:hover {
+      @apply bg-brand-blue text-white;
+    }
+    &.btn-pink {
+      @apply text-brand-pink bg-transparent border-brand-pink;
+      &:hover {
+        @apply text-brand-pink bg-transparent border-brand-pink;
+      }
+    }
+  }
 }
 
 .my-input {
   @apply w-full text-3.5 p-2.5 rounded-2 border border-solid mt-2 border-gray-300 focus:outline-none focus:border-blue-500;
+}
+
+.shadow {
+  text-shadow: 3px 4px 5px rgba(0, 0, 0, 0.25);
 }

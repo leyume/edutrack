@@ -7,17 +7,17 @@ export const studentsData = () => useQuery({ queryKey: ["students"], queryFn: as
 export const guardiansData = () => useQuery({ queryKey: ["guardians"], queryFn: async () => await fetchAPI("guardians") });
 
 // export const { data, mutate, isLoading, isError, error, isSuccess } = useMutation({
-export const mutateX = () => {
+export const mutateX = (endpoint, key = "", method = "POST") => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: async (data) => {
-      let data_ = await fetchAPI("user", "PUT", { ...data });
+      let data_ = await fetchAPI(endpoint, method, { ...data });
       console.log({ data_ });
       return data_;
     },
     onSuccess: (result) => {
-      console.log("Profile Update Success", result);
-      queryClient.invalidateQueries({ queryKey: ["user"] });
+      console.log("Successfully Mutated", result);
+      if (key) queryClient.invalidateQueries({ queryKey: [key] });
     },
     onError: (e) => {
       console.log({ e });

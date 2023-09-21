@@ -2,11 +2,9 @@ from sqlalchemy.orm import Session
 from fastapi import Depends, HTTPException, status, APIRouter, Response
 from typing import Optional, List
 from sqlalchemy import and_
+from datetime import date
 
-# from models.index import get_db, Student, Tutor #StudentCourse
-# from schemas.user import UserFull as User, UserUpdate
-# from schemas.student import StudentCourse
-# from auth import auth
+from auth import auth
 
 from models.index import get_db, User, Institution, Classes, Subject, Attendance
 from schemas.attendance import AttendanceSchema, AttendancePost, AttendanceUpdate
@@ -22,11 +20,24 @@ def get_attendance(db: Session = Depends(get_db)):
 
 @router.post("", response_model=AttendanceSchema, status_code=status.HTTP_201_CREATED)
 def create_attendance(
-    attendance: AttendancePost, db: Session = Depends(get_db)
+    attendance: AttendancePost, db: Session = Depends(get_db), auth=Depends(auth)
 ):
+
+    current_date = date.today()
+    
+    db_attendance = db.query(Attendance).filter(
+      and_(
+        Attendance.student_id == attendance.student_id,
+        Attendance.guardian_arrival_id == attendance.guardian_arrival_id),
+        Attendance.date > current_date
+        ).order_by(Attendance.id.desc()).first()
+
+    if db_attendance:
+      raise HTTPException(status_code=403, detail="Student already arrived today.")
+
     attendance_data = attendance.dict()
     db_student = db.query(User).filter(User.id == attendance.student_id).first()
-    db_guardian = db.query(User).filter(User.id == attendance.guardian_arrival).first()
+    db_guardian = db.query(User).filter(User.id == attendance.guardian_arrival_id).first()
     db_institution = db.query(Institution).filter(Institution.id == attendance.institution_id).first()
 
     if db_student is None:
@@ -47,21 +58,19 @@ def create_attendance(
 
 @router.put("")
 def update_attendance(
-    attendance: AttendanceUpdate, db: Session = Depends(get_db)
+    attendance: AttendanceUpdate, db: Session = Depends(get_db), auth=Depends(auth)
 ):
   try:
     attendance_dict = attendance.dict()
+    current_date = date.today()
     
     db_attendance = db.query(Attendance).filter(
       and_(
         Attendance.student_id == attendance.student_id,
-        Attendance.departure == None)
+        Attendance.departure == None,
+        Attendance.date > current_date,
+        )
         ).first()
-    # db_student = db.query(Attendance).filter(Attendance.student_id == attendance.student_id).first()
-
-    # if db_student is None:
-    #   raise ValueError
-    #   # return {"message": "Student does not exist"}
 
     if db_attendance is None:
       raise ValueError
@@ -77,9 +86,3 @@ def update_attendance(
     
   except Exception as e:
     raise HTTPException(status_code=500, detail="Institution/Guardian does not exist")
-
-
-# @router.get("", response_model=User, status_code=status.HTTP_200_OK)
-# def get_user(db: Session = Depends(get_db), auth=Depends(auth)):
-#     return auth
-    

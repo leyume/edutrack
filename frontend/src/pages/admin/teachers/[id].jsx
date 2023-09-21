@@ -1,78 +1,114 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router";
+import { teachersData, classesData, mutateX } from "~/components/Query";
 
-const UpdateStudents = () => {
+export default function UpdateTeacher() {
+  let { id } = useParams();
+  const [teacher, setTeacher] = useState({});
+  const { data: teachers } = teachersData();
+  const { data: classes } = classesData();
+  console.log({ teacher, classes });
+
+  useEffect(() => {
+    if (teachers?.length) {
+      let tt = teachers.filter((t) => t.id == id);
+      if (tt?.length) setTeacher(tt[0]);
+    }
+  }, [teachers]);
+
+  const { mutate, data, isLoading } = mutateX("teachers", "teachers", "PUT");
+
+  const formHandler = async (e) => {
+    e.preventDefault();
+    // setLoading(true);
+
+    const form = new FormData(e.target);
+    const formData = Object.fromEntries(form.entries());
+
+    console.log({ formData });
+
+    await mutate(formData);
+    // setLoading(false);
+  };
+
+  const [msg, setMsg] = useState(false);
+  const [err, setErr] = useState(true);
+
+  useEffect(() => {
+    if (data?.detail) {
+      setErr(true);
+      setMsg(data?.detail);
+    } else {
+      setErr(false);
+      setMsg(data?.message);
+    }
+  }, [data]);
+
   return (
-    <main className="flex items-center flex-col px-10% mb-10">
-      <section className="mb-5 flex items-center justify-center flex-col">
+    <div className=" px-10">
+      {/* <section className="mb-5 flex items-center justify-center flex-col">
         <div className="flex items-center justify-between">
           <img className="w-30 mb-4" src="/images/teacher.png" alt="img" />
         </div>
         <button className="btn">Change Image</button>
-      </section>
+      </section> */}
 
-      <form action="" className="grid grid-cols-2 gap-4 w-full items-center">
-        <div className="w-100%">
-          <label htmlFor="">First Name</label>
-          <br />
-          <input type="text" className="my-input" value="Janefrancis Nginika" disabled />
-          <br />
-          <br />
-
-          <label htmlFor="">Class</label>
-          <br />
-          <input type="text" value="SS 3" className="my-input" disabled />
-          <br />
-          <br />
-
-          <label htmlFor="">Role</label>
-          <br />
-          <input type="text" className="my-input" value="Form Master" disabled />
-          <br />
-          <br />
+      {!!teacher?.id && (
+        <div className="rounded-full bg-brand-blue h-20 w-20 text-3xl flex items-center justify-center text-white mx-auto mb-10">
+          {teacher.firstname[0]}
+          {teacher.lastname[0]}
         </div>
+      )}
 
-        <div className="w-100%">
-          <label htmlFor="">Last Name</label>
-          <br />
-          <input type="text" className="my-input" value="Dimaku" disabled />
-          <br />
-          <br />
+      {!!msg && <div className={"msg mt-1 " + (err ? "error" : "success")}>{msg}</div>}
 
-          <label htmlFor="">Subject</label>
-          <br />
-          <input type="text" className="my-input" value="Computer Science" disabled />
-          <br />
-          <br />
+      {!!teacher?.id && (
+        <form
+          className="grid grid-cols-2 gap-4 px-10% pb-24 pt-6
+            [&_label]:grid [&_label.flex]:flex [&_label]:gap-2 [&_label_input]:p-2.5 
+            [&_label]:text-sm [&_label_input]:rounded-md [&_label_input]:outline-none 
+            [&_label_input]:border-solid [&_label_input]:border-1 [&_label_input]:border-gray-300
+            [&_label_select]:p-2.5 [&_label_select]:rounded-md [&_label_select]:outline-none 
+            [&_label_select]:border-solid [&_label_select]:border-1 [&_label_select]:border-gray-300"
+          onSubmit={formHandler}
+        >
+          <input type="hidden" name="id" defaultValue={teacher.id} />
 
-          <div className="flex justify-between my-4">
-            <div>
-              <p className="mb-2">Gender</p>
-              <input type="radio" name="gender" className="mr-1" disabled />
-              <label htmlFor="" className="mr-4">
-                Male
-              </label>
-              <input type="radio" name="gender" className="mr-1" checked />
-              <label htmlFor="">Female</label>
-            </div>
-            <div>
-              <p className="mb-2">Status</p>
-              <input type="radio" name="status" className="mr-1" checked />
-              <label htmlFor="" className="mr-4">
-                Active
-              </label>
-              <input type="radio" name="status" className="mr-1" disabled />
-              <label htmlFor="">Inactive</label>
-            </div>
+          <label>
+            First Name
+            <input type="text" name="firstname" defaultValue={teacher.firstname} />
+          </label>
+
+          <label>
+            Last Name
+            <input type="text" name="lastname" defaultValue={teacher.lastname} />
+          </label>
+
+          <label>
+            Class
+            <input type="text" name="class_name" defaultValue={teacher.teacher_class[0]?.name} />
+            {/* {!!classes?.length && (
+              <select name="class_id" defaultValue={teacher.teacher_class[0]?.id}>
+                <option defaultValue="">Select Class</option>
+                {classes?.map((cls, i) => (
+                  <option key={i} value={cls.id}>
+                    {cls.name}
+                  </option>
+                ))}
+              </select>
+            )} */}
+          </label>
+
+          <label>
+            Subject
+            <input type="text" name="subject_name" defaultValue={teacher.teacher_subjects[0]?.name} />
+          </label>
+
+          <div className="pt-4 col-span-2 flex gap-4 justify-center">
+            <button className="btn">{!isLoading ? <>Update</> : <div className="i-svg-spinners-ring-resize"></div>}</button>
           </div>
-        </div>
-
-        <div className="col-span-2 flex justify-center gap-4">
-          <button className="btn">Edit</button>
-          <button className="btn">Update</button>
-        </div>
-      </form>
-    </main>
+        </form>
+      )}
+    </div>
   );
-};
-
-export default UpdateStudents;
+}

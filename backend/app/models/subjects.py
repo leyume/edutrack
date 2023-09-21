@@ -11,7 +11,7 @@ class Subject(Base):
     id=Column(Integer,primary_key=True)
     name=Column(String(255))
     class_id=Column(Integer)
-    teacher_id=Column(Integer)
+    teacher_id=Column(Integer, ForeignKey('users.id'))
     students = relationship("User", secondary="students_subjects", back_populates="subjects")
     
 

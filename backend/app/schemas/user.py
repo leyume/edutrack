@@ -37,14 +37,15 @@ class UserStudent(UserPost):
     principal: Optional[int] = None
     # role: Optional[int] = None
 
-class UserTeacher(UserPost):
+class UserPostTeacher(UserPost):
     email: str = 'chriss@yopmail.com'
     firstname: str = 'Chriss'
     lastname: str ='Doe'
     phone: Optional[str] = None
     password: Optional[str] = "password"
-    class_id: int = 3
-    subject_name: str = 'Agriculture'
+    class_name: Optional[str] = 'SS 1'
+    # class_id: int = 3
+    subject_name: Optional[str] = 'Agriculture'
 
 class UserGuardian(BaseModel):
     email: str = 'guardian@yopmail.com'
@@ -106,8 +107,9 @@ class UserUpdateTeacher(BaseModel): #serializer
     id: Optional[int] = None
     firstname: str = 'Brandon'
     lastname: str='Stark'
+    class_name: str = 'SS 1'
     subject_name: str = 'Biology'
-    class_id: int = None
+    # class_id: int = None
     status: Optional[str] = None
 
 class UserUpdateInstitution(BaseModel): #serializer
@@ -152,7 +154,8 @@ class UserX(BaseModel):
         
 class Classes(BaseModel):
     id: Optional[int] = None
-    name: str
+    name: Optional[str]
+    teacher_id: Optional[int]
     # options: List[StudentClass]
 
     class Config:
@@ -161,6 +164,8 @@ class Classes(BaseModel):
 class Subject(BaseModel):
     id: Optional[int] = None
     name: str
+    class_id: Optional[int]
+    teacher_id: Optional[int]
     # options: List[StudentClass]
 
     class Config:
@@ -173,6 +178,10 @@ class UserClass(UserInstitution):
     teachers: List[UserX]
     students: List[UserX]
     subjects: List[Subject]
+
+class UserTeacher(UserInstitution): 
+    teacher_class: List[Classes]
+    teacher_subjects: List[Subject]
 
 # Ward and Attendance
 

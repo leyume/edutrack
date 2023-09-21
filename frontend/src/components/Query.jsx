@@ -5,6 +5,7 @@ export const userData = () => useQuery({ queryKey: ["user"], queryFn: async () =
 export const teachersData = () => useQuery({ queryKey: ["teachers"], queryFn: async () => await fetchAPI("teachers") });
 export const studentsData = () => useQuery({ queryKey: ["students"], queryFn: async () => await fetchAPI("students") });
 export const guardiansData = () => useQuery({ queryKey: ["guardians"], queryFn: async () => await fetchAPI("guardians") });
+export const classesData = () => useQuery({ queryKey: ["classes"], queryFn: async () => await fetchAPI("classes") });
 
 // export const { data, mutate, isLoading, isError, error, isSuccess } = useMutation({
 export const mutateX = (endpoint, key = "", method = "POST") => {

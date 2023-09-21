@@ -105,8 +105,11 @@ export default function Sidebar() {
             icon = "i-tabler-user-edit";
             if (link === "/admin/teachers/add") newMenu[1] = { label: "Create Teacher", link, icon };
             else if (link === "/admin/teachers/details") newMenu[1] = { label: "View Teachers Details", link, icon };
-            else if (link === "/admin/teachers/update") newMenu[1] = { label: "Teacher Update", link, icon };
             else if (link === "/admin/teachers/search") newMenu[1] = { label: "Teachers Search", link, icon };
+            else if (link.startsWith("/admin/teachers/")) {
+              newMenu[0] = { ...newMenu[0], link: "/admin/teachers/search" };
+              newMenu[1] = { label: "Update Teacher", link, icon };
+            }
           } else if (pathz[2] == "students") {
             icon = "i-tabler-school";
             if (link === "/admin/students/add") newMenu[1] = { label: "Create Student", link, icon };

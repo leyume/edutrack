@@ -6,21 +6,15 @@ import { role } from "~/utils";
 function RepProfile() {
   // let [loading, setLoading] = useState(false);
   const { data: user, isSuccess: success } = userData();
+  const { mutate, data, isLoading } = mutateX("user", "user", "PUT");
 
   const formHandler = async (e) => {
     e.preventDefault();
-    // setLoading(true);
-
     const form = new FormData(e.target);
     const formData = Object.fromEntries(form.entries());
-
-    console.log({ formData });
-
+    // console.log({ formData });
     await mutate(formData);
-    // setLoading(false);
   };
-
-  const { mutate, data, isLoading } = mutateX("user", "user", "PUT");
 
   return (
     success &&

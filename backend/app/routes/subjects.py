@@ -41,20 +41,15 @@ def create_subject(
     return new_subject
 
 @router.put("")
-def update_subject(
-    subject: SubjectUpdate, db: Session = Depends(get_db)
-):
+def update_subject(subject: SubjectUpdate, db: Session = Depends(get_db)):
   try:
     subject_dict = subject.dict()
-    
 
     db_teacher = db.query(User).filter(User.id == subject.teacher_id).first()
     db_class = db.query(Classes).filter(Classes.id == subject.class_id).first()
 
     if (db_teacher is None or db_teacher.role != 1):
       raise ValueError
-        
-      # return {"message": "Teacher does not exist"}
 
     if db_class is None:
       raise ValueError
@@ -62,9 +57,17 @@ def update_subject(
 
     db_subject = db.query(Subject).filter(Subject.name==subject.name).first()
 
-    for key, value in subject_dict.items():
-        setattr(db_subject, key, value)
+    if db_subject:
+      for key, value in subject_dict.items():
+        if value:
+          setattr(db_subject, key, value)
+    else: 
+      # create new class for teacher
+      new_subject = Subject(**subject_dict)
+      db.add(new_subject)
+    
     db.commit()
+
     return {"message": "Subject successfully updated"}
 
   except ValueError:

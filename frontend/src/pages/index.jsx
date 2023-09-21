@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import About from "../components/About/About";
-import Mission from "../components/Mission/Mission";
-import Vision from "../components/Vision/Vision";
-import Testimony from "../components/Testimony/Testimony";
-import Question from "../components/Question/Question";
+import About from "../components/About";
+import Mission from "../components/Mission";
+import Vision from "../components/Vision";
+import Testimony from "../components/Testimony";
+import Question from "../components/Question";
 
 export default function Home() {
   return (

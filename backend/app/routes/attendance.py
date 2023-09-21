@@ -7,14 +7,14 @@ from datetime import date
 from auth import auth
 
 from models.index import get_db, User, Institution, Classes, Subject, Attendance
-from schemas.attendance import AttendanceSchema, AttendancePost, AttendanceUpdate
+from schemas.attendance import AttendanceSchema, AttendanceFull, AttendancePost, AttendanceUpdate
 
 router = APIRouter()
 
 
-@router.get("", response_model=List[AttendanceSchema], status_code=status.HTTP_200_OK)
-def get_attendance(db: Session = Depends(get_db)):
-    attendance = db.query(Attendance).all()
+@router.get("", response_model=List[AttendanceFull], status_code=status.HTTP_200_OK)
+def get_attendance(db: Session = Depends(get_db), auth=Depends(auth)):
+    attendance = db.query(Attendance).filter(Attendance.institution_id==auth.institution_id).all()
     return attendance
 
 

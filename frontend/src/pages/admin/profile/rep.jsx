@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PageLabel from "~/components/PageLabel";
 import { userData, mutateX } from "~/components/Query";
 import { role } from "~/utils";
 
-function RepProfile() {
+export default function RepProfile() {
   // let [loading, setLoading] = useState(false);
   const { data: user, isSuccess: success } = userData();
   const { mutate, data, isLoading } = mutateX("user", "user", "PUT");
@@ -16,6 +16,19 @@ function RepProfile() {
     await mutate(formData);
   };
 
+  const [msg, setMsg] = useState(false);
+  const [err, setErr] = useState(true);
+
+  useEffect(() => {
+    if (data?.detail) {
+      setErr(true);
+      setMsg(data?.detail);
+    } else {
+      setErr(false);
+      setMsg(data?.message);
+    }
+  }, [data]);
+
   return (
     success &&
     user?.id && (
@@ -23,12 +36,14 @@ function RepProfile() {
         <PageLabel title="Representative Profile" details="Update your Personal Profile" />
 
         <section className="bg-brand-liteorange py-6 px-10 mt-6 mb-12 rounded-2">
-          <div className="mb-5 flex items-center justify-center flex-col">
+          {/* <div className="mb-5 flex items-center justify-center flex-col">
             <div className="flex items-center justify-between">
               <div className="i-tabler-user-circle flex items-center justify-between text-40"></div>
             </div>
             <button className="btn">Change Image</button>
-          </div>
+          </div> */}
+
+          {!!msg && <div className={"msg mt-1 " + (err ? "error" : "success")}>{msg}</div>}
 
           <form
             className="grid grid-cols-2 gap-4 px-10% pb-24 pt-6
@@ -70,70 +85,14 @@ function RepProfile() {
             </label> */}
 
             <div className="pt-4 col-span-2 flex gap-4 justify-center">
-              <button className="btn btn-alt" type="button">
+              {/* <button className="btn btn-alt" type="button">
                 Edit
-              </button>
+              </button> */}
               <button className="btn">{!isLoading ? <>Update</> : <div className="i-svg-spinners-ring-resize"></div>}</button>
             </div>
           </form>
-
-          {/* <form action="" className="grid grid-cols-2 gap-4 w-full items-center">
-            <div className="w-100%">
-              <label htmlFor="">First Name</label>
-              <br />
-              <input type="text" className="my-input" value="Tabitha" disabled />
-              <br />
-              <br />
-
-              <label htmlFor="">Email</label>
-              <br />
-              <input type="email" className="my-input" value="tabitawillson@gmail.com" disabled />
-              <br />
-              <br />
-
-              <label htmlFor="">School</label>
-              <br />
-              <input type="text" className="my-input" value="St. Charles Royal Academy" disabled />
-              <br />
-              <br />
-            </div>
-
-            <div className="w-100%">
-              <label htmlFor="">Last Name</label>
-              <br />
-              <input type="text" className="my-input" value="Willson" disabled />
-              <br />
-              <br />
-
-              <label htmlFor="">Role</label>
-              <br />
-              <input type="text" className="my-input" value="Representative" disabled />
-              <br />
-              <br />
-
-              <div className="flex justify-between my-4">
-                <div>
-                  <p className="mb-1">Gender</p>
-                  <input type="radio" name="gender" className="mr-2" disabled />
-                  <label htmlFor="" className="mr-4">
-                    Male
-                  </label>
-                  <input type="radio" name="gender" className="mr-2" />
-                  <label htmlFor="">Female</label>
-                </div>
-                <div></div>
-              </div>
-            </div>
-
-            <div className="col-span-2 flex justify-center gap-4">
-              <button className="btn">Edit</button>
-              <button className="btn">Update</button>
-            </div>
-          </form> */}
         </section>
       </div>
     )
   );
 }
-
-export default RepProfile;

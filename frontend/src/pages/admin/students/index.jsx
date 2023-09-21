@@ -4,7 +4,7 @@ import PageLabel from "~/components/PageLabel";
 
 export default function Students() {
   return (
-    <div className="px-6">
+    <div className="px-10">
       <PageLabel title="Manage Students" details="Let’s keep in track with your Institution Details." />
 
       <section

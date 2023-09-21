@@ -22,11 +22,12 @@ router = APIRouter()
 
 @router.get("", response_model=List[UserClass], status_code=status.HTTP_200_OK)
 def get_students(db: Session = Depends(get_db), auth=Depends(auth)):
-    if auth.role == 0:
+
+    # if auth.role == 0:
         users = db.query(User).filter(and_(User.role == 2, User.institution_id==auth.institution_id)).all()
         return users
-    else:
-        raise HTTPException(status_code=403, detail="You are not authorized")
+    # else:
+    #     raise HTTPException(status_code=403, detail="You are not authorized")
 
 
 @router.post("", response_model=UserSchema, status_code=status.HTTP_201_CREATED)
@@ -81,6 +82,7 @@ def update_student(
 
         db_class = db.query(StudentClass).filter(StudentClass.student_id == user.student_id).first()
         setattr(db_class, "class_id", user.class_id)
+        
         db_guard = db.query(User).filter(User.email == user.guardian_email).first()
         db_guardian = UserUpdateGuardian(
             firstname = user.guardian_fname,
@@ -88,9 +90,9 @@ def update_student(
             email = user.guardian_email,
             relation = user.guardian_relation,
             student_id = user.student_id,
-            phone = "09034",
+            phone = "0",
             password = "edutrack",
-            principal = user.principal
+            principal = 1, #user.principal
         )
 
         if (db_guard and db_guard.role == 3):

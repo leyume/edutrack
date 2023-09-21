@@ -72,7 +72,7 @@ export default function UpdateStudent() {
             [&_label_select]:border-solid [&_label_select]:border-1 [&_label_select]:border-gray-300"
           onSubmit={formHandler}
         >
-          <input type="hidden" name="id" defaultValue={student.id} />
+          <input type="hidden" name="student_id" defaultValue={student.id} />
 
           <label>
             First Name
@@ -86,12 +86,39 @@ export default function UpdateStudent() {
 
           <label>
             Class
-            <input type="text" name="class_name" defaultValue={student.classes[0]?.name} />
+            {/* <input type="text" name="class_name" defaultValue={student.classes[0]?.name} /> */}
+            <select name="class_id" defaultValue={student.classes[0]?.id}>
+              <option value=""></option>
+              {classes?.map((c, i) => (
+                <option key={i} value={c.id}>
+                  {c.name}
+                </option>
+              ))}
+            </select>
           </label>
 
           <label>
             Subject
             {/* <input type="text" name="subject_name" defaultValue={student.teacher_subjects[0]?.name} /> */}
+          </label>
+
+          <label>
+            Guardian First Name
+            <input type="text" name="guardian_fname" defaultValue={student.guardians[0]?.firstname} />
+          </label>
+
+          <label>
+            Guardian Last Name
+            <input type="text" name="guardian_lname" defaultValue={student.guardians[0]?.lastname} />
+          </label>
+          <label>
+            Guardian Relationship
+            <input type="text" name="guardian_relation" defaultValue={student.guardians[0]?.relation} />
+          </label>
+
+          <label>
+            Guardian Email
+            <input type="text" name="guardian_email" defaultValue={student.guardians[0]?.email} />
           </label>
 
           <div className="pt-4 col-span-2 flex gap-4 justify-center">

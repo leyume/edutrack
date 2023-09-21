@@ -26,6 +26,16 @@ async def login(email: str = Form(...), password: str = Form(...), db: Session =
         login = pyrebase.auth().sign_in_with_email_and_password(email, password)
         user = await get_user(login['idToken'], db)
         # print('Successfully Logged In', login['idToken'])
+        print('Successfully Logged In..........................')
+        print('Successfully Logged In..........................')
+        print('Successfully Logged In..........................')
+        print('Successfully Logged In..........................')
+        print('Successfully Logged In..........................')
+        print('Successfully Logged In..........................')
+        print('Successfully Logged In', str(login))
+
+        fb_auth.set_custom_user_claims(login['localId'], {'role': user.role})
+
         print('Successfully Logged In')
         user.token = login['idToken']
         user.refresh_token = login['refreshToken']

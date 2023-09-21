@@ -147,6 +147,8 @@ class UserX(BaseModel):
     id: Optional[int] = None
     firstname: str 
     lastname: str
+    relation: Optional[str]
+    email: Optional[str]
 
     class Config:
         orm_mode = True

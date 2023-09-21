@@ -6,7 +6,7 @@ from datetime import datetime
 class Institution(BaseModel): #serializer
     # email: str = 'chriss@yopmail.com'
     name: str = 'Chris Apostolic College'
-    location: str='Ajegunle, Lagos'
+    location: str='Lekki, Lagos'
     status: Optional[str] = None
 
 class InstitutionPost(Institution): #serializer
@@ -24,7 +24,7 @@ class InstitutionSchema(InstitutionPost):  # Output model for response
     
 class InstitutionUpdate(BaseModel): #serializer
     name: str = 'Chris Apostolic College'
-    location: str='Ajegunle, Lagos'
+    location: str= 'Lekki, Lagos'
 
 
 class User(BaseModel):

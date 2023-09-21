@@ -1,64 +1,78 @@
-import React from "react";
+import { useState, useEffect } from "react";
+import PageLabel from "~/components/PageLabel";
+import { userData, institutionsData, mutateX } from "~/components/Query";
 
-function InstituteProfile() {
+export default function InstituteProfile() {
+  // let [loading, setLoading] = useState(false);
+  const { data: user, isSuccess: success } = userData();
+  const { data: institution, isSuccess: isuccess } = institutionsData();
+  const { mutate, data, isLoading } = mutateX("institutions", "institutions", "PUT");
+
+  console.log({ institution });
+
+  const formHandler = async (e) => {
+    e.preventDefault();
+    const form = new FormData(e.target);
+    const formData = Object.fromEntries(form.entries());
+    console.log({ formData });
+    await mutate(formData);
+  };
+
+  const [msg, setMsg] = useState(false);
+  const [err, setErr] = useState(true);
+
+  useEffect(() => {
+    if (data?.detail) {
+      setErr(true);
+      setMsg(data?.detail);
+    } else {
+      setErr(false);
+      setMsg(data?.message);
+    }
+  }, [data]);
+
   return (
-    <>
-      <main className="px-5% ">
-            <section className="bg-brand-blue rounded-2 grid text-white p-5 gap-4">
-              <h1>Institution Profile</h1>
-              <p>Let’s keep in track with your Institution Details.</p>
-            </section>
+    isuccess &&
+    institution?.id && (
+      <div className="px-10">
+        <PageLabel title="Institution Profile" details="Update your Personal Profile" />
 
-            <section className="flex items-center flex-col bg-#F8EFE2 px-5 py-5  my-5 rounded-2">
-            <div className="mb-5 flex items-center justify-center flex-col">
-                <div className="flex items-center justify-between">
-                <img className="w-30 mb-4" src="/images/institute.png" alt="img" />
-                </div>
-                <button className="btn">Change Image</button>
+        <section className="bg-brand-liteorange py-6 px-10 mt-6 mb-12 rounded-2">
+          {/* <div className="mb-5 flex items-center justify-center flex-col">
+            <div className="flex items-center justify-between">
+              <div className="i-tabler-user-circle flex items-center justify-between text-40"></div>
             </div>
+            <button className="btn">Change Image</button>
+          </div> */}
 
-            <form action="" className="grid grid-cols-2 gap-4 w-full items-center">
-                <div className="w-100%">
-                    <label htmlFor="" >Instituion Name</label><br />
-                    <input type="text"
-                    className="my-input"
-                    value="St. Charles Royal Academy"
-                    disabled
-                     /><br /><br />
+          {!!msg && <div className={"msg mt-1 " + (err ? "error" : "success")}>{msg}</div>}
 
-                    <label htmlFor="" >Instituion Email</label><br />
-                    <input type="email" 
-                    className="my-input"
-                    value="stcharlesroyalacademy@gmail.com"
-                    disabled
-                    /><br /><br />
-                </div>
+          <form
+            className="grid grid-cols-2 gap-4 px-10% pb-24 pt-6
+            [&_label]:grid [&_label.flex]:flex [&_label]:gap-2 [&_label_input]:p-2.5 
+            [&_label]:text-sm [&_label_input]:rounded-md [&_label_input]:outline-none 
+            [&_label_input]:border-solid [&_label_input]:border-1 [&_label_input]:border-gray-300"
+            onSubmit={formHandler}
+          >
+            <label>
+              Instituion Name
+              <input type="text" name="name" defaultValue={institution.name} />
+            </label>
 
-                <div className="w-100%">
-                    <label htmlFor="" >Instituion Location</label><br />
-                    <input type="text" 
-                    className="my-input"
-                    value="Willson"
-                    disabled
-                    /><br /><br />
+            <label>
+              Instituion Location
+              <input type="text" name="location" defaultValue={institution.location} />
+            </label>
 
-                    <label htmlFor="" >Institution Representative</label><br />
-                    <input type="text" 
-                    className="my-input"
-                    value="Tabitha Wilson"
-                    disabled
-                    /><br /><br />
-                </div>
-
-                <div className="col-span-2 flex justify-center gap-4">
-                    <button className="btn">Edit</button>
-                    <button className="btn">Update</button>
-                </div>
-            </form>
+            <div className="pt-4 col-span-2 flex gap-4 justify-center">
+              {/* <button className="btn btn-alt" type="button">
+                Edit
+              </button> */}
+              <button className="btn">{!isLoading ? <>Update</> : <div className="i-svg-spinners-ring-resize"></div>}</button>
+            </div>
+          </form>
         </section>
-      </main>
-    </>
+      </div>
+    )
   );
 }
-
-export default InstituteProfile;

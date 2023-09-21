@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { userData, teachersData, studentsData, guardiansData } from "~/components/Query";
+import { userData, teachersData, studentsData, guardiansData, attendanceData } from "~/components/Query";
 
 export default function Dashboard() {
   // Queries
@@ -8,6 +8,7 @@ export default function Dashboard() {
   const { data: teachers } = teachersData();
   const { data: students } = studentsData();
   const { data: guardians } = guardiansData();
+  const { data: attendance } = attendanceData();
 
   return (
     isSuccess &&
@@ -57,39 +58,47 @@ export default function Dashboard() {
               <Link to="/admin/profile/rep" className="block i-tabler-edit text-2xl" />
             </div>
             <div className="text-center leading-8">
-              <img className="rounded-full w-30" src="/images/image-11.jpeg" alt="img" />
+              {/* <img className="rounded-full w-30" src="/images/image-11.jpeg" alt="img" /> */}
+              <div className="rounded-full bg-brand-pink h-20 w-20 text-3xl flex items-center justify-center text-white mx-auto mb-4">
+                {user.firstname[0]}
+                {user.lastname[0]}
+              </div>
               <h2>{user.firstname + " " + user.lastname}</h2>
               <p>{user.email}</p>
             </div>
           </div>
           <div className="col-span-2 bg-brand-liteorange p-7 rounded-2">
-            <h3>Attendance History</h3>
+            <h3 className="text-2xl">Attendance History</h3>
 
-            <table className="hidden w-full my-3">
+            <table className="w-full my-3 mt-3">
               <thead className="text-gray-500">
                 <tr className="text-left">
-                  <th>S/N</th>
-                  <th>NAME</th>
-                  <th>CLASS</th>
-                  <th>SUBJECTS</th>
-                  <th>AVERAGE</th>
+                  <th>Date</th>
+                  <th>Student</th>
+                  <th>Arrival</th>
+                  <th>Departure</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>Charlie Rawal</td>
-                  <td>SS 3</td>
-                  <td>24</td>
-                  <td>99.8</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Ariana Agarwal</td>
-                  <td>JS 2</td>
-                  <td>20</td>
-                  <td>87.5</td>
-                </tr>
+                {attendance
+                  ?.reverse()
+                  .slice(0, 5)
+                  .map((att, i) => (
+                    <tr key={i} className="[&>td]:py-1 text-sm">
+                      <td>{att.date.split("T")[0]}</td>
+                      <td>
+                        {att.student.firstname} {att.student.lastname}
+                      </td>
+                      <td>
+                        <div>{att.guardian_arrival?.firstname}</div>
+                        <div className="text-10px">{att.arrival}</div>
+                      </td>
+                      <td>
+                        <div>{att.guardian_departure?.firstname}</div>
+                        <div className="text-10px">{att.departure}</div>
+                      </td>
+                    </tr>
+                  ))}
               </tbody>
             </table>
           </div>

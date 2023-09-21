@@ -1,108 +1,110 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { userData, subjectsData, studentsData, guardiansData, attendanceData, classesData } from "~/components/Query";
 
-function Dashboard() {
+export default function TeacherDashboard() {
+  // Queries
+  const { data: user, isSuccess, isError } = userData();
+  const { data: students } = studentsData();
+  const { data: guardians } = guardiansData();
+  const { data: classes } = classesData();
+  const { data: subjects } = subjectsData();
+  const { data: attendance } = attendanceData();
   return (
-    <main className="px-10 grid gap-6">
-      <section className="grid grid-cols-2">
-        <div className="h-70 p-5 text-white bg-brand-blue letter-spacing tracking- rounded-tl-2 rounded-bl-2">
-          <h1 className="text-10 mb-2">
-            Hello <br /> <span>Ann</span>,
-          </h1>
-          <h3 className="text-5 my-2">St. Charles Royal Academy</h3>
-          <p className="text-3.5 text-gray-200 mb-1">Plot 165 Downtown Toronto Canada.</p>
-          <p className="text-3 mb-6">stcharlesroyalacademy@gmail.com</p>
-          <p>Let’s keep in track with your Institution Details</p>
-        </div>
-        <div className="h-70">
-          <img className="h-full w-full" src="/images/institute.jpeg" alt="img" />
-        </div>
-      </section>
-
-      <section className="grid grid-cols-3 items-center text-center justify-center gap-6 [&>div]:py-6 [&>div]:bg-brand-orange [&>div]:rounded-2 [&>div>h1]:text-7xl">
-        <div>
-          <h4>Total Students</h4>
-          <h1>50</h1>
-        </div>
-        <div>
-          <h4>Total Classes</h4>
-          <h1>3</h1>
-        </div>
-        <div>
-          <h4>Total Subjects</h4>
-          <h1>1</h1>
-        </div>
-      </section>
-
-      <section className="w-full flex justify-between gap-6 mb-5">
-        <div className="bg-brand-litepink p-7 grid grid-cols-1 w-2/4 gap-4 rounded-2">
-          <div className="flex items-center justify-between">
-            <h1>Teacher</h1>
-            <Link to="/teacher/teachers/profile" className="i-tabler-edit"></Link>
+    isSuccess &&
+    user?.institution?.name && (
+      <div className="px-10 grid gap-6">
+        <section className="grid grid-cols-5 justify-center rounded-xl text-white bg-gray-800 overflow-hidden">
+          <div className="flex flex-col justify-between col-span-3 p-8">
+            <div>
+              <div className="flex justify-between mb-3">
+                <h1 className="text-5xl font-800">
+                  Hello <br />
+                  {user.firstname},
+                </h1>
+                <Link to="/admin/profile/institution" className="block i-tabler-edit text-2xl opacity-50" />
+              </div>
+              <div className="text-xl">{user.institution.name}</div>
+              <p className="opacity-50">{user.institution.location}.</p>
+              {/* <p className="mt-6">{user.email}</p> */}
+            </div>
+            <p className="">Let’s keep in track with your Institution Details.</p>
           </div>
+          <img className="h-full max-h-35vh col-span-2 w-full object-cover" src="/images/institute.jpeg" alt="img" />
+        </section>
 
-          <div className="grid grid-cols-1 place-items-center">
-            <img className="w-30 mb-4" src="/images/teacher2.png" alt="img" />
+        <section className="grid grid-cols-3 items-center text-center justify-center gap-6 my-6 [&>a]:text-black [&>a]:py-6 [&>a]:bg-brand-orange [&>a]:rounded-2 [&>a>h1]:text-7xl">
+          <Link to="/teacher/teachers/students">
+            {!students?.length && <h1>No</h1>}
+            <h4>Students</h4>
+            {!!students?.length && <h1>{students.length}</h1>}
+          </Link>
+
+          <Link to="/teacher/teachers/classes">
+            {!classes?.length && <h1>No</h1>}
+            <h4>Classes</h4>
+            {!!classes?.length && <h1>{classes.length}</h1>}
+          </Link>
+
+          <Link to="/teacher/teachers/classes">
+            {!subjects?.length && <h1>No</h1>}
+            <h4>Subjects</h4>
+            {!!subjects?.length && <h1>{subjects.length}</h1>}
+          </Link>
+        </section>
+
+        <section className="grid grid-cols-3 gap-6 mb-12">
+          <div className="bg-brand-litepink p-6 grid gap-4 rounded-2">
+            <div className="flex justify-between">
+              <h2>Teacher</h2>
+              <Link to="/teacher/teachers/profile" className="block i-tabler-edit text-2xl" />
+            </div>
+            <div className="text-center leading-8">
+              <div className="rounded-full bg-brand-pink h-20 w-20 text-3xl flex items-center justify-center text-white mx-auto mb-4">
+                {user.firstname[0]}
+                {user.lastname[0]}
+              </div>
+              <h2>{user.firstname + " " + user.lastname}</h2>
+              <p>{user.email}</p>
+            </div>
           </div>
+          <div className="col-span-2 bg-brand-liteorange p-7 rounded-2">
+            <h3 className="text-2xl">Students Highlight</h3>
 
-          <div className="grid grid-cols-1 place-items-center gap-2">
-            <h1>Mrs. Ann Philip</h1>
-            <p>annphilip@gmail.com</p>
+            <table className="w-full my-3 mt-3">
+              <thead className="text-gray-500">
+                <tr className="text-left">
+                  <th>Date</th>
+                  <th>Student</th>
+                  <th>Arrival</th>
+                  <th>Departure</th>
+                </tr>
+              </thead>
+              <tbody>
+                {attendance
+                  ?.reverse()
+                  .slice(0, 5)
+                  .map((att, i) => (
+                    <tr key={i} className="[&>td]:py-1 text-sm">
+                      <td>{att.date.split("T")[0]}</td>
+                      <td>
+                        {att.student.firstname} {att.student.lastname}
+                      </td>
+                      <td>
+                        <div>{att.guardian_arrival?.firstname}</div>
+                        <div className="text-10px">{att.arrival}</div>
+                      </td>
+                      <td>
+                        <div>{att.guardian_departure?.firstname}</div>
+                        <div className="text-10px">{att.departure}</div>
+                      </td>
+                    </tr>
+                  ))}
+              </tbody>
+            </table>
           </div>
-        </div>
-
-        <div className="w-4/4 bg-brand-liteorange p-7 rounded-2">
-          <h3>Students Highlights</h3>
-
-          <table className="w-full text-left my-3">
-            <thead className="text-4 text-#84868A">
-              <tr>
-                <th>S/N</th>
-                <th>NAME</th>
-                <th>CLASS</th>
-              </tr>
-            </thead>
-            <tbody className="text-4">
-              <tr>
-                <td>1</td>
-                <td>Philip Mary</td>
-                <td>SS 3</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Dimaku Jane</td>
-                <td>SS 3</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>Jude Micheal</td>
-                <td>SS 3</td>
-              </tr>
-              <tr>
-                <td>4</td>
-                <td>Emmanuel Mmadu</td>
-                <td>SS 3</td>
-              </tr>
-              <tr>
-                <td>5</td>
-                <td>Mercy Christopher</td>
-                <td>SS 3</td>
-              </tr>
-              <tr>
-                <td>6</td>
-                <td>Miracle Igwemmadu</td>
-                <td>SS 3</td>
-              </tr>
-              <tr>
-                <td>7</td>
-                <td>Frank Mary</td>
-                <td>SS 3</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-    </main>
+        </section>
+      </div>
+    )
   );
 }
-export default Dashboard;

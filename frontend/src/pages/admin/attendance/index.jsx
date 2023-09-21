@@ -17,7 +17,7 @@ function Attendance() {
 
   return (
     <>
-      <div className="px-6">
+      <div className="px-10">
         <div className="flex gap-6">
           <PageLabel title="Manage Attendance" details="Let’s keep in track with your Institution Details." className="flex-grow" />
           <a onClick={() => setScan(true)} className="grid grid-cols-2 w-48 b b-solid b-gray-300 rounded-lg pl-2.5 items-center">

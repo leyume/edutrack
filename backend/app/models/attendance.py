@@ -16,7 +16,7 @@ class Attendance(Base):
     guardian_departure_id=Column(Integer, ForeignKey('users.id'))
     arrival=Column(DateTime, server_default=func.now())
     departure=Column(DateTime, server_default=func.now())
-    users = relationship("User", primaryjoin='User.id == Attendance.student_id', back_populates="attendance")
+    student = relationship("User", primaryjoin='User.id == Attendance.student_id', back_populates="attendance")
     guardian_arrival = relationship("User", primaryjoin='User.id == Attendance.guardian_arrival_id')
     guardian_departure = relationship("User", primaryjoin='User.id == Attendance.guardian_departure_id')
 

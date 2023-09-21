@@ -5,9 +5,35 @@ from datetime import datetime
 
 class Attendance(BaseModel): #serializer
     date: datetime = datetime.now()
-    student_id: int = 1
-    guardian_arrival_id: int = 3
+    student_id: int
+    guardian_arrival_id: int
+    guardian_arrival: int
     arrival: datetime = datetime.now()
+
+class UserX(BaseModel):
+    id: Optional[int] = None
+    firstname: str 
+    lastname: str
+    relation: Optional[str]
+    email: Optional[str]
+
+    class Config:
+        orm_mode = True
+
+class AttendanceFull(BaseModel):
+    id: Optional[int] = None
+    date: datetime
+    student_id: int #Optional[UserX]
+    guardian_arrival_id: int 
+    arrival: datetime 
+    guardian_departure_id: Optional[int] = None 
+    departure: Optional[datetime] = None 
+    student: UserX
+    guardian_arrival: UserX
+    guardian_departure: Optional[UserX]
+
+    class Config:
+        orm_mode = True
 
 
 class AttendancePost(Attendance): #serializer

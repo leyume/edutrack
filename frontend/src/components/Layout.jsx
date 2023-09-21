@@ -35,7 +35,7 @@ export default function Layout({ children }) {
         <>
           <HeaderInternal />
           <Sidebar />
-          <main className="bg-white min-h-70vh ml-60">{children}</main>
+          <main className="bg-white min-h-70vh md:ml-60">{children}</main>
         </>
       )}
       <Footer />

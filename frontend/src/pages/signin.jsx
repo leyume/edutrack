@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import signbg from "/images/sign-bg.png";
 import { Link, useNavigate } from "react-router-dom";
 import { auth, signInWithEmailAndPassword } from "../config";
@@ -22,6 +22,8 @@ export default function Signin() {
           const user = userCredential.user;
           await localStorage.setItem("token", user.accessToken);
           // console.log({ user });
+          setErr(false);
+          setMsg("Login Successful");
 
           await auth.currentUser
             .getIdTokenResult()
@@ -43,9 +45,14 @@ export default function Signin() {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.error({ errorCode, errorMessage });
+        setErr(true);
+        setMsg(errorMessage);
         setLoading(false);
       });
   };
+
+  const [msg, setMsg] = useState(false);
+  const [err, setErr] = useState(true);
 
   return (
     <main className="w-full grid grid-cols-2 items-center justify-between">
@@ -70,6 +77,8 @@ export default function Signin() {
         onSubmit={loginHandler}
       >
         <h1>Sign In</h1>
+        {!!msg && <div className={"msg mt-1 " + (err ? "error" : "success")}>{msg}</div>}
+
         <label>
           Email Address
           <input type="text" name="email" />

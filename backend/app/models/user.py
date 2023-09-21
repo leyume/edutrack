@@ -24,7 +24,7 @@ class User(Base):
     teacher_class = relationship("Classes", primaryjoin='User.id == Classes.teacher_id', back_populates="teacher")
     teacher_subjects = relationship("Subject", primaryjoin='User.id == Subject.teacher_id')
     subjects = relationship("Subject", secondary="students_subjects", back_populates="students")
-    attendance = relationship("Attendance", primaryjoin='User.id == Attendance.student_id', back_populates="users")
+    attendance = relationship("Attendance", primaryjoin='User.id == Attendance.student_id', back_populates="student")
 
     guardians = relationship(
         "User",

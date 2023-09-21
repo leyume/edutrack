@@ -1,7 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { auth, signOut } from "~/config";
 import { useLocation } from "react-router";
 import { useState, useEffect } from "react";
+import { userData } from "~/components/Query";
+import { useQueryClient } from "@tanstack/react-query";
 
 export default function Header() {
   let location = useLocation();
@@ -23,12 +26,19 @@ export default function Header() {
     };
   }, []);
 
+  let navigate = useNavigate();
+  let queryClient = useQueryClient();
+  const { data, isSuccess, isError } = userData();
+
+  const logout = async () => {
+    await signOut(auth);
+    await localStorage.removeItem("token");
+    queryClient.removeQueries();
+    navigate("/");
+  };
+
   return location.pathname == "/" ? (
-    <header
-      className={`flex items-center justify-between px-5% py-5 ${
-        scrolled ? "scrolled" : ""
-      }`}
-    >
+    <header className={`landing flex items-center justify-between px-5% py-5 ${scrolled ? "scrolled" : ""}`}>
       <Link to="/admin/dashboard" className="text-brand-pink text-4xl font-bold">
         Edu<span className="text-brand-blue">Track</span>
       </Link>
@@ -52,12 +62,27 @@ export default function Header() {
         </ul>
       </nav>
       <div className="flex gap-4">
-        <Link to="/signin" className="btn btn-alt">
-          Log in
-        </Link>
-        <Link to="/signup" className="btn">
-          Sign up
-        </Link>
+        {isSuccess && data?.institution?.name ? (
+          <div className="flex items-center gap-3">
+            <Link to="/admin/dashboard">
+              <div className="rounded-full bg-brand-blue h-10 w-10 text-lg flex items-center justify-center text-white">
+                {data.firstname[0]}
+                {data.lastname[0]}
+              </div>
+              {/* <img src="/images/image-11.jpeg" alt="img" className="w-10 rounded-full" /> */}
+            </Link>
+            <a onClick={logout} className="i-tabler-power text-red-600 text-2xl inline-block" />
+          </div>
+        ) : (
+          <>
+            <Link to="/signin" className="btn btn-alt">
+              Log in
+            </Link>
+            <Link to="/signup" className="btn">
+              Sign up
+            </Link>
+          </>
+        )}
       </div>
     </header>
   ) : (

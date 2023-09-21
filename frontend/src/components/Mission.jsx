@@ -1,5 +1,5 @@
 import React from "react";
-import "./mission.css";
+// import "./mission.css";
 import One from "/images/image 1.png";
 import Two from "/images/image 2.png";
 import Three from "/images/image 3.png";
@@ -19,35 +19,35 @@ function Mission() {
         </p>
       </div>
       <div className="mx-auto overflow-hidden">
-      <div className="grid grid-cols-4 place-items-center gap-x-5  [&>div>img]:w-full [&>div>img]:h-full">
-        <div className="h-80">
-          <img src={One} alt="img" />
-        </div>
-        <div className="h-60 mr-3">
-          <img src={Two} alt="img" />
-        </div>
-        <div className="h-60 ml-3">
-          <img src={Three} alt="img" />
-        </div>
-        <div className="h-80">
-          <img src={Four} alt="img" />
-        </div>
+        <div className="grid grid-cols-4 place-items-center gap-x-5  [&>div>img]:w-full [&>div>img]:h-full">
+          <div className="h-80">
+            <img src={One} alt="img" />
+          </div>
+          <div className="h-60 mr-3">
+            <img src={Two} alt="img" />
+          </div>
+          <div className="h-60 ml-3">
+            <img src={Three} alt="img" />
+          </div>
+          <div className="h-80">
+            <img src={Four} alt="img" />
+          </div>
 
-        <div className="h-60">
-          <img src={Two} alt="img" />
-        </div>
-        <div className="h-80">
-          <img src={One} alt="img" />
-        </div>
-       
-        <div className="h-80">
-          <img src={Four} alt="img" />
-        </div>
+          <div className="h-60">
+            <img src={Two} alt="img" />
+          </div>
+          <div className="h-80">
+            <img src={One} alt="img" />
+          </div>
 
-        <div className="h-60">
-          <img src={Three} alt="img" />
+          <div className="h-80">
+            <img src={Four} alt="img" />
+          </div>
+
+          <div className="h-60">
+            <img src={Three} alt="img" />
+          </div>
         </div>
-      </div>
       </div>
     </div>
   );

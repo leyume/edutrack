@@ -9,10 +9,10 @@ export default function Profile() {
   return (
     isSuccess &&
     user?.institution?.name && (
-      <div className="px-6">
+      <div className="px-10">
         <PageLabel title="Profile" details="Let’s keep in track with your Institution Details." />
 
-        <section className="grid grid-cols-2 gap-6 mt-6 mb-12">
+        <section className="grid grid-cols-2 gap-6 mt-6 pb-12">
           <div className="bg-brand-litepink p-8 grid gap-4 rounded-2">
             <div className="flex justify-between">
               <h2>Representative</h2>

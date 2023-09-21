@@ -5,9 +5,6 @@ from fastapi import Depends, HTTPException, status, APIRouter, Response
 from typing import Optional, List
 from sqlalchemy import and_
 
-# from models.index import get_db, Student, Tutor #StudentCourse
-# from schemas.user import UserFull as User, UserUpdate
-# from schemas.student import StudentCourse
 from auth import auth
 from routes.user import creating_user
 

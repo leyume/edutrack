@@ -95,12 +95,20 @@ class UserUpdateStudent(BaseModel): #serializer
     lastname: str='Doe'
     student_id: int = None
     class_id: int = None
-    status: Optional[str] = None
+    # status: Optional[str] = None
     guardian_fname: str = 'Sandra'
     guardian_lname: str = 'Doe'
     guardian_relation: str = 'mother'
     guardian_email: str = 'sandra@yopmail.com'
     principal: Optional[int] = 1
+
+class UserUpdateTeacher(BaseModel): #serializer
+    id: Optional[int] = None
+    firstname: str = 'Brandon'
+    lastname: str='Stark'
+    subject_name: str = 'Biology'
+    class_id: int = None
+    status: Optional[str] = None
 
 class UserUpdateInstitution(BaseModel): #serializer
     email: str = 'chriss@yopmail.com'
@@ -174,10 +182,10 @@ class Attendance(BaseModel):
     student_id: int
     guardian_arrival_id: int 
     arrival: datetime 
-    guardian_departure_id: int 
-    departure: datetime 
+    guardian_departure_id: Optional[int] = None 
+    departure: Optional[datetime] = None 
     guardian_arrival: UserX
-    guardian_departure: UserX
+    guardian_departure: Optional[UserX]
 
     class Config:
         orm_mode = True

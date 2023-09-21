@@ -4,7 +4,7 @@ import PageLabel from "~/components/PageLabel";
 
 export default function Teachers() {
   return (
-    <div className="px-6">
+    <div className="px-10">
       <PageLabel title="Manage Teachers" details="Let’s keep in track with your Institution Details." />
 
       <section
@@ -26,7 +26,7 @@ export default function Teachers() {
         <div>
           <div className="i-tabler-edit" />
           <p>Update Teachers Info</p>
-          <Link to="/admin/teachers/update" className="btn">
+          <Link to="/admin/teachers/search" className="btn">
             Update
           </Link>
         </div>

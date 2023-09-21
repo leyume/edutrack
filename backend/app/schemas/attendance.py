@@ -18,7 +18,8 @@ class AttendancePost(Attendance): #serializer
         orm_mode=True
 
 class AttendanceSchema(AttendancePost):  # Output model for response
-    pass
+    id:Optional[int] = None
+
     
 class AttendanceUpdate(BaseModel): #serializer
     date: datetime = datetime.now()

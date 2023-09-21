@@ -38,7 +38,7 @@ a {
 }
 
 h3 {
-  @apply text-3xl;
+  @apply text-3xl leading-none;
 }
 
 h4 {
@@ -49,10 +49,18 @@ h5 {
   @apply text-lg leading-none;
 }
 
-.shadow {
-  text-shadow: 3px 4px 5px rgba(0, 0, 0, 0.25);
+// Message
+.msg {
+  @apply mb-2 rounded border py-4 px-6 text-center text-sm tracking-wider;
+  &.success {
+    @apply border-green-300 bg-green-200 text-green-600;
+  }
+  &.error {
+    @apply border-red-300 bg-red-200 text-red-600;
+  }
 }
 
+// Button
 .btn {
   @apply px-5 py-3 bg-brand-blue rounded-lg text-white text-lg leading-none font-bold font-medium border-solid border-1 border-brand-blue cursor-pointer outline-none transition-all duration-500;
   &:hover {
@@ -65,92 +73,31 @@ h5 {
       @apply bg-brand-blue text-white;
     }
   }
+  &.btn-pink {
+    @apply text-brand-pink border-brand-pink;
+    &:hover {
+      @apply bg-brand-pink text-white;
+    }
+  }
+
+  &.btn-mini {
+    @apply px-2.5 py-1.5 text-xs rounded-md;
+  }
+
+  &.inactive {
+    @apply bg-brand-blue text-white;
+    &:hover {
+      @apply bg-brand-blue text-white;
+    }
+    &.btn-pink {
+      @apply text-brand-pink bg-transparent border-brand-pink;
+      &:hover {
+        @apply text-brand-pink bg-transparent border-brand-pink;
+      }
+    }
+  }
 }
 
 .my-input {
   @apply w-full text-3.5 p-2.5 rounded-2 border border-solid mt-2 border-gray-300 focus:outline-none focus:border-blue-500;
-}
-
-@keyframes moveGrid {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-100%); /* Adjust this value based on your content width */
-  }
-}
-
-.moving-grid {
-  animation: moveGrid 10s linear infinite; /* Adjust the duration (10s) as needed */
-}
-
-/* Add these styles to your component's CSS file or style section */
-/* You can customize the styles to fit your design */
-
-/* Testimonial section container */
-.bg-brand-gray {
-  background-color: #f3f3f3;
-}
-
-/* Testimonial header styles */
-.text-brand-blue {
-  color: #007bff;
-}
-
-.text-brand-pink {
-  color: #ff4081;
-}
-
-/* Testimonial row container */
-.overflow-hidden {
-  overflow: hidden;
-}
-
-/* Testimonial box styles */
-.rounded-5 {
-  border-radius: 0.5rem;
-}
-
-.bg-white {
-  background-color: #ffffff;
-}
-
-.shadow-md {
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-/* Testimonial content styles */
-.text-2xl {
-  font-size: 1.25rem;
-}
-
-.w-13 {
-  width: 3.25rem;
-}
-
-.text-left {
-  text-align: left;
-}
-
-.text-brand-pink {
-  color: #ff4081;
-}
-
-/* Testimonial rating styles */
-.text-5 {
-  font-size: 1.25rem;
-}
-
-/* Navigation arrows styles */
-.text-10 {
-  font-size: 2.5rem;
-}
-
-.cursor-pointer {
-  cursor: pointer;
-}
-
-/* Statistics container styles */
-.text-3xl {
-  font-size: 1.875rem;
 }

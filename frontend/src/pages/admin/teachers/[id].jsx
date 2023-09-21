@@ -87,16 +87,6 @@ export default function UpdateTeacher() {
           <label>
             Class
             <input type="text" name="class_name" defaultValue={teacher.teacher_class[0]?.name} />
-            {/* {!!classes?.length && (
-              <select name="class_id" defaultValue={teacher.teacher_class[0]?.id}>
-                <option defaultValue="">Select Class</option>
-                {classes?.map((cls, i) => (
-                  <option key={i} value={cls.id}>
-                    {cls.name}
-                  </option>
-                ))}
-              </select>
-            )} */}
           </label>
 
           <label>

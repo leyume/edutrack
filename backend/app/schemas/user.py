@@ -156,6 +156,7 @@ class Classes(BaseModel):
     id: Optional[int] = None
     name: Optional[str]
     teacher_id: Optional[int]
+    teacher: UserX
     # options: List[StudentClass]
 
     class Config:

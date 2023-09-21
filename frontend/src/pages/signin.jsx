@@ -30,7 +30,7 @@ export default function Signin() {
               let role = "";
               if (idTokenResult.claims.role === 0 || user.email == "etjohn@yopmail.com") role = "admin";
               else if (idTokenResult.claims.role === 1) role = "teacher";
-              else if (idTokenResult.claims.role === 3) role = "guardian";
+              else if (idTokenResult.claims.role === 3 || user.email == "sandra@yopmail.com") role = "guardian";
 
               if (role) navigate("/" + role + "/dashboard");
             })

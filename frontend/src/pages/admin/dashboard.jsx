@@ -32,22 +32,22 @@ export default function Dashboard() {
           <img className="h-full max-h-35vh col-span-2 w-full object-cover" src="/images/institute.jpeg" alt="img" />
         </section>
 
-        <section className="grid grid-cols-3 items-center text-center justify-center gap-6 my-6 [&>div]:py-6 [&>div]:bg-brand-orange [&>div]:rounded-2 [&>div>h1]:text-7xl">
-          <div>
+        <section className="grid grid-cols-3 items-center text-center justify-center gap-6 my-6 [&>a]:text-black [&>a]:py-6 [&>a]:bg-brand-orange [&>a]:rounded-2 [&>a>h1]:text-7xl">
+          <Link to="/admin/teachers">
             {!teachers?.length && <h1>No</h1>}
             <h4>Teachers</h4>
             {!!teachers?.length && <h1>{teachers.length}</h1>}
-          </div>
-          <div>
+          </Link>
+          <Link to="/admin/students">
             {!students?.length && <h1>No</h1>}
             <h4>Students</h4>
             {!!students?.length && <h1>{students.length}</h1>}
-          </div>
-          <div>
+          </Link>
+          <Link to="/admin/students">
             {!guardians?.length && <h1>No</h1>}
             <h4>Guardians</h4>
             {!!guardians?.length && <h1>{guardians.length}</h1>}
-          </div>
+          </Link>
         </section>
 
         <section className="grid grid-cols-3 gap-6 mb-12">

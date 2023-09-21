@@ -28,8 +28,8 @@ def create_attendance(
     db_attendance = db.query(Attendance).filter(
       and_(
         Attendance.student_id == attendance.student_id,
-        Attendance.guardian_arrival_id == attendance.guardian_arrival_id),
-        Attendance.date > current_date
+        # Attendance.guardian_arrival_id == attendance.guardian_arrival_id,
+        Attendance.date > current_date)
         ).order_by(Attendance.id.desc()).first()
 
     if db_attendance:

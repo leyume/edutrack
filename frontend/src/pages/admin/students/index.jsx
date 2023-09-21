@@ -26,7 +26,7 @@ export default function Students() {
         <div>
           <div className="i-tabler-edit" />
           <p>Update Students Info</p>
-          <Link to="/admin/students/update" className="btn">
+          <Link to="/admin/students/search" className="btn">
             Update
           </Link>
         </div>

@@ -20,10 +20,6 @@ from schemas.user import User as UserSchema, UserStudent, UserUpdate, UserInstit
 router = APIRouter()
 
 
-# @router.get("", response_model=List[UserClass], status_code=status.HTTP_200_OK)
-# def get_students(db: Session = Depends(get_db), auth=Depends(auth)):
-#     return auth.students
-
 @router.get("", response_model=List[UserClass], status_code=status.HTTP_200_OK)
 def get_students(db: Session = Depends(get_db), auth=Depends(auth)):
     if auth.role == 0:

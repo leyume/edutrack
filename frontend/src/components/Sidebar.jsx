@@ -116,6 +116,10 @@ export default function Sidebar() {
             else if (link === "/admin/students/details") newMenu[1] = { label: "View Students Details", link, icon };
             else if (link === "/admin/students/update") newMenu[1] = { label: "Student Update", link, icon };
             else if (link === "/admin/students/search") newMenu[1] = { label: "Students Search", link, icon };
+            else if (link.startsWith("/admin/students/")) {
+              newMenu[0] = { ...newMenu[0], link: "/admin/students/search" };
+              newMenu[1] = { label: "Update Student", link, icon };
+            }
           } else if (pathz[2] == "profile") {
             icon = "i-tabler-user-circle";
             if (link === "/admin/profile/rep") newMenu[1] = { label: "Representative", link, icon };

@@ -13,7 +13,7 @@ class Classes(Base):
     teacher_id=Column(Integer, ForeignKey('users.id'))
     # user = relationship("User", back_populates="classes")
     students = relationship("User", secondary="students_classes", back_populates="classes")
-    teachers = relationship("User", primaryjoin='User.id == Classes.teacher_id', back_populates="teacher_class")
+    teacher = relationship("User", primaryjoin='User.id == Classes.teacher_id', back_populates="teacher_class")
 
     def __repr__(self):
         return f"<Class name={self.name} teacher={self.teacher_id}>"

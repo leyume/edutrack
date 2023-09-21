@@ -45,15 +45,7 @@ def get_guardian(code, db: Session = Depends(get_db)): #, auth=Depends(auth)
         user = db.query(User).filter(and_(User.id == guard_id, User.role == 3, User.institution_id==7)).first()
         return user
 
-<<<<<<< HEAD
     return {}
-=======
-    return {
-        "Jane": "Nginika",
-        "code": coded[1],
-        "auth": auth['institution_id']
-    }
->>>>>>> b7de339 (merged update apis 1)
     # if auth.role == 0:
     #     users = db.query(User).filter(User.role == 3 and User.institution_id==auth.institution_id).all()
     #     return users

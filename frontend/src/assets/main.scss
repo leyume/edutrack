@@ -101,3 +101,7 @@ h5 {
 .my-input {
   @apply w-full text-3.5 p-2.5 rounded-2 border border-solid mt-2 border-gray-300 focus:outline-none focus:border-blue-500;
 }
+
+.shadow {
+  text-shadow: 3px 4px 5px rgba(0, 0, 0, 0.25);
+}

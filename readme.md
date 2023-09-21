@@ -7,8 +7,8 @@ The existing process of accessing reports for children and students within a lea
 ## Technologies
 
 ### Languages
-- Python, MySQL(MariaDB) - (yet to be implemented)
-- HTML, CSS, Javascript (ReactJS - MVP, Implement)
+- Python, MySQL(MariaDB)
+- HTML, CSS, Javascript (ReactJS - MVP)
 
 ### Platforms
 - Docker
@@ -25,10 +25,10 @@ The existing process of accessing reports for children and students within a lea
 
 ### Steps
 - Clone repo ```git clone https://github.com/leyume/edutrack.git ```
-- Enter the learn directory ``` cd edutrack ```
+- Enter the frontend directory ``` cd frontend ```
 - Install npm dependencies ``` npm install ```
 - Run in dev mode ``` npm run dev ```
-- View in browser ``` http://localhost:8401 ```
+- View in browser ``` http://localhost:5173 ```
 
 
 # Preview

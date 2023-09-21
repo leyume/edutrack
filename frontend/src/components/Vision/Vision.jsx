@@ -2,40 +2,50 @@ import React from "react";
 
 function Vision() {
   return (
-    <section className="bg-icons text-center py-20">
-      <div className="vision-header">
-        <h1 className="text-pxl text-brand-blue">
+    <section id="services" className="bg-icons text-center pt-25 pb-15 px-15">
+      <div className="grid grid-cols-1 place-items-center gap-4">
+        <h1 className="text-5xl text-brand-blue">
           What <span className="text-brand-pink">Edu</span>Track Do!
         </h1>
-        <p className="w-55% mx-auto mt-8 leading-normal">
+        <p className="w-55% leading-normal text-4">
           Our comprehensive administrative management system provides schools,
           teachers and parents a flexible and efficiently streamline track
           operation over their school, students and children.
         </p>
       </div>
-      <div className="vision-img-container">
-        <div className="flex gap-2 mt-15">
-          <div className="mt-20 ml-10">
-            <h1 className="text-5xl text-brand-blue">School Admin</h1>
-            <p className="w-55% mx-auto mt-4 leading-normal">
-              Lorem ipsum dore helye sepum ipsum Lorem ipsum dore
-            </p>
+      <div className="mt-10 w-full">
+        <div className="flex gap-2">
+          <div className="mt-10 ml-15 text-left">
+            <h1 className="text-3xl text-brand-blue">School Admin</h1>
+            <div className="mx-auto mt-2 leading-normal grid gap-2">
+              <p>Manage School Data. </p>
+              <p>Track Teachers Attendance.</p>
+              <p>Track Student Attendance.</p>
+              <p>Generate School Reports.</p>
+              <p>Manage Teachers and Guardians Access.</p>
+            </div>
           </div>
-          <img src="/images/tracking.png" alt="img" />
-          <div className="mt-20 mr-12">
-            <h1 className="text-5xl text-brand-blue">Teachers</h1>
-            <p className="w-55% mx-auto mt-6 leading-normal">
-              Lorem ipsum dore helye sepum ipsum Lorem ipsum dore
-            </p>
+          <img src="/images/tracking.png" alt="img" className="w-95 mx-20"/>
+          <div className="mt-10 mr-12 text-right">
+            <h1 className="text-3xl text-brand-blue">Teachers</h1>
+            <div className="mx-auto mt-2 leading-normal grid gap-2">
+              <p>Manage Students Information.</p>
+              <p>Take Attendance.</p>
+              <p>Generate Students Reports.</p>
+              <p>View Students Progress.</p>
+              <p>Communicate with Guardians</p>
+            </div>
           </div>
         </div>
-        <div className="mx-auto">
-          <div className="parent-div">
-            <h1 className="text-5xl text-brand-blue">Parents</h1>
-            <p className="w-55% mx-auto mt-8 leading-normal">
-              Lorem ipsum dore helye sepum ipsum Lorem ipsum dore
-            </p>
-          </div>
+        <div className="mx-auto mt-6">
+            <h1 className="text-3xl text-brand-blue mt-6">Guardians</h1>
+            <div className="mx-auto mt-2 leading-normal grid gap-2">
+              <p>Track Wards Attendance.</p>
+              <p>Assign Drop and Pickup.</p>
+              <p>Assign more Guradians.</p>
+              <p>Access Wards Records.</p>
+              <p>Ensure Wards Safety.</p>           
+            </div>
         </div>
       </div>
     </section>

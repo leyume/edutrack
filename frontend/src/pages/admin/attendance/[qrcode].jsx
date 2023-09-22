@@ -64,6 +64,8 @@ export default function AttendanceGuardian() {
       method = "PUT";
     }
 
+    console.log({ dd });
+
     let res = await fetchAPI("attendance", method, { ...dd });
     console.log({ res });
 
@@ -75,7 +77,7 @@ export default function AttendanceGuardian() {
       await getGuardian(qrcode);
       setMsg(res?.message || "Successfully updated");
     } else {
-      setMsg(res.detail);
+      setMsg(JSON.stringify(res?.detail));
     }
   };
 

@@ -7,8 +7,10 @@ class Attendance(BaseModel): #serializer
     date: datetime = datetime.now()
     student_id: int
     guardian_arrival_id: int
-    guardian_arrival: int
     arrival: datetime = datetime.now()
+    
+    class Config:
+        orm_mode=True
 
 class UserX(BaseModel):
     id: Optional[int] = None
@@ -29,7 +31,7 @@ class AttendanceFull(BaseModel):
     guardian_departure_id: Optional[int] = None 
     departure: Optional[datetime] = None 
     student: UserX
-    guardian_arrival: UserX
+    guardian_arrival: Optional[UserX]
     guardian_departure: Optional[UserX]
 
     class Config:

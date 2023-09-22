@@ -22,15 +22,15 @@ def get_attendance(db: Session = Depends(get_db), auth=Depends(auth)):
 def create_attendance(
     attendance: AttendancePost, db: Session = Depends(get_db), auth=Depends(auth)
 ):
-
     current_date = date.today()
-    
+
     db_attendance = db.query(Attendance).filter(
       and_(
         Attendance.student_id == attendance.student_id,
         # Attendance.guardian_arrival_id == attendance.guardian_arrival_id,
         Attendance.date > current_date)
         ).order_by(Attendance.id.desc()).first()
+
 
     if db_attendance:
       raise HTTPException(status_code=403, detail="Student already arrived today.")

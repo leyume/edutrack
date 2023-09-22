@@ -37,21 +37,31 @@ def create_classes(
     return new_class
 
 @router.put("")
-def update_classes(
-    classes: ClassesUpdate, db: Session = Depends(get_db)
-):
-  try:
-    classes_dict = classes.dict()
-    
-    db_classes = db.query(Classes).filter(Classes.name==classes.name).first()
+def update_classes(classes: ClassesUpdate, db: Session = Depends(get_db)):
+    try:
+        classes_dict = classes.dict()
+        # db_classes = db.query(Classes).filter(Classes.id==classes.id).first()
+        db_classes = db.query(Classes).filter(Classes.teacher_id==classes.teacher_id).first()
 
-    for key, value in classes_dict.items():
-        setattr(db_classes, key, value)
-    db.commit()
-    return {"message": "Class Profile successfully updated"}
+        if db_classes:
+          for key, value in classes_dict.items():
+              if value:
+                setattr(db_classes, key, value)
+        else: 
+          # create new class for teacher
+          new_class = Classes(**classes_dict)
+          db.add(new_class)
+        
+        db.commit()
+        
+        if db_classes:
+            return {"data": db_classes, "message": "Class Profile successfully updated"}
+        
+        return {"data": new_class, "message": "Class Profile successfully updated"}
+        
 
-  except Exception as e:
-    raise HTTPException(status_code=401, detail="Teacher does not exist")
+    except Exception as e:
+        raise HTTPException(status_code=401, detail="Teacher does not exist")
 
 
 # @router.get("", response_model=User, status_code=status.HTTP_200_OK)

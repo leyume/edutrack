@@ -5,9 +5,37 @@ from datetime import datetime
 
 class Attendance(BaseModel): #serializer
     date: datetime = datetime.now()
-    student_id: int = 1
-    guardian_arrival: int = 3
+    student_id: int
+    guardian_arrival_id: int
     arrival: datetime = datetime.now()
+    
+    class Config:
+        orm_mode=True
+
+class UserX(BaseModel):
+    id: Optional[int] = None
+    firstname: str 
+    lastname: str
+    relation: Optional[str]
+    email: Optional[str]
+
+    class Config:
+        orm_mode = True
+
+class AttendanceFull(BaseModel):
+    id: Optional[int] = None
+    date: datetime
+    student_id: int #Optional[UserX]
+    guardian_arrival_id: int 
+    arrival: datetime 
+    guardian_departure_id: Optional[int] = None 
+    departure: Optional[datetime] = None 
+    student: UserX
+    guardian_arrival: Optional[UserX]
+    guardian_departure: Optional[UserX]
+
+    class Config:
+        orm_mode = True
 
 
 class AttendancePost(Attendance): #serializer
@@ -18,11 +46,12 @@ class AttendancePost(Attendance): #serializer
         orm_mode=True
 
 class AttendanceSchema(AttendancePost):  # Output model for response
-    pass
+    id:Optional[int] = None
+
     
 class AttendanceUpdate(BaseModel): #serializer
     date: datetime = datetime.now()
     institution_id: int = 1 #should be taken from the session user
     student_id: int = 1
-    guardian_departure: int = 3
+    guardian_departure_id: int = 3
     departure: datetime = datetime.now()

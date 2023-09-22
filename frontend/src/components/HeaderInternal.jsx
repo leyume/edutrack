@@ -1,33 +1,41 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { auth, signOut } from "../config";
-import fetchAPI from "../utils/fetchAPI";
-
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { auth, signOut } from "~/config";
+import { userData } from "~/components/Query";
+import { useQueryClient } from "@tanstack/react-query";
 
 export default function HeaderInternal() {
   let navigate = useNavigate();
-
   let queryClient = useQueryClient();
-
-  const { data, isSuccess, isError } = useQuery({ queryKey: ["user"], queryFn: async () => await fetchAPI("user") });
-  // const { data, isSuccess } = { data: {}, isSuccess: false };
+  const { data, isSuccess, isError } = userData();
 
   const logout = async () => {
     await signOut(auth);
     await localStorage.removeItem("token");
-    queryClient.invalidateQueries();
-    // let q = await queryClient.invalidateQueries({ queryKey: ["user"] });
+    queryClient.removeQueries();
     navigate("/");
   };
 
   return (
-    <header className="flex items-center justify-end gap-20px mt-20px mr-8 mb-6">
-      {isSuccess && data?.institution?.name && <h3>{data.institution.name}</h3>}
-      <img src="/images/image-11.jpeg" alt="img"className="w-10" />
-      <a onClick={logout}>
-        <img src="/images/vector-1.jpeg" alt="img" className="w-8"/>
-      </a>
+    <header className="flex items-center justify-end relative gap-3 mt-5 md:ml-60 mb-6 px-10">
+      <b className="absolute left-10 top-0 text-3xl text-brand-blue md:hidden">
+        <span className=" text-brand-pink">E</span>T
+      </b>
+      {isSuccess && data?.institution?.name && (
+        <Link to="/admin/profile" className="flex gap-3 items-center text-black">
+          <div>
+            <h5>{data.firstname + " " + data.lastname}</h5>
+            <div className="text-xs">{data.institution.name}</div>
+          </div>
+          {/* <img src="/images/image-11.jpeg" alt="img" className="w-10 rounded-full" /> */}
+          <div className="rounded-full bg-brand-blue h-10 w-10 text-lg flex items-center justify-center text-white">
+            {data.firstname[0]}
+            {data.lastname[0]}
+          </div>
+        </Link>
+      )}
+      <a onClick={logout} className="i-tabler-power text-red-600 text-2xl inline-block" />
+      {/* <a onClick={logout} className="i-tabler-caret-down-filled text-2xl inline-block" /> */}
     </header>
   );
 }

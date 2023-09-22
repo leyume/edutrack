@@ -1,41 +1,43 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import PageLabel from "~/components/PageLabel";
 
-function Students() {
+export default function Students() {
   return (
-    <>
-      <div className="px-6">
-        <section className="bg-brand-blue rounded-2 text-white py-6 px-6">
-          <h1>Manage Students</h1>
-          <p>Let’s keep in track with your Institution Details.</p>
-        </section>
+    <div className="px-10">
+      <PageLabel title="Manage Students" details="Let’s keep in track with your Institution Details." />
 
-        <section className="grid grid-cols-3 gap-6 bg-brand-liteorange mt-6 py-6 px-6 rounded-2 text-center [&>div]:bg-white [&>div]:rounded-2 [&>div]:shadow [&>div]:grid [&>div]:gap-12 [&>div]:py-8 [&>div]:px-6 [&>div]:items-center [&>div]:justify-items-center">
-          <div>
-            <img src="./images/image-16.jpeg" alt="img" />
-            <p className="font-bold text-24px shadow-white">Create Students</p>
-            <Link to="/students/add" className="btn">
-              Create
-            </Link>
-          </div>
-          <div>
-            <img src="./images/image-14.jpeg" alt="img" />
-            <p className="font-bold text-24px shadow-white">Update Students Info</p>
-            <Link to className="btn" href="/">
-              Update
-            </Link>
-          </div>
-          <div>
-            <img src="./images/image-15.jpeg" alt="img" />
-            <p className="font-bold text-24px shadow-white">View Student Details</p>
-            <Link to className="btn" href="/">
-              View
-            </Link>
-          </div>
-        </section>
-      </div>
-    </>
+      <section
+        className="
+          grid grid-cols-3 gap-6 bg-brand-liteorange mt-6 py-6 px-6 rounded-2 text-center 
+          [&>div]:shadow [&>div]:bg-white [&>div]:rounded-2 [&>div]:grid [&>div]:gap-8 
+          [&>div]:pt-8 [&>div]:pb-10 [&>div]:px-6 [&>div]:items-center [&>div]:justify-items-center
+          [&>div>div]:text-8xl [&>div>div]:text-brand-pink [&>div>div]:-mb-1
+          [&>div>p]:font-bold [&>div>p]:text-xl [&>div>p]:shadow-white
+          "
+      >
+        <div>
+          <div className="i-tabler-school" />
+          <p>Create Students</p>
+          <Link to="/admin/students/add" className="btn">
+            Create
+          </Link>
+        </div>
+        <div>
+          <div className="i-tabler-edit" />
+          <p>Update Students Info</p>
+          <Link to="/admin/students/search" className="btn">
+            Update
+          </Link>
+        </div>
+        <div>
+          <div className="i-tabler-list-details" />
+          <p>View Student Details</p>
+          <Link to="/admin/students/details" className="btn">
+            View
+          </Link>
+        </div>
+      </section>
+    </div>
   );
 }
-
-export default Students;

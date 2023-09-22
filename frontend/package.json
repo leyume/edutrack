@@ -13,14 +13,18 @@
   "dependencies": {
     "@tanstack/react-query": "^4.35.3",
     "firebase": "^10.3.1",
+    "firebase-tools": "^12.5.4",
     "path": "^0.12.7",
+    "qrcode.react": "^3.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.10.1",
+    "react-qrcode-scanner": "^1.0.5",
     "react-router": "^6.4.1",
     "react-router-dom": "^6.4.1"
   },
   "devDependencies": {
+    "@iconify-json/svg-spinners": "^1.1.2",
     "@iconify-json/tabler": "^1.1.91",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",

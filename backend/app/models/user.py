@@ -21,7 +21,10 @@ class User(Base):
     updated_at = Column(TIMESTAMP(timezone=True), default=None, onupdate=func.now())
     institution = relationship("Institution", back_populates="users")
     classes = relationship("Classes", secondary="students_classes", back_populates="students")
+    teacher_class = relationship("Classes", primaryjoin='User.id == Classes.teacher_id', back_populates="teacher")
+    teacher_subjects = relationship("Subject", primaryjoin='User.id == Subject.teacher_id')
     subjects = relationship("Subject", secondary="students_subjects", back_populates="students")
+    attendance = relationship("Attendance", primaryjoin='User.id == Attendance.student_id', back_populates="student")
 
     guardians = relationship(
         "User",
@@ -55,8 +58,6 @@ class User(Base):
         backref="teacherx",
     )
     
-
-
 
     def __repr__(self):
         return f"<User firstname={self.firstname} email={self.email}>"

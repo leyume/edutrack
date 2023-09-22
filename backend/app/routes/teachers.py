@@ -1,13 +1,19 @@
 
 from sqlalchemy.orm import Session
+from sqlalchemy import and_
 from fastapi import Depends, HTTPException, status, APIRouter, Response
 from typing import Optional, List
 
 from auth import auth
 from routes.user import creating_user
+from routes.subjects import update_subject
+from schemas.subject import SubjectUpdate
 
-from models.index import get_db, User
-from schemas.user import User as UserSchema, UserPost, UserUpdate, UserInstitution, UserPass, UserClass, UserTeacher
+from routes.classes import update_classes
+from schemas.classes import ClassesUpdate
+
+from models.index import get_db, User, Subject
+from schemas.user import User as UserSchema, UserPost, UserUpdate, UserInstitution, UserPass, UserClass, UserTeacher, UserUpdateTeacher, UserPostTeacher
 
 router = APIRouter()
 
@@ -16,63 +22,97 @@ router = APIRouter()
 # def get_teacher(db: Session = Depends(get_db), auth=Depends(auth)):
 #     return auth
 
-@router.get("", response_model=List[UserInstitution], status_code=status.HTTP_200_OK)
+@router.get("", response_model=List[UserTeacher], status_code=status.HTTP_200_OK)
 def get_teachers(db: Session = Depends(get_db), auth=Depends(auth)):
     if auth.role == 0:
-        users = db.query(User).filter(User.role == 1 and User.institution_id==auth.institution_id).all()
+        users = db.query(User).filter(and_(User.role == 1, User.institution_id==auth.institution_id)).all()
         return users
     else:
         raise HTTPException(status_code=403, detail="You are not authorized")
 
 @router.post("", response_model=UserSchema, status_code=status.HTTP_201_CREATED)
-def create_teacher(
-    user: UserTeacher, db: Session = Depends(get_db), auth=Depends(auth)
-):
+def create_teacher(user: UserPostTeacher, db: Session = Depends(get_db), auth=Depends(auth)):
     if auth.role == 0:
         user.role = 1
         user.institution_id = auth.institution_id
-        user.password = "password"
-        return creating_user(user, db)
+        # user.password = "edutrack"
+        user.phone = "0"
+        new_teacher = creating_user(user, db)
 
-    # user.role = 1
-    # user.status = 1
-    # user.institution_id = 7 #should be session user institution id
-    # new_user = User(**user.dict())
+        if user.class_name:
+            classs = ClassesUpdate(
+                # id = user.class_id,
+                name = user.class_name,
+                teacher_id = new_teacher.id
+            )
+            class_update = update_classes(classs, db)
 
-    # db_user = db.query(User).filter(User.email==user.email).first()
+            if user.subject_name:        
+                subject = SubjectUpdate(
+                    name = user.subject_name,
+                    class_id = class_update['data'].id,
+                    teacher_id = new_teacher.id
+                )
+                update_subject(subject, db)
 
-    # if db_user:
-    #     raise HTTPException(status_code=403, detail="email already in use")
-    
-    # db.add(new_user)
-    # db.commit()
+        # subject = {
+        #     "name": user.subject_name,
+        #     "class_id": user.class_id,
+        #     "teacher_id": new_teacher.id
+        # }
+        # new_subject = Subject(**subject)
+        # db.add(new_subject)
 
-    # return new_user
+        db.commit()
+
+        return new_teacher
+
 
 @router.put("")
 def update_teacher(
-    user: UserUpdate, db: Session = Depends(get_db), auth=Depends(auth)
+    user: UserUpdateTeacher, db: Session = Depends(get_db), auth=Depends(auth)
 ):
-  try:
-    user.email = auth.email
-    user_dict = user.dict()
-    
-    db_user = db.query(User).filter(User.email==user.email).first()
+  if auth.role == 0:
+    try:
+        # user.email = auth.email
+        user_dict = user.dict()
+        db_user = db.query(User).filter(User.id==user.id).first()
 
-    # if db_user is None:
-    #     raise HTTPException(status_code=404, detail="User does not exist")
-    #     #this error is not working. will come back to it -fixed!
+        # if db_user is None:
+        #     raise HTTPException(status_code=404, detail="User does not exist")
+        #     #this error is not working. will come back to it -fixed!
 
-     # Update the user attributes individually
-    for key, value in user_dict.items():
-        setattr(db_user, key, value)
-    db.commit()
-    return {"message": "Profile successfully updated"}
+        # Update the user attributes individually
+        for key, value in user_dict.items():
+            if value:
+                setattr(db_user, key, value)
 
-  except Exception as e:
-    raise HTTPException(status_code=404, detail="User does not exist")
+        
 
+        if user.class_name:        
+            classs = ClassesUpdate(
+                # id = user.class_id,
+                name = user.class_name,
+                teacher_id = user.id
+            )
+            class_update = update_classes(classs, db)
 
+            if user.subject_name:        
+                subject = SubjectUpdate(
+                    name = user.subject_name,
+                    class_id = class_update['data'].id,
+                    teacher_id = user.id
+                )
+                update_subject(subject, db)
+
+        db.commit()
+        return {"message": "Profile successfully updated"}
+
+    except Exception as e:
+        raise HTTPException(status_code=404, detail="User does not exist")
+
+  else:
+        return {"message": "You are not authorized"}
 # @router.get("", response_model=User, status_code=status.HTTP_200_OK)
 # def get_user(db: Session = Depends(get_db), auth=Depends(auth)):
 #     return auth

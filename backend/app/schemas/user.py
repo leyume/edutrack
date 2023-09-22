@@ -25,7 +25,7 @@ class User(UserPost): #serializer
         orm_mode=True
 
 class UserStudent(UserPost):
-    email: str = 'chriss@yopmail.com'
+    email: Optional[str] = 'chriss@yopmail.com'
     firstname: str = 'Chriss'
     lastname: str ='Doe'
     phone: Optional[str] = None
@@ -34,16 +34,18 @@ class UserStudent(UserPost):
     guardian_lname: str = 'Doe'
     guardian_relation: str = 'mother'
     guardian_email: str = 'sandra@yopmail.com'
+    principal: Optional[int] = None
     # role: Optional[int] = None
 
-class UserTeacher(UserPost):
+class UserPostTeacher(UserPost):
     email: str = 'chriss@yopmail.com'
     firstname: str = 'Chriss'
     lastname: str ='Doe'
     phone: Optional[str] = None
     password: Optional[str] = "password"
-    class_id: int = 3
-    subject_name: str = 'Agriculture'
+    class_name: Optional[str] = 'SS 1'
+    # class_id: int = 3
+    subject_name: Optional[str] = 'Agriculture'
 
 class UserGuardian(BaseModel):
     email: str = 'guardian@yopmail.com'
@@ -56,6 +58,8 @@ class UserGuardian(BaseModel):
     password: str
     institution_id: Optional[int] = None
     student_id: Optional[int] = None
+    principal: Optional[int] = None
+    expiry_date: Optional[datetime] = None
 
 class UserPass(UserPost):
     email: str = 'chriss@yopmail.com'
@@ -71,6 +75,42 @@ class UserUpdate(BaseModel): #serializer
     firstname: str = 'Chriss'
     lastname: str='Doe'
     phone: Optional[str] = None
+    relation: Optional[str] = None
+    principal: Optional[int] = None
+    expiry_date: Optional[datetime] = None
+    student_id: Optional[int] = None
+    class_id: Optional[int] = None
+
+class UserUpdateGuardian(BaseModel): #serializer
+    email: str = 'chriss@yopmail.com'
+    firstname: str = 'Chriss'
+    lastname: str='Doe'
+    phone: Optional[str] = None
+    relation: Optional[str] = None
+    principal: Optional[int] = None
+    expiry_date: Optional[datetime] = None
+    student_id: Optional[int] = None
+
+class UserUpdateStudent(BaseModel): #serializer
+    firstname: str = 'Chriss'
+    lastname: str='Doe'
+    student_id: int = None
+    class_id: int = None
+    # status: Optional[str] = None
+    guardian_fname: str = 'Sandra'
+    guardian_lname: str = 'Doe'
+    guardian_relation: str = 'mother'
+    guardian_email: str = 'sandra@yopmail.com'
+    principal: Optional[int] = 1
+
+class UserUpdateTeacher(BaseModel): #serializer
+    id: Optional[int] = None
+    firstname: str = 'Brandon'
+    lastname: str='Stark'
+    class_name: str = 'SS 1'
+    subject_name: str = 'Biology'
+    # class_id: int = None
+    status: Optional[str] = None
 
 class UserUpdateInstitution(BaseModel): #serializer
     email: str = 'chriss@yopmail.com'
@@ -107,6 +147,8 @@ class UserX(BaseModel):
     id: Optional[int] = None
     firstname: str 
     lastname: str
+    relation: Optional[str]
+    email: Optional[str]
 
     class Config:
         orm_mode = True
@@ -114,7 +156,9 @@ class UserX(BaseModel):
         
 class Classes(BaseModel):
     id: Optional[int] = None
-    name: str
+    name: Optional[str]
+    teacher_id: Optional[int]
+    teacher: UserX
     # options: List[StudentClass]
 
     class Config:
@@ -123,6 +167,8 @@ class Classes(BaseModel):
 class Subject(BaseModel):
     id: Optional[int] = None
     name: str
+    class_id: Optional[int]
+    teacher_id: Optional[int]
     # options: List[StudentClass]
 
     class Config:
@@ -135,3 +181,35 @@ class UserClass(UserInstitution):
     teachers: List[UserX]
     students: List[UserX]
     subjects: List[Subject]
+
+class UserTeacher(UserInstitution): 
+    teacher_class: List[Classes]
+    teacher_subjects: List[Subject]
+
+# Ward and Attendance
+
+class Attendance(BaseModel):
+    id: Optional[int] = None
+    date: datetime 
+    student_id: int
+    guardian_arrival_id: int 
+    arrival: datetime 
+    guardian_departure_id: Optional[int] = None 
+    departure: Optional[datetime] = None 
+    guardian_arrival: UserX
+    guardian_departure: Optional[UserX]
+
+    class Config:
+        orm_mode = True
+
+class UserA(BaseModel):
+    id: Optional[int] = None
+    firstname: str 
+    lastname: str
+    attendance: List[Attendance]
+
+    class Config:
+        orm_mode = True
+
+class UserGuardianWard(UserInstitution): 
+    wards: List[UserA]

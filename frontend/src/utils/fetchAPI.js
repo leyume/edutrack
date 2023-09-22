@@ -1,26 +1,27 @@
-let BaseURL = import.meta.env.BASE_URL;
+let BaseURL = import.meta.env.VITE_BASE_URL;
+import { auth, signOut } from "~/config";
 
-export default async function api(endpoint, method = "GET") {
+export default async function api(endpoint, method = "GET", data, upload = false) {
   try {
     let token = localStorage.getItem("token");
 
-    if (token) {
+    if (token || endpoint === "register") {
       // Post/GET to API
-      let action = {
-        // body: upload ? data : JSON.stringify(data),
-        headers: {
-          Authorization: "Bearer " + token,
-        },
-        method,
-      };
+      let action = { headers: {}, method };
+      if (endpoint != "register") action.headers.Authorization = "Bearer " + token;
+      if (method != "GET") action.body = upload ? data : JSON.stringify(data);
+      if (!upload) action.headers["Content-Type"] = "application/json";
 
-      let data = await fetch(BaseURL + endpoint, action);
-      let res = await data.json();
-      console.log({ res });
+      let rdata = await fetch(BaseURL + endpoint, action);
+      let res = await rdata.json();
+      // console.log({ res });
+      if (res?.details == "Invalid Authorisation") {
+        await signOut(auth);
+        throw new Error(res?.details);
+      }
       return res;
     }
-    // return {};
-    throw "Some error";
+    throw new Error("Some Error...");
   } catch (error) {
     console.log({ error });
   }

@@ -8,12 +8,15 @@ import { BrowserRouter as Router, useRoutes } from "react-router-dom";
 import routes from "~react-pages";
 import Layout from "./components/Layout";
 
-import { useQuery, useMutation, useQueryClient, QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       refetchOnWindowFocus: false,
+      // refetchOnmount: false,
+      // refetchOnReconnect: false,
+      // retry: false,
       staleTime: 1000 * 10 * 60,
     },
   },

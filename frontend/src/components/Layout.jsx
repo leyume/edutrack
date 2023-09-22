@@ -11,21 +11,18 @@ export default function Layout({ children }) {
   let navigate = useNavigate();
   let page_exceptions = ["/", "/signin", "/signup"];
 
-  useEffect(() => {
-    console.log("EFFFECCCTTTTTTT");
-    // if (page_exceptions.indexOf(location.pathname) < 0) loggedin();
-  }, [location]);
-
   const loggedin = () => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        // const uid = user.uid;
-        console.log({ user });
-      } else {
-        navigate("/signin");
-      }
+        localStorage.setItem("token", user.accessToken);
+        // console.log({ user });
+      } else navigate("/signin");
     });
   };
+
+  useEffect(() => {
+    if (page_exceptions.indexOf(location.pathname) < 0) loggedin();
+  }, [location]);
 
   return (
     <>
@@ -38,7 +35,7 @@ export default function Layout({ children }) {
         <>
           <HeaderInternal />
           <Sidebar />
-          <main className="bg-white min-h-70vh ml-60">{children}</main>
+          <main className="bg-white min-h-70vh md:ml-60">{children}</main>
         </>
       )}
       <Footer />

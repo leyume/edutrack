@@ -13,9 +13,9 @@ from schemas.institution import InstitutionSchema, InstitutionPost, InstitutionU
 router = APIRouter()
 
 
-@router.get("", response_model=List[InstitutionSchema], status_code=status.HTTP_200_OK)
+@router.get("", response_model=InstitutionSchema, status_code=status.HTTP_200_OK)
 def get_institution(db: Session = Depends(get_db), auth=Depends(auth)):
-    institutions = db.query(Institution).all()
+    institutions = db.query(Institution).filter(Institution.id == auth.institution_id).first()
     return institutions
 
 @router.get("/users", response_model=List[InstitutionUser], status_code=status.HTTP_200_OK)
@@ -53,7 +53,9 @@ def update_institution(
     db_institution = db.query(Institution).filter(Institution.id==auth.institution_id).first() #need to edit to check for session user institution instead
 
     for key, value in institution_dict.items():
-        setattr(db_institution, key, value)
+        if value:
+            setattr(db_institution, key, value)
+
     db.commit()
     return {"message": "Institution Profile successfully updated"}
 

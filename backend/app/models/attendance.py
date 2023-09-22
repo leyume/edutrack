@@ -10,12 +10,15 @@ class Attendance(Base):
     __tablename__='attendance'
     id=Column(Integer,primary_key=True)
     date=Column(TIMESTAMP(timezone=True), nullable=False, server_default=func.now())
-    institution_id=Column(Integer)
-    student_id=Column(Integer)
-    guardian_arrival=Column(Integer)
-    guardian_departure=Column(Integer)
+    institution_id=Column(Integer, ForeignKey('institutions.id'))
+    student_id=Column(Integer, ForeignKey('users.id'))
+    guardian_arrival_id=Column(Integer, ForeignKey('users.id'))
+    guardian_departure_id=Column(Integer, ForeignKey('users.id'))
     arrival=Column(DateTime, server_default=func.now())
     departure=Column(DateTime, server_default=func.now())
+    student = relationship("User", primaryjoin='User.id == Attendance.student_id', back_populates="attendance")
+    guardian_arrival = relationship("User", primaryjoin='User.id == Attendance.guardian_arrival_id')
+    guardian_departure = relationship("User", primaryjoin='User.id == Attendance.guardian_departure_id')
 
 
     def __repr__(self):

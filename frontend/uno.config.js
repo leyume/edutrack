@@ -15,6 +15,7 @@ export default defineConfig({
         liteorange: "#F8EFE2",
         orange: "#FFDCB2",
         gray: "#E5E2EA",
+        darkgray: "#2C2C2C"
       },
     },
   },

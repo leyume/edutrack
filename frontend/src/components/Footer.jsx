@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 function Footer() {
   return (
     <footer className="items-center justify-between py-8 px-5% bg-#2C2C2C relative z-100">
-      <div className="flex items-center justify-between">
-        <a href="/" className="text-brand-pink text-4xl font-bold">
+      <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+        <a href="/" className="text-brand-pink text-3xl md:text-4xl font-bold">
           Edu<span className="text-#E5E2EA">Track</span>
         </a>
         <nav className="[&>ul>li>a]:text-#E5E2EA [&>ul>li>a:hover]:text-brand-pink">
@@ -38,7 +38,7 @@ function Footer() {
         </div> */}
       </div>
       <hr style={{ borderColor: "text-brand-pink" }} className="my-8" />
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col md:flex-row items-center justify-between gap-4">
         <div>
           <p className="text-#E5E2EA">
             Copyright (c) 2023 <span className="text-brand-pink">Edu</span>

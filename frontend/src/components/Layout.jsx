@@ -38,7 +38,7 @@ export default function Layout({ children }) {
           <main className="bg-white min-h-70vh md:ml-60">{children}</main>
         </>
       )}
-      <Footer />
+      {location.pathname !== "/signin" && location.pathname !== "/signup" && <Footer />}
     </>
   );
 }

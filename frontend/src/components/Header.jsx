@@ -45,28 +45,30 @@ export default function Header() {
 
   return location.pathname == "/" ? (
     <header className={`landing flex items-center justify-between px-5% py-5 ${scrolled ? "scrolled" : ""}`}>
-      <Link to="/admin/dashboard" className="text-brand-pink text-3xl md:text-4xl font-bold">
+      <Link to="/admin/dashboard" className="text-brand-pink text-3xl lg:text-4xl font-bold">
         Edu<span className="text-brand-blue">Track</span>
       </Link>
-      <nav className="[&>ul>li>a]:text-brand-blue [&>ul>li>a:hover]:text-brand-pink">
-        <ul className="list-none flex gap-5">
+      
+      <nav className={`${isMenuOpen ? 'flex' : 'hidden'} absolute top-18 md:top-auto right-0 md:right-auto h-[350px] md:h-auto w-full md:w-xl lg:w-2xl xl-w-3xl md:relative md:flex flex-col md:flex-row bg-brand-darkgray md:bg-transparent items-center justify-center md:justify-between gap-8 md:gap-4 px-[5%] md:px-0 py-10 md:py-0 animate-back-in-down md:animate-none`}>
+      <div className="[&>ul>li>a]:text-brand-blue [&>ul>li>a:hover]:text-brand-pink [&>ul>li>a]:transition-all [&>ul>li>a]:delay-200">
+        <ul className="list-none flex flex-col md:flex-row gap-5">
           <li>
-            <a href="/#hero">Home</a>
+            <a href="/#hero" onClick={toggleMenu}>Home</a>
           </li>
           <li>
-            <a href="/#about">About</a>
+            <a href="/#about" onClick={toggleMenu}>About</a>
           </li>
           <li>
-            <a href="/#services">Services</a>
+            <a href="/#services" onClick={toggleMenu}>Services</a>
           </li>
           <li>
-            <a href="/#review">Review</a>
+            <a href="/#review" onClick={toggleMenu}>Review</a>
           </li>
           <li>
-            <a href="/#questions">FAQ</a>
+            <a href="/#questions" onClick={toggleMenu}>FAQ</a>
           </li>
         </ul>
-      </nav>
+      </div>
       <div className="flex gap-4">
         {isSuccess && data?.institution?.name ? (
           <div className="flex items-center gap-3">
@@ -81,15 +83,19 @@ export default function Header() {
           </div>
         ) : (
           <>
-            <Link to="/signin" className="btn btn-alt">
+            <Link to="/signin" className="btn btn-alt" onClick={toggleMenu}>
               Log in
             </Link>
-            <Link to="/signup" className="btn">
+            <Link to="/signup" className="btn" onClick={toggleMenu}>
               Sign up
             </Link>
           </>
         )}
       </div>
+      </nav>
+
+      <span className={`${isMenuOpen ? "i-tabler-circle-x" : "i-tabler-menu-deep"} text-brand-pink text-4xl inline-block md:hidden cursor-pointer`}
+      onClick={toggleMenu}/>
     </header>
   ) : (
     <header className="landing flex item-center justify-between px-5% py-15px shadow-lg bg-white">
@@ -97,7 +103,7 @@ export default function Header() {
         Edu<span className="text-brand-blue">Track</span>
       </Link>
 
-      <nav className={`${isMenuOpen ? 'flex' : 'hidden'} absolute md:relative top-[60px] md:top-auto left-0 md:left-auto w-full md:w-auto h-[50vh] md:h-auto bg-brand-darkgray md:bg-white md:relative md:flex flex-col md-flex-row items-center justify-center gap-4 md:gap-none animate-back-in-down md:animate-none`}>
+      <nav className={`${isMenuOpen ? 'flex' : 'hidden'} absolute md:relative top-[60px] md:top-auto left-0 md:left-auto w-full md:w-auto h-[350px] md:h-auto bg-brand-darkgray md:bg-white md:relative md:flex flex-col md-flex-row items-center justify-center gap-4 md:gap-none animate-back-in-down md:animate-none`}>
         {location.pathname == "/signin" ? (
           <>
             <p className="text-center text-white md:text-brand-dark">Don’t have an account?</p>

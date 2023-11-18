@@ -45,7 +45,7 @@ export default function Signup() {
             [&_label_input]:border-solid [&_label_input]:border-1 [&_label_input]:border-gray-300"
         onSubmit={registerHandler}
       >
-        <h1>Sign Up As An Institute</h1>
+        <h1 className="text-3xl md:text-4xl">Sign Up As An Institute</h1>
         <p className="-mt-2 text-sm italic opacity-50">Institutions are only allowed to sign up. Parents and teachers are registered by the institutions.</p>
 
         <label>

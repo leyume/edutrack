@@ -84,7 +84,7 @@ export default function Signin() {
             [&_label_input]:border-solid [&_label_input]:border-1 [&_label_input]:border-gray-300"
         onSubmit={loginHandler}
       >
-        <h1>Sign In</h1>
+        <h1 className="text-3xl md:text-4xl">Sign In</h1>
         {!!msg && (
           <div className={"msg mt-1 " + (err ? "error" : "success")}>{msg}</div>
         )}
